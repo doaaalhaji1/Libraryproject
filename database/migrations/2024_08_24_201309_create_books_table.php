@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description')->nullable();
-            $table->text('book_content')->nullable();
+            $table->string('description');
+            $table->string('book_content');
             $table->string('language');
             $table->string('image')->nullable();
             $table->enum('status', ['available', 'reserved', 'pending'])->default('available');

@@ -47,26 +47,30 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'language' => 'required|string|max:255',
-            'bookdescription' => 'nullable|string',
-            'bookcontent'=>'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+
+    $validated = $request->validate([
+        'title' => 'required|string|max:255',
+        'language' => 'required|string|max:255',
+        'bookdescription' => 'required|string|max:255',
+        'bookcontent' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+    ]);
+
+    $imagePath = null;
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('book_images', 'public');
+    }
 
 
-        ]);
+    Book::create([
+        'title' => $request->title,
+        'language' => $request->language,
+        'description' => $request->bookdescription,
+        'book_content' => $request->bookcontent,
+        'image' => $imagePath,
+    ]);
 
-            $book = new Book(); // نضيفه كائن لجدول
-
-            if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('book_images', 'public'); // تخزين الصورة في المجلد العام
-                $book->image = $imagePath;
-            }
-
-            Book::create($validated);
-
-        return redirect()->route('books.index')->with('success', __('public.book_created'));
+        // return redirect()->route('books.index')->with('success', __('public.book_created'));
     }
 
     /**
@@ -84,7 +88,10 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        return view('books.edit', compact('book','categories','author'));
+        $categories = Category::all();
+        $authors=Author::all();
+
+        return view('books.edit', compact('book','categories','authors'));
 
     }
 
@@ -96,15 +103,19 @@ class BookController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'language' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'status' => 'required|in:available,reserved,pending',
+            'bookdescription' => 'required|string|max:255',
+            'bookcontent' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
 
+        Book::update([
+            'title' => $request->title,
+            'language' => $request->language,
+            'description' => $request->bookdescription,
+            'book_content' => $request->bookcontent,
+            'image' => $imagePath,
+        ]);
 
-        $book->update($validated);
-
-
-        return redirect()->route('books.index')->with('success', __('public.book_updated'));
     }
 
     /**

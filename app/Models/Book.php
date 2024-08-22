@@ -10,7 +10,7 @@ class Book extends Model
 {
     use HasFactory,HasApiTokens;
 
-    protected $fillable =['title','description','status','language','image','category_id','book_Content'];
+    protected $fillable =['title','description','status','language','image','category_id','book_content'];
 
     public function authors()
     {

@@ -9,16 +9,16 @@ class Book extends Model
 {
     use HasFactory;
 
-    protected $fillable =['title','description','status','language','image','category_id','book_Content'];
+    protected $fillable =['title','description','status','language'];
 
     public function authors()
     {
         return $this->belongsToMany(Author::class, 'author_book');
     }
 
-     public function category()
+     public function categories()
     {
-         return $this->belongsTo(Category::class);
+         return $this->belongsToMany(Category::class);
     }
 
     public function reservation()

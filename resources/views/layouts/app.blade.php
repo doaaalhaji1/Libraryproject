@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{ session('locale') == 'ar' ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="utf-8">
@@ -39,6 +39,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/prism.js') }}"></script>
-    <script src="{{ asset('js/rtl.js') }}"></script> 
+    <script src="{{ asset('js/rtl.js') }}"></script>
 </body>
-</html>
+</html> --}}

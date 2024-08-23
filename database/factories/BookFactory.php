@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
+use App\Models\Category; // تأكد من إضافة هذا السطر
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +20,10 @@ class BookFactory extends Factory
             'title' => $this->faker->sentence,
             'language' => $this->faker->randomElement(['English', 'Arabic', 'French']),
             'description' => $this->faker->paragraph(2),
-            'reservation_id' => null
+            'book_content' => fake()->paragraph(3),
+            'status' => 'available',
+            'category_id' => Category::inRandomOrder()->first()->id,
+            // 'reservation_id' => null
         ];
     }
 }

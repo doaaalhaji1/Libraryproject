@@ -23,7 +23,12 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-
+        User::create([
+            'name' => 'Admin User',
+            'email' => 'admin@com',
+            'password' => '11111111',
+            'role' => 'admin',
+        ]);
         User::factory(10)->create();
         Category::factory(5)->create();
         Author::factory(5)->create();
@@ -31,8 +36,8 @@ class DatabaseSeeder extends Seeder
             $authors = Author::inRandomOrder()->take(rand(1, 3))->pluck('id');
             $book->authors()->attach($authors);
 
-            $categories = Category::inRandomOrder()->take(rand(1, 2))->pluck('id');
-            $book->categories()->attach($categories);
+            // $categories = Category::inRandomOrder()->take(rand(1, 2))->pluck('id');
+            // $book->categories()->attach($categories);
         });
         $employees = User::where('role', 'employee')->get();
         $members = User::where('role', 'member')->get();
@@ -48,7 +53,7 @@ class DatabaseSeeder extends Seeder
             $reservation->save();
 
             foreach ($books as $book) {
-                $book->reservation_id = $reservation->id;
+                // $book->reservation_id = $reservation->id;
                 $book->save();
             }
         });

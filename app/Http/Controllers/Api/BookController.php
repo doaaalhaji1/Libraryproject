@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Book;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -27,7 +26,7 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Book $book)
+    public function show(string $id)
     {
         //
     }
@@ -35,7 +34,7 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -43,7 +42,7 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Book $book)
+    public function destroy(string $id)
     {
         //
     }

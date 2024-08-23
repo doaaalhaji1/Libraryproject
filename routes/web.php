@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Author;
@@ -16,10 +17,10 @@ use Illuminate\Support\Facades\App;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('layouts.Admindashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -27,6 +28,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+Route::middleware(['auth'])->group (function () {
+    Route::get('/books/create', [BookController::class,'create']);
+    Route::post('/books', [BookController::class,'store'])->name('books.store');
+
+
+});
+
+
+
 
 
 

@@ -25,7 +25,7 @@ class BookController extends Controller
     }
     public function reservedBooks()
     {
-        // عرض الكتب المحجوزة فقط من اجل توثيق الاستعادة 
+        // عرض الكتب المحجوزة فقط من اجل توثيق الاستعادة
         $books = Book::where('status', 'reserved')->get();
         return view('books.reserved', compact('books'));
     }
@@ -38,9 +38,9 @@ class BookController extends Controller
     {
         // ارسال المجموعات والمالكين من اجل سهولة الاختيار
         $categories = Category::all();
-        $author=Author::all();
+        $authors=Author::all();
 
-        return view('books.create', compact('categories','author'));
+        return view('books.create', compact('categories','authors'));
     }
     /**
      * Store a newly created resource in storage.
@@ -50,11 +50,21 @@ class BookController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'language' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'status' => 'required|in:available,reserved,pending',
-           
+            'bookdescription' => 'nullable|string',
+            'bookcontent'=>'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+
+
         ]);
-        Book::create($validated);
+
+            $book = new Book(); // نضيفه كائن لجدول
+
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('book_images', 'public'); // تخزين الصورة في المجلد العام
+                $book->image = $imagePath;
+            }
+
+            Book::create($validated);
 
         return redirect()->route('books.index')->with('success', __('public.book_created'));
     }
@@ -89,11 +99,11 @@ class BookController extends Controller
             'description' => 'nullable|string',
             'status' => 'required|in:available,reserved,pending',
         ]);
-    
-       
+
+
         $book->update($validated);
-    
-       
+
+
         return redirect()->route('books.index')->with('success', __('public.book_updated'));
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
@@ -35,4 +36,6 @@ Route::get('/set-locale', function (Illuminate\Http\Request $request) {
 
     return redirect()->back();
 })->name('setLocale');
+
+
 require __DIR__.'/auth.php';

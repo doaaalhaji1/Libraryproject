@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,4 +20,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/set-locale', function (Illuminate\Http\Request $request) {
+    $locale = $request->query('locale');
+
+    if (in_array($locale, ['en', 'ar'])) {
+        session(['locale' => $locale]);
+        App::setLocale($locale);
+    }
+
+    return redirect()->back();
+})->name('setLocale');
 require __DIR__.'/auth.php';

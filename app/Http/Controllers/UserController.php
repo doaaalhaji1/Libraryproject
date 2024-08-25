@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
+
 
 class UserController extends Controller
 {
@@ -12,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -20,7 +24,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
+
     }
 
     /**
@@ -28,7 +33,25 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'role' => 'required|in:admin,employee,member',
+            'password' => ['required', 'confirmed', Password::min(8)
+            ->mixedCase()
+            ->numbers()
+            ->symbols()
+            ->uncompromised()],]);
+    
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+            'password' => Hash::make($request->password),
+        ]);
+    
+        return redirect()->route('users.index')
+                         ->with('success', __('public.user_created'));
     }
 
     /**
@@ -36,7 +59,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('users.show', compact('user'));
+
     }
 
     /**
@@ -44,7 +68,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('users.edit', compact('user'));
+
     }
 
     /**
@@ -52,7 +77,26 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'role' => 'required|in:admin,employee,member',
+            'password' => ['nullable', 'confirmed', Password::min(8)
+                ->mixedCase()
+                ->numbers()
+                ->symbols()
+                ->uncompromised()],
+        ]);
+    
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+            'password' => $request->password ? Hash::make($request->password) : $user->password,
+        ]);
+    
+        return redirect()->route('users.index')
+                         ->with('success', __('public.user_updated'));
     }
 
     /**
@@ -60,6 +104,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+    return redirect()->route('users.index')
+                     ->with('success', __('public.user_deleted'));
     }
 }

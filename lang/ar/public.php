@@ -40,5 +40,22 @@ return [
     'resend_verification_email' => 'انقر هنا لإعادة إرسال رسالة التحقق.',
     'verification_link_sent' => 'تم إرسال رابط تحقق جديد إلى عنوان بريدك الإلكتروني.',
     'Profile' => 'الملف الشخصي',
+  'book_created' => 'تم إنشاء الكتاب بنجاح.',
+    'book_updated' => 'تم تحديث الكتاب بنجاح.',
+    'book_deleted' => 'تم حذف الكتاب بنجاح.',
+
+    'category_created' => 'تم إنشاء الصنف بنجاح.',
+    'category_updated' => 'تم تعديل الصنف بنجاح.',
+    'category_deleted' => 'تم حذف الصنف بنجاح.',
+    
+    'user_created' => 'تم إنشاء المستخدم بنجاح.',
+    'user_updated' => 'تم تحديث المستخدم بنجاح.',
+    'user_deleted' => 'تم حذف المستخدم بنجاح.',
+
+    'reservation_created' => 'تم إنشاء الحجز بنجاح',
+'reservation_updated' => 'تم تحديث الحجز بنجاح',
+'reservation_deleted' => 'تم حذف الحجز بنجاح',
+'reservation_approved' => 'تمت الموافقة على الحجز بنجاح',
+'reservation_rejected' => 'تم رفض الحجز بنجاح',
 ];
 

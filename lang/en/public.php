@@ -42,4 +42,22 @@ return [
   'resend_verification_email' => 'Click here to resend the verification email.',
   'verification_link_sent' => 'A new verification link has been sent to your email address.',
   'Profile' => 'Profile',
+  // book
+  'book_created' => 'Book created successfully.',
+  'book_updated' => 'Book updated successfully.',
+  'book_deleted' => 'Book deleted successfully.',
+  // category
+  'category_created' => 'Category created successfully.',
+  'category_updated' => 'Category updated successfully.',
+  'category_deleted' => 'Category deleted successfully.',
+  // user 
+  'user_created' => 'User created successfully.',
+  'user_updated' => 'User updated successfully.',
+  'user_deleted' => 'User deleted successfully.',
+
+  'reservation_created' => 'Reservation created successfully',
+'reservation_updated' => 'Reservation updated successfully',
+'reservation_deleted' => 'Reservation deleted successfully',
+'reservation_approved' => 'Reservation approved successfully',
+'reservation_rejected' => 'Reservation rejected successfully',
 ];

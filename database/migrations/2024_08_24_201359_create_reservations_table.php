@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('employee_id')->nullable()->constrained('users')->onDelete('cascade'); // assuming employees are also in the users table
+            $table->foreignId('employee_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('book_id')->nullable()->constrained('books')->onDelete('set null');
             $table->date('reservation_start_date');
             $table->date('reservation_end_date');
-            $table->enum('status', ['pending', 'approved', 'rejected']);
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }

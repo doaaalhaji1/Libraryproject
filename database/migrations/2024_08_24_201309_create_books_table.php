@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('language');
-            $table->enum('status', ['available', 'reserved', 'borrowed'])->default('available');
+            $table->text('description')->nullable();
+            $table->enum('status', ['available', 'reserved', 'pending'])->default('available');
+            $table->foreignId('reservation_id')->nullable()->constrained('reservations')->onDelete('set null');
             $table->timestamps();
         });
     }

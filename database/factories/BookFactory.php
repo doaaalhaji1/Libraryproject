@@ -17,7 +17,10 @@ class BookFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->sentence,
+            'language' => $this->faker->randomElement(['English', 'Arabic', 'French']),
+            'description' => $this->faker->paragraph(2),
+            'reservation_id' => null
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Book;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,12 @@ class ReservationFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'book_id' => Book::factory(),
+            'user_id' => User::factory(),
+            'reservation_start_date' => $this->faker->date(),
+            'reservation_end_date' => $this->faker->date(),
+            'status' => 'pending',
+            'employee_id' => User::factory(),
         ];
     }
 }

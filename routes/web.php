@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\EmailController;
+use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
@@ -21,10 +23,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/test',function ()
-{
-    return 'test github';
-});
+
+
 
 Route::get('/set-locale', function (Illuminate\Http\Request $request) {
     $locale = $request->query('locale');

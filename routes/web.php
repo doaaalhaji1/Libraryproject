@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Author;
@@ -68,6 +69,17 @@ Route::middleware(['auth'])->group (function () {
  Route::put('/authors/{author}', [AuthorController::class,'update'])->name('authors.update');
 
  Route::delete('/authors/{author}', [AuthorController::class,'destroy'])->name('authors.destroy');
+
+// ------------------------------------------------------------------------------------------------------
+ Route::get('/reservation/create', [ReservationController::class,'create'])->name('reservation.create');
+ Route::post('/reservation', [ReservationController::class,'store'])->name('reservation.store');
+
+ Route::get('/reservation', [ReservationController::class,'index'])->name('reservation');
+
+ Route::get('/reservation/{reservation}/edit', [ReservationController::class,'edit'])->name('reservation.edit');
+ Route::put('/reservation/{reservation}', [ReservationController::class,'update'])->name('reservation.update');
+
+ Route::delete('/reservation/{reservation}', [ReservationController::class,'destroy'])->name('reservation.destroy');
 
 });
 

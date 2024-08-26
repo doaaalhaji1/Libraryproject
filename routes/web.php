@@ -43,6 +43,7 @@ Route::get('/set-locale', function (Illuminate\Http\Request $request) {
 })->name('setLocale');
 
 
+
 Route::get('/test-db', function () {
     $books = Book::all();
     $users = User::all();
@@ -54,13 +55,23 @@ Route::get('/test-db', function () {
     foreach ($books as $book) {
         echo "Title: " . $book->title . "<br>";
         echo "Authors: <br>";
-        foreach ($book->authors as $author) {
-            echo "- " . $author->name . "<br>";
+        if ($book->authors->isNotEmpty()) {
+            foreach ($book->authors as $author) {
+                echo "- " . $author->name . "<br>";
+            }
+        } else {
+            echo "No authors found.<br>";
         }
+
         echo "Categories: <br>";
-        foreach ($book->categories as $category) {
-            echo "- " . $category->name . "<br>";
+        if ($book->categories->isNotEmpty()) {
+            foreach ($book->categories as $category) {
+                echo "- " . $category->name . "<br>";
+            }
+        } else {
+            echo "No categories found.<br>";
         }
+
         echo "Language: " . $book->language . "<br>";
         echo "Status: " . $book->status . "<br>";
         echo "-----------------------------------------------<br>";
@@ -89,23 +100,37 @@ Route::get('/test-db', function () {
     echo "<h3>Reservations</h3>";
     foreach ($reservations as $reservation) {
         echo "Books: <br>";
-        foreach ($reservation->books as $book) {
-            echo "- " . $book->title . "<br>";
+        if ($reservation->books->isNotEmpty()) {
+            foreach ($reservation->books as $book) {
+                echo "- " . $book->title . "<br>";
+            }
+        } else {
+            echo "No books found.<br>";
         }
 
         echo "Employees name: <br>";
-        foreach ($reservation->employees as $employee) {
-            echo "- " . $employee->name . "<br>";
+        if ($reservation->employee) {
+            echo "- " . $reservation->employee->name . "<br>";
+        } else {
+            echo "No employee found.<br>";
         }
 
-        echo "Member Reservations: " . $reservation->user->name . "<br>"; // تصحيح هذه السطر
+        echo "Recipient name: <br>";
+        if ($reservation->recipient) {
+            echo "- " . $reservation->recipient->name . "<br>";
+        } else {
+            echo "No recipient found.<br>";
+        }
 
+        echo "Member: " . ($reservation->user ? $reservation->user->name : 'None') . "<br>";
         echo "Reservation Start Date: " . $reservation->reservation_start_date . "<br>";
         echo "Reservation End Date: " . $reservation->reservation_end_date . "<br>";
         echo "Status: " . $reservation->status . "<br>";
         echo "--------------------------------------------<br>";
     }
 });
+
+
 
 
 

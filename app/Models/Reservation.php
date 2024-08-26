@@ -10,14 +10,20 @@ class Reservation extends Model
     use HasFactory;
 
     protected $fillable = ['reservation_start_date','reservation_end_date'];
+
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function employees()
+    public function employee()
     {
-        return $this->belongsToMany(User::class, 'employee_reservation');
+        return $this->belongsTo(User::class, 'employee_id');
+    }
+
+    public function recipient()
+    {
+        return $this->belongsTo(User::class, 'recipient_user_id');
     }
 
     public function books()

@@ -37,14 +37,14 @@
             <button type="submit" class="btn btn-primary">{{ __('public.ok') }}</button>
         </div>
     </form>
-</td>                    
+</td>
                     <td>
-                        <a href="{{ route('users.show', $user['id']) }}" class="btn btn-primary btn-sm">{{ __('public.show') }}</a>
-                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">{{ __('public.edit') }}</a>
+                        <a href="{{ route('users.show', $user['id']) }}" class="btn btn-primary">{{ __('public.show') }}</a>
+                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">{{ __('public.edit') }}</a>
                         <form action="{{ route('users.destroy', $user['id']) }}" class="d-inline" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">{{ __('public.delete') }}</button>
+                            <button type="submit" class="btn btn-danger">{{ __('public.delete') }}</button>
                         </form>
                     </td>
                 </tr>

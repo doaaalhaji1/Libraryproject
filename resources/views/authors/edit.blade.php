@@ -1,92 +1,66 @@
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Create Author</title>
+    <title>Document</title>
     <!-- إضافة CSS ل Flatpickr -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
 </head>
 
-<style>
+@extends('layouts.createditeshow')
 
-    .Style1 {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top:40px;
-        justify-content: center;
+@include('partials.navdash')
 
-    }
+@section('content')
+    <div class="d-flex justify-content-center align-items-center" style="margin-top:30px ">
+        <div class="card w-50">
+            <div class="card-body">
+                <img src="/images/adduser.jpg" alt="..." width="60px" class="d-block mx-auto mb-3">
+                <h2 class="text-center">{{ __('public.Create_New_User') }}</h2>
+                <form class="centered-form Style2" action="{{ route('authors.update' , $author) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
 
-    .Style2 {
-        width:370px;
-        padding: 20px;
-        background-color: #ffffff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .Style .Style1 .Style2 .btn1
-    {
+                @endif
+                    <div class="mb-3">
+                        <label for="name" class="form-label">{{  __ ('messages.name') }}</label>
+                        <input type="name" class="form-control" id="name" name="name" value="{{$author->name}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">{{  __ ('messages.discription') }}</label>
+                        <input type="text" class="form-control" id="description" name="description" value="{{ $author->description }}">
+                    </div>
 
-    margin-left: 93;
-    margin-top: 20px;
+                    <div class="mb-3">
+                            <label for="nationality" class="form-label">{{ __('nationality') }}</label>
+                            <select name="nationality" id="nationality" class="form-select">
+                                <option value="English" {{ $author->nationality == 'English' ? 'selected' : '' }}>{{ __('English') }}</option>
+                                <option value="Arabic" {{ $author->nationality == 'Arabic' ? 'selected' : '' }}>{{ __('Arabic') }}</option>
+                                <option value="French" {{ $author->nationality == 'French' ? 'selected' : '' }}>{{ __('French') }}</option>
+                            </select>
+                    </div>
 
-    }
+                    <div class="mb-3">
+                        <label for="birthdate" class="form-label">{{ __('Birthdate') }}</label>
+                        <input type="text" name="birthdate" id="birthdate" class="form-control" value="" />
+                    </div>
 
-    </style>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-primary w-50">{{ __('public.Register') }}</button>
+                    </div>
+            </form>
 
-      @include('partials.navdash')
-<div class="container Style">
-
-    <div class="form-container Style1">
-
-        <img src="/images/addcategory.jpg" alt="..." width="70px">
-        <h2>{{  __ ('messages.add_category') }}</h2>
-        <p></p>
-        <form class="centered-form Style2" action="{{ route('authors.update' , $author) }}" method="POST">
-                @csrf
-                @method('PUT')
-                @if($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-
-            @endif
-                <div class="mb-3">
-                    <label for="name" class="form-label">{{  __ ('messages.name') }}</label>
-                    <input type="name" class="form-control" id="name" name="name" value="{{$author->name}}">
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="form-label">{{  __ ('messages.discription') }}</label>
-                    <input type="text" class="form-control" id="description" name="description" value="{{ $author->description }}">
-                </div>
-
-                <div class="mb-3">
-                        <label for="nationality" class="form-label">{{ __('nationality') }}</label>
-                        <select name="nationality" id="nationality" class="form-select">
-                            <option value="English" {{ $author->nationality == 'English' ? 'selected' : '' }}>{{ __('English') }}</option>
-                            <option value="Arabic" {{ $author->nationality == 'Arabic' ? 'selected' : '' }}>{{ __('Arabic') }}</option>
-                            <option value="French" {{ $author->nationality == 'French' ? 'selected' : '' }}>{{ __('French') }}</option>
-                        </select>
-                </div>
-
-                <div class="mb-3">
-                    <label for="birthdate" class="form-label">{{ __('Birthdate') }}</label>
-                    <input type="text" name="birthdate" id="birthdate" class="form-control" value="" />
-                </div>
-
-            <button type="submit" class="btn btn1 btn-primary">{{  __ ('messages.create_author') }}</button>
-        </form>
+            </div>
+        </div>
     </div>
-</div>
+@endsection
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -97,6 +71,7 @@
         });
     });
 </script>
+
 
 
 

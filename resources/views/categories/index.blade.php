@@ -29,12 +29,12 @@
                         <td>{{ $category->slug }}</td>
 
                         <td>
-                        <a href="{{ route('categories.edit', $category) }}" class="btn btn-warning btn-sm">{{  __ ('messages.edit') }}</a>
+                        <a href="{{ route('categories.edit', $category) }}" class="btn btn-primary">{{  __ ('messages.edit') }}</a>
 
                        <form action="{{ route('categories.destroy', $category) }}" class="d-inline" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">{{  __ ('messages.delete') }}</button>
+                            <button type="submit" class="btn btn-danger">{{  __ ('messages.delete') }}</button>
                         </td>
                         </form>
 

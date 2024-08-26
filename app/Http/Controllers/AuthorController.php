@@ -80,9 +80,9 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
-           'description' => 'required|string|max:255',
+            'description' => 'string|max:255',
             'nationality' => 'required|string|max:255',
             'birthdate' => 'required|date',
         ]);

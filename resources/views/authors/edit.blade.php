@@ -4,11 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Edit Author</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Create Author</title>
     <!-- إضافة CSS ل Flatpickr -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 </head>
 
 <style>
@@ -17,7 +16,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top:65px;
+        margin-top:40px;
         justify-content: center;
 
     }
@@ -48,7 +47,7 @@
         <img src="/images/addcategory.jpg" alt="..." width="70px">
         <h2>{{  __ ('messages.add_category') }}</h2>
         <p></p>
-        <form class="centered-form Style2" action="{{ route('authors.update', $author) }}" method="POST">
+        <form class="centered-form Style2" action="{{ route('authors.update' , $author) }}" method="POST">
                 @csrf
                 @method('PUT')
                 @if($errors->any())
@@ -67,28 +66,24 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">{{  __ ('messages.discription') }}</label>
-                    <input type="name" class="form-control" id="description" name="description" value="{{$author->description}}">
+                    <input type="text" class="form-control" id="description" name="description" value="{{ $author->description }}">
                 </div>
 
-                <div class="row mb-3">
-                    <div class="col-md-9">
-                        <label for="nationality" class="form-label">{{ __('Nationality') }}</label>
+                <div class="mb-3">
+                        <label for="nationality" class="form-label">{{ __('nationality') }}</label>
                         <select name="nationality" id="nationality" class="form-select">
                             <option value="English" {{ $author->nationality == 'English' ? 'selected' : '' }}>{{ __('English') }}</option>
                             <option value="Arabic" {{ $author->nationality == 'Arabic' ? 'selected' : '' }}>{{ __('Arabic') }}</option>
                             <option value="French" {{ $author->nationality == 'French' ? 'selected' : '' }}>{{ __('French') }}</option>
                         </select>
-                    </div>
                 </div>
-
 
                 <div class="mb-3">
                     <label for="birthdate" class="form-label">{{ __('Birthdate') }}</label>
-                    {{-- <input type="date" name="birthdate" id="birthdate" class="form-control" value="{{ $author->birthdate ? $author->birthdate->format('Y-m-d') : '' }}" /> --}}
                     <input type="text" name="birthdate" id="birthdate" class="form-control" value="" />
                 </div>
 
-            <button type="submit" class="btn btn1 btn-primary">{{  __ ('messages.create_category') }}</button>
+            <button type="submit" class="btn btn1 btn-primary">{{  __ ('messages.create_author') }}</button>
         </form>
     </div>
 </div>
@@ -102,7 +97,6 @@
         });
     });
 </script>
-
 
 
 

@@ -18,7 +18,7 @@ class AuthorFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'description' => $this->faker->paragraph(2), // وصف المؤلف
+            'description' => $this->faker->paragraph(1), // وصف المؤلف
             'nationality' => $this->faker->country(), // جنسية المؤلف
             'birthdate' => $this->faker->date(), // تاريخ ميلاد المؤلف
         ];

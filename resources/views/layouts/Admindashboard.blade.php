@@ -32,39 +32,51 @@
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row"> <!--begin::Col-->
                         <div class="col-lg-3 col-6">
-                            <div class="small-box text-bg-success">
-                                <div class="inner">
-                                    <h3>65</h3>
-                                    <p>Unique Visitors</p>
-                                    {{-- <a href="{{ route('books') }}"><p>All Books</p></a> --}}
-                                </div>
-                            </div> <!--end::Small Box Widget 4-->
+                            <a href="{{ route('books') }}" class="text-decoration-none"> <!-- Add link here -->
+                                <div class="small-box text-bg-success">
+                                    <div class="inner">
+                                        <h3>ALL Books</h3>
+                                        <p></p>
+                                    </div>
+                                </div> <!--end::Small Box Widget 1-->
+                            </a>
                         </div>
                         <div class="col-lg-3 col-6">
-                            <div class="small-box text-bg-danger">
-                                <div class="inner">
-                                    <h3>65</h3>
-                                    <p>Danger</p>
-                                </div>
-                            </div> <!--end::Small Box Widget 4-->
+                            <a href="{{ route('categories') }}" class="text-decoration-none"> <!-- Add link here -->
+                                <div class="small-box text-bg-danger">
+                                    <div class="inner">
+                                        <h3>ALL categories</h3>
+                                        <p>Danger</p>
+                                    </div>
+                                </div> <!--end::Small Box Widget 2-->
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-6"> <!--begin::Small Box Widget 3-->
+                            <a href="{{ route('authors') }}" class="text-decoration-none"> <!-- Add link here -->
+                                <div class="small-box text-bg-info">
+                                    <div class="inner">
+                                        <h3>ALL Authors</h3>
+                                        <p>2</p>
+                                    </div>
+                                </div> <!--end::Small Box Widget 3-->
+                            </a>
                         </div>
                         <div class="col-lg-3 col-6"> <!--begin::Small Box Widget 4-->
-                            <div class="small-box text-bg-info">
-                                <div class="inner">
-                                    <h3>65</h3>
-                                    <p>Unique Visitors</p>
-                                </div>
-                            </div> <!--end::Small Box Widget 4-->
+                            {{-- <a href="{{ route('primary-page') }}" class="text-decoration-none"> <!-- Add link here --> --}}
+                                <div class="small-box text-bg-primary">
+                                    <div class="inner">
+                                        <h3>65</h3>
+                                        <p>Unique Visitors</p>
+                                    </div>
+                                </div> <!--end::Small Box Widget 4-->
+                            </a>
                         </div>
-                        <div class="col-lg-3 col-6"> <!--begin::Small Box Widget 4-->
-                            <div class="small-box text-bg-primary">
-                                <div class="inner">
-                                    <h3>65</h3>
-                                    <p>Unique Visitors</p>
-                                </div>
-                            </div> <!--end::Small Box Widget 4-->
-                        </div> <!--end::Col-->
-                        @yield("content")
+                    </div> <!--end::Row-->
+                </div> <!--end::Container-->
+            </div><!--end::Col-->
+            <div class="container">
+                @yield("content")
+            </div>
                      </main>
                     </body>
 

@@ -44,10 +44,10 @@
     <img src="{{ url('storage/' . $book->image) }}" class="cover-img" alt="...">
     <!-- محتوى الكتاب -->
     <div class="book-content">
-        <h1> {{$book->Book_Title}}</h1>
-        <p> {{$book->Book_Description}}</p>
+        <h1> {{$book->title}}</h1>
+        <p> {{$book->description}}</p>
         <p>
-            {{$book->Book_Content}}
+            {{$book->book_content}}
         </p>
     </div>
 

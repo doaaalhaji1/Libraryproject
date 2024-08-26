@@ -28,7 +28,7 @@
 
         </ul> <!--end::Start Navbar Links--> <!--begin::End Navbar Links-->
         <div class="flex items-center">
-            <img src="../images/logo.png" alt="" width="50" class="ms-3" >
+            <img src="/images/logo.png" alt="" width="50" class="ms-3" >
         </div>
 
         <ul class="navbar-nav ms-auto pt-1"> <!--begin::Navbar Search-->

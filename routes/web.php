@@ -3,6 +3,8 @@
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Author;
@@ -44,10 +46,32 @@ Route::middleware(['auth'])->group (function () {
 
     Route::delete('/books/{book}', [BookController::class,'destroy'])->name('books.destroy');//{id الكتاب}
 
+// ------------------------------------------------------------
+
+    Route::get('/categories/create', [CategoryController::class,'create'])->name('categories.create');
+    Route::post('/categories', [CategoryController::class,'store'])->name('categories.store');
+
+    Route::get('/categories', [CategoryController::class,'index'])->name('categories');
+
+    Route::get('/categories/{category}/edit', [CategoryController::class,'edit'])->name('categories.edit');
+    Route::put('/categories/{category}', [CategoryController::class,'update'])->name('categories.update');
+
+    Route::delete('/categories/{category}', [CategoryController::class,'destroy'])->name('categories.destroy');
+ //-------------------------------------------------------------------------
+
+ Route::get('/authors/create', [AuthorController::class,'create'])->name('authors.create');
+ Route::post('/authors', [AuthorController::class,'store'])->name('authors.store');
+
+ Route::get('/authors', [AuthorController::class,'index'])->name('authors');
+
+ Route::get('/authors/{author}/edit', [AuthorController::class,'edit'])->name('authors.edit');
+ Route::put('/authors/{author}', [AuthorController::class,'update'])->name('authors.update');
+
+ Route::delete('/authors/{author}', [AuthorController::class,'destroy'])->name('authors.destroy');
 
 });
 
-
+Route::get('/books/{book}', [BookController::class,'show'])->name('books.sho');
 
 
 

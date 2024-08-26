@@ -21,7 +21,7 @@
             <div class="card w-75 card-custom">
                 <div class="card-body">
                     <img src="/images/addbook.jpg" alt="..." width="60px" class="d-block mx-auto mb-3">
-                    <h2 class="text-center">{{ __ ('messages.Add_Book') }}</h2>
+                    <h2 class="text-center">{{ __('public.Add_Book') }}</h2>
                     <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @if($errors->any())

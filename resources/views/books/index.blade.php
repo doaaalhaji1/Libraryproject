@@ -17,8 +17,10 @@
             <thead>
                 <tr>
                     <th>{{  __ ('messages.book_title') }}</th>
-                    <th>{{  __ ('messages.author_name') }}</th>
-                    <th>{{  __ ('messages.action') }}</th>
+                    <th>{{  __ ('messages.description') }}</th>
+                    <th>{{  __ ('messages.status') }}</th>
+                    <th>{{  __ ('messages.language') }}</th>
+                    <th>{{  __ ('messages.Action') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,12 +30,11 @@
                         <td>{{ $book->description }}</td>
                         <td>{{ $book->status}}</td>
                         <td>{{ $book->language }}</td>
-                        <td>{{ $book->language }}</td>
+
                         <td>
-                            {{-- <a href="{{ route('books.show', $book) }}" class="btn btn-primary btn-sm">{{  __ ('messages.show') }}</a> --}}
+                            <a href="{{ route('books.sho', $book) }}" class="btn btn-primary btn-sm">{{  __ ('messages.show') }}</a>
 
                             <a href="{{ route('books.edit', $book) }}" class="btn btn-warning btn-sm">{{  __ ('messages.edit') }}</a>
-                           {{--  ارسلنا الايدي كمان منشان نحطو بين {}  منشان عند الضغط على زر التعديل يحط ايديت الكتاب يلي منا نعدله بالurl--}}
 
                            <form action="{{ route('books.destroy', $book) }}" class="d-inline" method="POST">
                                 @csrf

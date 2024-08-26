@@ -32,12 +32,12 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'slug' => 'nullable|string',
+            'slug' => 'required|string|max:255'
         ]);
-    
+
         Category::create($request->all());
-    
-        return redirect()->route('categories.index')
+
+        return redirect()->route('categories')
                          ->with('success', __('public.category_created'));
     }
 
@@ -66,12 +66,12 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'slug' => 'nullable|string',
+            'slug' => 'required|string|max:255'
         ]);
-    
+
         $category->update($request->all());
-    
-        return redirect()->route('categories.index')
+
+        return redirect()->route('categories')
                          ->with('success', __('public.category_updated'));
     }
 
@@ -82,7 +82,7 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('categories.index')
+        return redirect()->route('categories')
                          ->with('success', __('public.category_deleted'));
     }
 }

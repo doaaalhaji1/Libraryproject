@@ -10,7 +10,13 @@ class Author extends Model
 {
     use HasFactory,HasApiTokens;
 
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name',
+        'description',
+        'nationality',
+        'birthdate',
+    ];
+
     public function books()
     {
         return $this->belongsToMany(Book::class, 'author_book');

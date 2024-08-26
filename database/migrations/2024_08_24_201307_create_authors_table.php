@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('authors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('description'); // وصف مؤلف الكتاب
+            $table->string('nationality'); // جنسية المؤلف
+            $table->date('birthdate'); // تاريخ ميلاد المؤلف
             $table->timestamps();
         });
     }

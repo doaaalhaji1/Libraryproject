@@ -2,117 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
-use App\Models\Reservation;
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Reservation;
+use App\Models\Book;
+use App\Models\User;
 
 class ReservationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $reservations = Reservation::all();
+        $reservations = Reservation::with('books', 'user')->get();
         return view('reservations.index', compact('reservations'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $users = User::all();
-        $books = Book::all();
-        return view('reservations.create', compact('users', 'books'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'employee_id' => 'nullable|exists:users,id',
-            'book_id' => 'nullable|exists:books,id',
-            'reservation_start_date' => 'required|date',
-            'reservation_end_date' => 'required|date|after_or_equal:reservation_start_date',
-            'status' => 'required|in:pending,approved,rejected',
+        $request->validate([
+            'book_ids' => 'required|array',
+            'book_ids.*' => 'exists:books,id',
+            'start_date' => 'required|date|after_or_equal:today',
+            'end_date' => 'required|date|after_or_equal:start_date',
         ]);
 
-        Reservation::create($validated);
+        $books = Book::whereIn('id', $request->book_ids)->get();
+        foreach ($books as $book) {
+            if ($book->status != 'available') {
+                return redirect()->back()->with('error', 'One or more books are not available.');
+            }
+        }
 
-        return redirect()->route('reservations.index')->with('success', __('public.reservation_created'));
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Reservation $reservation)
-    {
-        return view('reservations.show', compact('reservation'));
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Reservation $reservation)
-    {
-        $users = User::all();
-        $books = Book::all();
-        return view('reservations.edit', compact('reservation', 'users', 'books'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Reservation $reservation)
-    {
-        $validated = $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'employee_id' => 'nullable|exists:users,id',
-            'book_id' => 'nullable|exists:books,id',
-            'reservation_start_date' => 'required|date',
-            'reservation_end_date' => 'required|date|after_or_equal:reservation_start_date',
-            'status' => 'required|in:pending,approved,rejected',
+        $reservation = Reservation::create([
+            'user_id' => auth()->id(),
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'status' => 'pending',
         ]);
 
-        $reservation->update($validated);
+        foreach ($books as $book) {
+            $reservation->books()->attach($book->id);
+            $book->update(['status' => 'under request']);
+        }
 
-        return redirect()->route('reservations.index')->with('success', __('public.reservation_updated'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Reservation $reservation)
-    {
-        $reservation->delete();
-
-        return redirect()->route('reservations.index')->with('success', __('public.reservation_deleted'));
-    }
-    // عرض الطلبات المنتظرة 
-    public function pendingReservations()
-    {
-        $reservations = Reservation::where('status', 'pending')->get();
-        return view('reservations.pending', compact('reservations'));
-    }
-    public function approve(Request $request, Reservation $reservation)
-    {
-       
-        $reservation->update(['status' => 'approved']);
-
-        return redirect()->route('reservations.pending')->with('success', __('public.reservation_approved'));
-    }
-    public function reject(Request $request, Reservation $reservation)
-    {
-        
-
-        $reservation->update(['status' => 'rejected']);
-
-        return redirect()->route('reservations.pending')->with('success', __('public.reservation_rejected'));
+        return redirect()->back()->with('success', 'Reservation request has been made.');
     }
 }

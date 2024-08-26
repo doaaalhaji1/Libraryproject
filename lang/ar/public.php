@@ -47,7 +47,7 @@ return [
     'category_created' => 'تم إنشاء الصنف بنجاح.',
     'category_updated' => 'تم تعديل الصنف بنجاح.',
     'category_deleted' => 'تم حذف الصنف بنجاح.',
-    
+
     'user_created' => 'تم إنشاء المستخدم بنجاح.',
     'user_updated' => 'تم تحديث المستخدم بنجاح.',
     'user_deleted' => 'تم حذف المستخدم بنجاح.',

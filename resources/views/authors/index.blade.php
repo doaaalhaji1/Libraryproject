@@ -17,21 +17,23 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>{{  __ ('messages.category_name') }}</th>
-                    <th>{{  __ ('messages.slug') }}</th>
+                    <th>{{  __ ('messages.name') }}</th>
+                    <th>{{  __ ('messages.discription') }}</th>
                     <th>{{  __ ('messages.action') }}</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($categories as $category)
+                @foreach ($authors as $author)
                     <tr>
-                        <td>{{ $category->name }}</td>
-                        <td>{{ $category->slug }}</td>
+                        <td>{{ $author->name }}</td>
+                        <td>{{ $author->discription }}</td>
+                        <td>{{ $author->nationality }}</td>
+                        <td>{{ $author->birthdate ? $author->birthdate->format('Y-m-d') : '' }}</td>
 
                         <td>
-                        <a href="{{ route('categories.edit', $category) }}" class="btn btn-warning btn-sm">{{  __ ('messages.edit') }}</a>
+                        <a href="{{ route('authors.edit', $author) }}" class="btn btn-warning btn-sm">{{  __ ('messages.edit') }}</a>
 
-                       <form action="{{ route('categories.destroy', $category) }}" class="d-inline" method="POST">
+                       <form action="{{ route('authors.destroy', $author) }}" class="d-inline" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">{{  __ ('messages.delete') }}</button>

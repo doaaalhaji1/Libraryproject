@@ -50,8 +50,8 @@ class User extends Authenticatable
         return $this->hasMany(Reservation::class);
     }
 
-    public function approvedReservations()
+    public function managedReservations()
     {
-        return $this->hasMany(Reservation::class, 'employee_id');
+        return $this->belongsToMany(Reservation::class, 'employee_reservation');
     }
 }

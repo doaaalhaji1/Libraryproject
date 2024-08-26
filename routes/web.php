@@ -49,6 +49,7 @@ Route::get('/test-db', function () {
     $authors = Author::all();
     $categories = Category::all();
     $reservations = Reservation::all();
+
     echo "<h3>Books</h3>";
     foreach ($books as $book) {
         echo "Title: " . $book->title . "<br>";
@@ -64,6 +65,7 @@ Route::get('/test-db', function () {
         echo "Status: " . $book->status . "<br>";
         echo "-----------------------------------------------<br>";
     }
+
     echo "<h3>Users</h3>";
     foreach ($users as $user) {
         echo "Name: " . $user->name . "<br>";
@@ -91,14 +93,20 @@ Route::get('/test-db', function () {
             echo "- " . $book->title . "<br>";
         }
 
-        echo "Employee: " . ($reservation->employee ? $reservation->employee->name : 'N/A') . "<br>";
-        echo "User: " . ($reservation->user ? $reservation->user->name : 'N/A') . "<br>";
+        echo "Employees name: <br>";
+        foreach ($reservation->employees as $employee) {
+            echo "- " . $employee->name . "<br>";
+        }
+
+        echo "Member Reservations: " . $reservation->user->name . "<br>"; // تصحيح هذه السطر
+
         echo "Reservation Start Date: " . $reservation->reservation_start_date . "<br>";
         echo "Reservation End Date: " . $reservation->reservation_end_date . "<br>";
         echo "Status: " . $reservation->status . "<br>";
         echo "--------------------------------------------<br>";
     }
 });
+
 
 
 

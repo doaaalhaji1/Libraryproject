@@ -25,45 +25,44 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         User::factory(10)->create();
-        Category::factory(5)->create();
-        Author::factory(5)->create();
-        Reservation::factory(15)->create()->each(function ($reservation) {
-            $books = Book::factory(rand(1, 5))->create();
+
+        // إنشاء الفئات
+        $categories = Category::factory(5)->create();
+
+        // إنشاء المؤلفين
+        $authors = Author::factory(5)->create();
+
+        // إنشاء الحجوزات
+        Reservation::factory(15)->create()->each(function ($reservation) use ($authors, $categories) {
+            // إنشاء الكتب المرتبطة بكل حجز
+            $books = Book::factory(rand(1, 5))->create(['reservation_id' => $reservation->id]);
+
             foreach ($books as $book) {
-                $book->reservation_id = $reservation->id;
+                // تحديث حالة الكتاب إلى "pending"
                 $book->status = 'pending';
                 $book->save();
-                $authors = Author::inRandomOrder()->take(rand(1, 3))->pluck('id');
-                $categories = Category::inRandomOrder()->take(rand(1, 3))->pluck('id');
-                $book->authors()->attach($authors);
-                $book->categories()->attach($categories);
-            }
 
-            if ($reservation->status === 'approved') {
-                foreach ($books as $book) {
-                    $book->status = 'reserved';
-                    $book->save();
-                }
-            } elseif ($reservation->status === 'rejected') {
-                foreach ($books as $book) {
-                    $book->status = 'available';
-                    $book->save();
-                }
-            } else {
-                foreach ($books as $book) {
-                    $book->status = 'pending';
-                    $book->save();
-                }
-            }
+                // ربط الكتاب بالمؤلفين (many-to-many)
+                $book->authors()->attach($authors->random(rand(1, 3))->pluck('id')->toArray());
 
-            $user = User::where('role', 'member')->inRandomOrder()->first();
-            $reservation->user_id = $user->id;
-            $reservation->save();
-            $employee = User::where('role', 'employee')->inRandomOrder()->first();
-            $reservation->employee_id = $employee->id;
-            $reservation->save();
+                // ربط الكتاب بالفئات (many-to-many)
+                $book->categories()->attach($categories->random(rand(1, 2))->pluck('id')->toArray());
+            }
         });
 
-        Book::factory(5)->create();
+        // إنشاء العلاقة many-to-many بين الموظفين والحجوزات
+        $employees = User::where('role', 'employee')->get();
+        Reservation::all()->each(function ($reservation) use ($employees) {
+            $reservation->employees()->attach($employees->random(rand(1, 3))->pluck('id')->toArray());
+        });
+
+        // إنشاء كتب إضافية غير مرتبطة بحجوزات (اختياري)
+        Book::factory(5)->create()->each(function ($book) use ($authors, $categories) {
+            // ربط الكتاب بالمؤلفين (many-to-many)
+            $book->authors()->attach($authors->random(rand(1, 3))->pluck('id')->toArray());
+
+            // ربط الكتاب بالفئات (many-to-many)
+            $book->categories()->attach($categories->random(rand(1, 2))->pluck('id')->toArray());
+        });
     }
 }

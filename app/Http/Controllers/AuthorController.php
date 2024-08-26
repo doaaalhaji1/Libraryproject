@@ -82,7 +82,7 @@ class AuthorController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+           'description' => 'required|string|max:255',
             'nationality' => 'required|string|max:255',
             'birthdate' => 'required|date',
         ]);

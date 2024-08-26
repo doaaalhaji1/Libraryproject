@@ -66,10 +66,9 @@
                     <input type="name" class="form-control" id="name" name="name" value="{{$author->name}}">
                 </div>
                 <div class="mb-3">
-                    <label for="discription" class="form-label">{{  __ ('messages.discription') }}</label>
-                    <input type="name" class="form-control" id="discription" name="discription" value="{{$author->description}}">
+                    <label for="description" class="form-label">{{  __ ('messages.discription') }}</label>
+                    <input type="name" class="form-control" id="description" name="description" value="{{$author->description}}">
                 </div>
-
 
                 <div class="row mb-3">
                     <div class="col-md-9">

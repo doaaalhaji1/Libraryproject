@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('language');
             $table->text('description')->nullable();
+            $table->text('book_content')->nullable();
+            $table->string('language');
+            $table->string('image')->nullable();
             $table->enum('status', ['available', 'reserved', 'pending'])->default('available');
-            // $table->foreign('reservation_id')->references('id')->on('reservations')->cascodeonDelete();
+            $table->foreignId('category_id')->nullable()->constrained()->onDelete('cascade');
+            $table->integer('reservation_id')->nullable();
             $table->timestamps();
         });
     }

@@ -22,15 +22,15 @@ class BookController extends Controller
     {
         // عرض الكتب المتاحة فقط للمستخدمين
         $books = Book::where('status', 'available')->get();
-        return view('books.available', compact('books'));
+        return view('Homeuser', compact('books'));
     }
 
-    public function reservedBooks()
-    {
-        // عرض الكتب المحجوزة فقط من اجل توثيق الاستعادة
-        $books = Book::where('status', 'reserved')->get();
-        return view('books.reserved', compact('books'));
-    }
+    // public function reservedBooks()
+    // {
+    //     // عرض الكتب المحجوزة فقط من اجل توثيق الاستعادة
+    //     $books = Book::where('status', 'reserved')->get();
+    //     return view('books.reserved', compact('books'));
+    // }
 
     /**
      * Show the form for creating a new resource.

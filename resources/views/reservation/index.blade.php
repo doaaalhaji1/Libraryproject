@@ -17,31 +17,43 @@
             <thead>
                 <tr>
                     <th>{{  __ ('name') }}</th>
-                    <th>{{  __ ('messages.book') }}</th>
-                    {{-- <th>{{  __ ('messages.action') }}</th> --}}
+                    <th>{{  __ ('messages.titles') }}</th>
+                    <th>{{  __ ('messages.strt date') }}</th>
+                    <th>{{  __ ('messages.end date') }}</th>
+                    <th>{{  __ ('messages.action') }}</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($reservations as $reservation)
                     <tr>
-                        {{-- يوجد علاقة بين الحجز والمستخدم ( كل حجز تابع لمستخدم) الدالة يوزر في مودل الحجز استدعيت  المستخدم
+
+                        @foreach ($reservations as $reservation)
+                                @if ($reservation->books->count() > 0)
+                                    <tr>
+                                        {{-- عرض اسم المستخدم --}}
+                         {{--   يوجد علاقة بين الحجز والمستخدم ( كل حجز تابع لمستخدم) اي الدالة يوزر في مودل الحجز استدعيت  المستخدم اي الدالة
                         ومن المستخدم  وصلت لاسمه ولاانسى عمود الفورنك كيي  موجود بجدول الحجز --}}
-                        <td>{{ $reservation->user->name }}</td>
+                                        <td>{{ $reservation->user->name }}</td>
 
-                        @foreach ($reservation->books as $book)
-                            <td>{{ $book->title }} </td>
+                                        {{-- جمع عناوين الكتب في متغير واحد --}}
+                                        @php
+                                            $bookTitles = $reservation->books->pluck('title')->implode('<br>');
+                                        @endphp
+
+                                        {{-- عرض عناوين الكتب في خانة واحدة --}}
+                                        <td>{!! $bookTitles !!}</td>
+
+                                        <td>{{$reservation->reservation_start_date}}</td>
+                                        <td>{{$reservation->reservation_end_date}}</td>
+                                        <td>{{$reservation->status}}</td>
+                                        <td>
+
+
+                                        </td>
+                                    </tr>
+                                @endif
                         @endforeach
-                        {{-- <a href="{{ route('categories.edit', $category) }}" class="btn btn-warning btn-sm">{{  __ ('messages.edit') }}</a>
-
-                       <form action="{{ route('categories.destroy', $category) }}" class="d-inline" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">{{  __ ('messages.delete') }}</button>
-                        </td>
-                        </form> --}}
 
                     </tr>
-                @endforeach
             </tbody>
         </table>
 

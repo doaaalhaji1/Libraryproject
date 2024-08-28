@@ -15,3 +15,5 @@ Route::post('/login',[AuthController::class,'login']);
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/logout',[AuthController::class,'logout'])->middleware('auth:sanctum');
 Route::get('/getBooksCategories',[BookController::class,'bookAndCategory'])->middleware('auth:sanctum');
+Route::post('/insertBook',[BookController::class,'insert']);
+Route::put('/updateBook/{bookId}',[BookController::class,'update']);

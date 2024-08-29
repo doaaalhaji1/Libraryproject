@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BookController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,9 @@ Route::put('/updateBook/{book}',[BookController::class,'update'])->middleware('a
 Route::get('/show/{book}',[BookController::class,'show'])->middleware('auth:sanctum');
 Route::delete('/deleteBook/{book}',[BookController::class,'delete'])->middleware('auth:sanctum');
 Route::get('/availableBooks',[BookController::class,'availableBooks'])->middleware('auth:sanctum');
+
+Route::get('/allUser',[UserController::class,'index']);
+Route::post('/insertUser',[UserController::class,'insert']);
+Route::put('/updateUser/{user}',[UserController::class,'update']);
+Route::delete('/deleteUser/{user}',[UserController::class,'delete']);
+Route::patch('/changeValidity/{user}',[UserController::class,'changeValidity']);

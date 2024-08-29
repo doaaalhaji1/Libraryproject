@@ -122,7 +122,7 @@ class BookController extends Controller
 
     public function availableBooks()
     {
-        $books = Book::all();
+        $books = Book::where('status','available')->get();
         return response()->json($books);
     }
 }

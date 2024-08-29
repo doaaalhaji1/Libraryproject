@@ -3,47 +3,82 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $users = User::all();
+        return response()->json($users);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function insert(Request $request)
     {
-        //
+        $dataUser = $request->validate([
+            'name' => 'required|min:3|max:50',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:3|max:50',
+            'image' => 'required'
+        ]);
+
+        $newUser = User::create([
+            'name' => $dataUser['name'],
+            'email' => $dataUser['email'],
+            'password' => Hash::make($dataUser['password']),
+            'image' => $dataUser['image']
+        ]);
+        return response()->json([
+            'message' => 'User created successfully',
+            'data' => $newUser
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $dataUser = $request->validate([
+            'name' => 'min:3|max:50',
+            'email' => 'email|unique:users,email',
+            'password' => 'min:3|max:50',
+            'image' => 'min:3|max:50'
+        ]);
+
+        $user->update([
+            'name' => $dataUser['name'],
+            'email' => $dataUser['email'],
+            'password' => Hash::make($dataUser['password']),
+            'image' => $dataUser['image']
+        ]);
+
+        return response()->json([
+            'message' => 'User updated successfully',
+            'data' => $user
+        ]);
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function delete(User $user)
     {
-        //
+        $user->delete();
+        return response()->json([
+            'message' => 'User deleted successfully'
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function changeValidity(Request $request, User $user)
     {
-        //
+        $dataValidity = $request->validate([
+            'role'=> 'in:admin,member,employee'
+        ]);
+        $user->update([
+            'role' => $dataValidity['role']
+        ]);
+
+        return response()->json([
+            'message' => 'User updated successfully',
+            'data' => $user
+        ]);
     }
 }

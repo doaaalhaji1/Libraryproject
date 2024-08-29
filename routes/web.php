@@ -73,6 +73,7 @@ Route::get('/test-db', function () {
     $categories = Category::all();
     $reservations = Reservation::all();
 
+
     echo "<h3>Books</h3>";
     foreach ($books as $book) {
         echo "Title: " . $book->title . "<br>";
@@ -130,7 +131,7 @@ Route::get('/test-db', function () {
             echo "No books found.<br>";
         }
 
-        echo "Employees name: <br>";
+        echo "Employee name: <br>";
         if ($reservation->employee) {
             echo "- " . $reservation->employee->name . "<br>";
         } else {
@@ -151,6 +152,7 @@ Route::get('/test-db', function () {
         echo "--------------------------------------------<br>";
     }
 });
+
 
 
 

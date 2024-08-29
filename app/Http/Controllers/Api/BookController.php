@@ -56,7 +56,7 @@ class BookController extends Controller
     public function update(Request $request, Book $book)
     {
         $DataBook = $request->validate([
-            'title' => 'required|min:3|max:100|unique:books,title,' . $book->id,
+            'title' => 'required|min:3|max:100|unique:books,title',
             'description' => 'required|min:15|max:100',
             'language' => 'required|min:3|max:15',
             'category' => 'required|min:5|max:30',
@@ -101,5 +101,10 @@ class BookController extends Controller
     {
         $books = Book::with('categories')->get();
         return response()->json($books);
+    }
+
+    public function show(Book $book)
+    {
+        return response()->json($book);
     }
 }

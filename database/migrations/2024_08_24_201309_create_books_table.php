@@ -19,8 +19,7 @@ return new class extends Migration
             $table->string('language');
             $table->string('image')->nullable();
             $table->enum('status', ['available', 'reserved', 'pending'])->default('available');
-            $table->foreignId('category_id')->nullable()->constrained()->onDelete('cascade');
-            $table->integer('reservation_id')->nullable();
+            $table->foreignId('reservation_id')->nullable()->constrained('reservations')->onDelete('set null');
             $table->timestamps();
         });
     }

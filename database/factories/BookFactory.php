@@ -22,8 +22,6 @@ class BookFactory extends Factory
             'description' => $this->faker->paragraph(2),
             'book_content' => fake()->paragraph(3),
             'status' => 'available',
-            'category_id' => Category::inRandomOrder()->first()->id,
-            'reservation_id' => null
         ];
     }
 }

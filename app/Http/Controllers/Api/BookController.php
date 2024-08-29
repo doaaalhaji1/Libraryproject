@@ -109,8 +109,6 @@ class BookController extends Controller
 
     }
 
-
-
     public function bookAndCategory()
     {
         $books = Book::with('categories')->get();
@@ -120,5 +118,11 @@ class BookController extends Controller
     public function show(Book $book)
     {
         return response()->json($book);
+    }
+
+    public function availableBooks()
+    {
+        $books = Book::all();
+        return response()->json($books);
     }
 }

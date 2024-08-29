@@ -18,3 +18,4 @@ Route::get('/getBooksCategories',[BookController::class,'bookAndCategory'])->mid
 Route::post('/insertBook',[BookController::class,'insert']);
 Route::put('/updateBook/{book}',[BookController::class,'update']);
 Route::get('/show/{book}',[BookController::class,'show']);
+Route::delete('/deleteBook/{book}',[BookController::class,'delete']);

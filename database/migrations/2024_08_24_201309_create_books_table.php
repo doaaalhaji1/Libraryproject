@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->string('book_content');
+            $table->string('book_content')->nullable();
             $table->string('language');
             $table->string('image')->nullable();
             $table->enum('status', ['available', 'reserved', 'pending'])->default('available');

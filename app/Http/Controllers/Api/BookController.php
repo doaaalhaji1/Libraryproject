@@ -29,6 +29,7 @@ class BookController extends Controller
             'author' => 'required|min:5|max:30',
         ]);
 
+
         $author = Author::where('name', $DataBook['author'])->first();
         $category = Category::where('name', $DataBook['category'])->first();
 
@@ -55,43 +56,56 @@ class BookController extends Controller
 
     public function update(Request $request, Book $book)
     {
-        $DataBook = $request->validate([
-            'title' => 'required|min:3|max:100|unique:books,title',
-            'description' => 'required|min:15|max:100',
-            'language' => 'required|min:3|max:15',
-            'category' => 'required|min:5|max:30',
-            'author' => 'required|min:5|max:30',
+        $validated = $request->validate([
+            'title' => 'min:3|max:100|unique:books,title,' . $book->id,
+            'description' => 'min:15|max:100',
+            'language' => 'min:3|max:15',
+            'book_content' => 'min:5|max:100',
+            'author' => 'min:5|max:30',
+            'category' => 'min:5|max:30',
         ]);
 
-        $author = Author::where('name', $DataBook['author'])->first();
-        $category = Category::where('name', $DataBook['category'])->first();
+        $book->update($validated);
 
-        if (!$author) {
-            return response()->json(['error' => 'author not exist'], 404);
-        }
-        if (!$category) {
-            return response()->json(['error' => 'category not exist'], 404);
-        }
-        $book->update([
-            'title' => $DataBook['title'],
-            'description' => $DataBook['description'],
-            'language' => $DataBook['language']
-        ]);
-        $book->authors()->detach();
-        $book->categories()->detach();
+        if ($request->has('author')) {
+            $author = Author::where('name', $request->author)->first();
 
-        $book->authors()->attach($author->id);
-        $book->categories()->attach($category->id);
+            if ($author) {
+                $book->authors()->sync([$author->id]);
+            } else {
+                $book->authors()->detach();
+            }
+        }
+
+        if ($request->has('category')) {
+            $category = Category::where('name', $request->category)->first();
+
+            if ($category) {
+                $book->categories()->sync([$category->id]);
+            } else {
+                $book->categories()->detach();
+            }
+        }
 
         return response()->json([
+            'message' => 'updated successfully',
             'book' => $book->load('categories', 'authors')
         ]);
     }
 
 
-    public function delete(string $id)
+
+
+
+
+    public function delete(Book $book)
     {
-        //delete and detach category and author
+        $book->categories()->detach();
+        $book->authors()->detach();
+        $book->delete();
+        return response()->json([
+            'message' => 'deleted successfully'
+        ]);
 
     }
 

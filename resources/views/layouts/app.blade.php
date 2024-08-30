@@ -1,4 +1,4 @@
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{ session('locale') == 'ar' ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="utf-8">
@@ -12,11 +12,10 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/prism.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/rtl.css') }}">
+    @vite('resources/css/app.css')
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite('resources/js/app.js')
 </head>
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
@@ -41,4 +40,4 @@
     <script src="{{ asset('js/prism.js') }}"></script>
     <script src="{{ asset('js/rtl.js') }}"></script>
 </body>
-</html> --}}
+</html>

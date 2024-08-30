@@ -20,17 +20,19 @@
                     <th>{{  __ ('messages.titles') }}</th>
                     <th>{{  __ ('messages.strt date') }}</th>
                     <th>{{  __ ('messages.end date') }}</th>
+                    <th>{{  __ ('messages.stutuse') }}</th>
                     <th>{{  __ ('messages.action') }}</th>
                 </tr>
             </thead>
             <tbody>
                     <tr>
 
-                        @foreach ($reservations as $reservation)
+                     @foreach ($reservations as $reservation)
+                        @if ($reservation->status === 'pending')
                                 @if ($reservation->books->count() > 0)
                                     <tr>
                                         {{-- عرض اسم المستخدم --}}
-                         {{--   يوجد علاقة بين الحجز والمستخدم ( كل حجز تابع لمستخدم) اي الدالة يوزر في مودل الحجز استدعيت  المستخدم اي الدالة
+                        {{--   يوجد علاقة بين الحجز والمستخدم ( كل حجز تابع لمستخدم) اي الدالة يوزر في مودل الحجز استدعيت  المستخدم اي الدالة
                         ومن المستخدم  وصلت لاسمه ولاانسى عمود الفورنك كيي  موجود بجدول الحجز --}}
                                         <td>{{ $reservation->user->name }}</td>
 
@@ -46,11 +48,14 @@
                                         <td>{{$reservation->reservation_end_date}}</td>
                                         <td>{{$reservation->status}}</td>
                                         <td>
+                                            <a href="{{ route('aprove', $reservation) }}" class="btn btn-primary btn">yes</a>
+                                            {{-- ارسلنا لأي حجز  سيتم قبوله  لأن الدالة قبول الحجز تستقبل الحجز  لتغير حالته --}}
 
-
+                                            <a href="{{ route('rject', $reservation) }}" class="btn btn-danger btn">No</a>
                                         </td>
                                     </tr>
                                 @endif
+                             @endif
                         @endforeach
 
                     </tr>

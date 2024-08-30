@@ -136,8 +136,8 @@ class BookController extends Controller
         ]);
 
         // تحديث الفئات المرتبطة بالكتاب
-        if ($request->has('Authers')) {
-            $book->categories()->sync($request->input('Authers'));
+        if ($request->has('categories')) {
+            $book->categories()->sync($request->input('categories'));
         } else {
             $book->categories()->sync([]);
         }

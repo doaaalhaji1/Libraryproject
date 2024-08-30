@@ -1,5 +1,10 @@
 @extends('partials.navdash')
-
+<style>
+    .page
+    {
+        margin-top: 60px;
+    }
+</style>
 <div class="page">
     <div class="d-flex justify-content-center flex-wrap gap-4 p-4 text-center rounded-5">
         @foreach($books as $book)
@@ -13,6 +18,10 @@
                     @endforeach
 
                 <p class="card-text p-2"><strong>Status:</strong> {{$book->status}}</p>
+
+                <a href="{{ route('book_reservation', $book) }}" class="btn btn-primary mt-2">Reservation</a>
+                {{-- يجب ارسال ايديت الكتاب الواجب حجزه الخطوة الاولى نرسله للراوت--}}
+
             </div>
         </div>
         @endforeach

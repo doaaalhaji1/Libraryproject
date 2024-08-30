@@ -94,14 +94,14 @@
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
      <style>
          body {
-             padding-top: 60px; /* Adjusted for smaller navbar */
+             padding: 0;
          }
          .app-header {
-             position: fixed;
+             position: absolute;
              top: 0;
              left: 0;
              width: 100%;
-             z-index: 1030; /* Ensure it stays above other content */
+
              background-color: white; /* Set navbar background to white */
              color: black; /* Text color for better visibility */
              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */

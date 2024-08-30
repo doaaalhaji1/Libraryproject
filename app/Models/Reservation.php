@@ -10,7 +10,14 @@ class Reservation extends Model
 {
     use HasFactory,HasApiTokens;
 
-    protected $fillable = ['reservation_start_date','reservation_end_date'];
+
+    protected $fillable = [
+        'user_id',
+        'reservation_start_date',
+        'reservation_end_date',
+        'status',
+        'employee_id'
+    ];
 
     public function user()
     {

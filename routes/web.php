@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\BookController;
@@ -85,6 +86,8 @@ Route::middleware(['auth'])->group (function () {
 
 Route::get('/books/{book}', [BookController::class,'show'])->name('books.sho');
 
+// ------------------------------------------------------------------------------------------------------
+Route::resource('users', UserController::class);
 
 
 

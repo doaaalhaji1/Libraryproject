@@ -24,10 +24,23 @@
                 <tr>
                     <td>{{ $user['name'] }}</td>
                     <td>{{ $user['email'] }}</td>
-                    <td>{{ $user['role'] }}</td>
+                    <td>
+                  <form method="POST" action="{{ route('users.updateRole', $user->id) }}">
+                      @csrf
+                  @method('PUT')
+              <div class="d-flex align-items-center">
+            <select id="role" name="role" class="form-select me-2">
+                <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>{{ __('public.Admin') }}</option>
+                <option value="employee" {{ $user->role == 'employee' ? 'selected' : '' }}>{{ __('public.Employee') }}</option>
+                <option value="member" {{ $user->role == 'member' ? 'selected' : '' }}>{{ __('public.Member') }}</option>
+            </select>
+            <button type="submit" class="btn btn-primary">{{ __('public.ok') }}</button>
+        </div>
+    </form>
+</td>                    
                     <td>
                         <a href="{{ route('users.show', $user['id']) }}" class="btn btn-primary btn-sm">{{ __('public.show') }}</a>
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">{{ __('public.edit') }}</a>
+                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">{{ __('public.edit') }}</a>
                         <form action="{{ route('users.destroy', $user['id']) }}" class="d-inline" method="POST">
                             @csrf
                             @method('DELETE')

@@ -109,4 +109,17 @@ class UserController extends Controller
     return redirect()->route('users.index')
                      ->with('success', __('public.user_deleted'));
     }
+    public function updateRole(Request $request, User $user)
+{
+    $request->validate([
+        'role' => 'required|in:admin,employee,member',
+    ]);
+
+    $user->role = $request->role;
+    $user->save();
+
+    return redirect()->route('users.show', $user->id)
+                     ->with('success', __('public.Role_updated'));
+}
+
 }

@@ -88,6 +88,8 @@ Route::get('/books/{book}', [BookController::class,'show'])->name('books.sho');
 
 // ------------------------------------------------------------------------------------------------------
 Route::resource('users', UserController::class);
+Route::put('users/{user}/role', [UserController::class, 'updateRole'])->name('users.updateRole');
+
 
 
 

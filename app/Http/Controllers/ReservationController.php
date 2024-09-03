@@ -12,7 +12,7 @@ class ReservationController extends Controller
     // عرض جميع طلبات الحجز
     public function index()
     {
-       
+
         $reservations = Reservation::with('books', 'user')->get();
 
 
@@ -40,6 +40,7 @@ class ReservationController extends Controller
                 $book = Book::findOrFail($request->book_id);
 
 
+            if (auth()->check()) {
 
                 $reservation = Reservation::create([
                     'user_id' => auth()->id(),
@@ -48,6 +49,7 @@ class ReservationController extends Controller
                     'status' => 'pending',
                 ]);
 
+            }
 
                 $book->update([
                     'reservation_id' => $reservation->id,

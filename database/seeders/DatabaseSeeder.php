@@ -30,37 +30,13 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
         ]);
 
-        User::factory(10)->create();
-        Category::factory(5)->create();
-        Author::factory(5)->create();
-
-        Book::factory(10)->create()->each(function ($book) {
-            $authors = Author::inRandomOrder()->take(rand(1, 3))->pluck('id');
-            $book->authors()->attach($authors);
-
-            $categories = Category::inRandomOrder()->take(rand(1, 2))->pluck('id');
-            $book->categories()->attach($categories);
-        });
-
-        $employees = User::where('role', 'employee')->get();
-        $members = User::where('role', 'member')->get();
-
-        Reservation::factory(15)->create()->each(function ($reservation) use ($employees, $members) {
-
-            $employeeForApproval = $employees->random();
-            $employeeForReceiving = $employees->random();
-            $member = $members->random();
-            $books = Book::inRandomOrder()->take(rand(1, 3))->get();
-            $reservation->user_id = $member->id;
-            $reservation->employee_id = $employeeForApproval->id;
-            $reservation->recipient_user_id = $employeeForReceiving->id;
-            $reservation->save();
-
-            foreach ($books as $book) {
-                $book->reservation_id = $reservation->id;
-                $book->save();
-            }
-        });
+        $this->call([
+            UserSeeder::class,
+            CategorySeeder::class,
+            AuthorSeeder::class,
+            BookSeeder::class,
+            ReservationSeeder::class,
+        ]);
 
     }
 }

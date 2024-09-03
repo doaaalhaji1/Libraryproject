@@ -32,7 +32,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-Route::middleware(['auth'])->group (function () {
+Route::middleware(['auth',])->group (function () {
     Route::get('/books/create', [BookController::class,'create']);
     Route::post('/books', [BookController::class,'store'])->name('books.store');
     Route::get('/books/create', [BookController::class,'create'])->name('books.create');

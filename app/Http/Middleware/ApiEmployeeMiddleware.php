@@ -18,7 +18,7 @@ class ApiEmployeeMiddleware
         $user = $request->user();
         if(! $user || ! in_array($user->role ,$roles)) {
             return response()->json([
-                'message' => 'Unauthorized you are not allowed because you are not an admin or employee'
+                'message' => 'Unauthorized '
             ]);
         }
         return $next($request);

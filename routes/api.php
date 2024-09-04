@@ -17,7 +17,7 @@ Route::get('/getBooksCategories',[BookController::class,'bookAndCategory'])->mid
 Route::get('/show/{book}',[BookController::class,'show'])->middleware('auth:sanctum');
 Route::get('/availableBooks',[BookController::class,'availableBooks'])->middleware('auth:sanctum');
 //--------------------------------------------------------------------------------------------
-Route::middleware(['ApiAdmin:admin'])->group(function (){
+Route::middleware(['ApiCheckRole:admin'])->group(function (){
     Route::get('/allUser',[UserController::class,'index'])->middleware('auth:sanctum');
     Route::post('/insertUser',[UserController::class,'insert'])->middleware('auth:sanctum');
     Route::put('/updateUser/{user}',[UserController::class,'update'])->middleware('auth:sanctum');
@@ -25,7 +25,7 @@ Route::middleware(['ApiAdmin:admin'])->group(function (){
     Route::patch('/changeValidity/{user}',[UserController::class,'changeValidity'])->middleware('auth:sanctum');
 });
 //--------------------------------------------------------------------------------------------
-Route::middleware(['ApiEmployee:admin,employee'])->group(function ()
+Route::middleware(['ApiCheckRole:admin,employee'])->group(function ()
 {
     Route::post('/insertBook',[BookController::class,'insert'])->middleware('auth:sanctum');
     Route::put('/updateBook/{book}',[BookController::class,'update'])->middleware('auth:sanctum');

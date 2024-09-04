@@ -21,8 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         ]);
         $middleware->alias([
-            'ApiAdmin'=> \App\Http\Middleware\ApiAdminMiddleware::class,
-            'ApiEmployee'=> \App\Http\Middleware\ApiEmployeeMiddleware::class,
+            'ApiCheckRole'=> \App\Http\Middleware\ApiEmployeeMiddleware::class,
             'role.redirect' =>RoleRedirect::class,
             'chekrole'=>EmployeeMiddleware::class
 

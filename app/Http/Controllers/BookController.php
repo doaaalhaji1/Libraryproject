@@ -6,6 +6,7 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Reservation;
 
 class BookController extends Controller
 {
@@ -33,19 +34,26 @@ class BookController extends Controller
             $user = auth()->user();
 
 
-            $reservations = $user->reservations()->with('books')->get(); // استرجاع الحجوزات الخاصة بالمستخدم مع الكتب المرتبطة
-
+            $reservations = $user->reservations()->with('books')->where('status','approved')->get(); // استرجاع الحجوزات الخاصة بالمستخدم مع الكتب المرتبطة
+                                                           // حالة الحجز موافقة اي الموظف موافق على الحجز
 
             return view('mybooks', compact('reservations'));
 
     }
 
-    // public function reservedBooks()
-    // {
-    //     // عرض الكتب المحجوزة فقط من اجل توثيق الاستعادة
-    //     $books = Book::where('status', 'reserved')->get();
-    //     return view('books.reserved', compact('books'));
-    // }
+    public function reservedBooks()
+    {
+        // عرض كل الكتب المحجوزة فقط من اجل توثيق الاستعادة
+
+        //الطريقة الاولى
+        $books = Book::where('status','reserved')->get();
+
+            //الطريقة الثانية
+        //   $reservations = Reservation::where('status','approved')->get();
+
+
+        return view('reservedbooks', compact('books'));
+    }
 
     /**
      * Show the form for creating a new resource.

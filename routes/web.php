@@ -69,6 +69,8 @@ Route::middleware(['auth','chekrole:admin,employee'])->group (function () {
     Route::put('/books/{book}', [BookController::class,'update'])->name('books.update');//{id الكتاب}
 
     Route::delete('/books/{book}', [BookController::class,'destroy'])->name('books.destroy');//{id الكتاب}
+      //  عرض الكتب المحجوزة
+    Route::get('/reservedbooks', [BookController::class,'reservedBooks'])->name('reserved_books');
 
 // ------------------------------------------------------------
 

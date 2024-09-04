@@ -22,7 +22,7 @@
                             @endforeach
                         </p>
 
-             @endforeach
+
                             <p class="card-text mb-1"><strong>Reservation End</strong><br> {{$reservation->reservation_end_date}}</p>
 
                             <a href="{{ route('books.sho', $book) }}" class="btn btn-primary mt-2">Read</a>
@@ -30,7 +30,7 @@
 
                         </div>
                     </div>
-
+                    @endforeach
         @endforeach
     </div>
 </div>

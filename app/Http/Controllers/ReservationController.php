@@ -97,26 +97,24 @@ class ReservationController extends Controller
 
             return redirect()->route('reservation')->with('danger', 'Reservation approved successfully.');
         }
+
+
+        //اعادة الكتاب من قبل المستخدم
+    public function returnBook(Request $request, Reservation $reservation)
+    {
+
+
+        $reservation->update([
+            'status' => 'completed',
+            'received_by' => auth()->id(),
+        ]);
+
+
+        foreach ($reservation->books as $book) {
+            $book->update(['status' => 'available']);
+        }
+
+
+        return redirect()->route('reservations.index')->with('success', 'Book returned successfully.');
     }
-
-//
-//     public function returnBook(Request $request, Reservation $reservation)
-//     {
-//
-//         $this->authorize('return', $reservation);
-
-//
-//         $reservation->update([
-//             'status' => 'completed',
-//             'received_by' => auth()->id(),
-//         ]);
-
-//
-//         foreach ($reservation->books as $book) {
-//             $book->update(['status' => 'available']);
-//         }
-
-//
-//         return redirect()->route('reservations.index')->with('success', 'Book returned successfully.');
-//     }
-// }
+}

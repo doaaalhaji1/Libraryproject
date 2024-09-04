@@ -13,12 +13,12 @@ class ApiEmployeeMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next,...$roles): Response
     {
         $user = $request->user();
-        if(!$user || $user->role != 'admin'||$user->role != 'employee'){
+        if(! $user || ! in_array($user->role ,$roles)) {
             return response()->json([
-                'message' => 'Unauthorized you are not allowed because you are not an admin or employee.'
+                'message' => 'Unauthorized you are not allowed because you are not an admin or employee'
             ]);
         }
         return $next($request);

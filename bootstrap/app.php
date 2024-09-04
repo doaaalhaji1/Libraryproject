@@ -17,9 +17,13 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->web(append: [
             LanguageMiddleware::class,
-           
+
         ]);
-        
+        $middleware->alias([
+            'ApiAdmin'=> \App\Http\Middleware\ApiAdminMiddleware::class,
+            'ApiEmployee'=> \App\Http\Middleware\ApiEmployeeMiddleware::class,
+        ]);
+
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

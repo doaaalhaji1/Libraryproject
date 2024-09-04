@@ -104,16 +104,21 @@ Route::middleware(['auth'])->group (function () {
 Route::get('/Library', [BookController::class,'availableBooks'])->name('page_books');});
 
 // --------------------------------------------------------------------------------------------
-Route::get('/reservation', [ReservationController::class,'index'])->name('reservation');
+Route::middleware(['auth'])->group(function () {
+   Route::get('/reservation', [ReservationController::class,'index'])->name('reservation');
+   Route::get('/reservation/create/{book}/book', [ReservationController::class,'create'])->name('book_reservation');
+   Route::post('/reservation', [ReservationController::class,'store'])->name('reservations.store');
+});
 
-Route::get('/reservation/create/{book}/book', [ReservationController::class,'create'])->name('book_reservation');
-Route::post('/reservation', [ReservationController::class,'store'])->name('reservations.store');
+Route::middleware(['auth', 'chekrole:admin,employee'])->group(function () {
+   Route::get('/reservation/{reservation}/approve', [ReservationController::class,'approve'])->name('aprove');
+
+   Route::get('/reservation/{reservation}/reject', [ReservationController::class,'reject'])->name('rject');
+});
 
 
 
-Route::get('/reservation/{reservation}/approve', [ReservationController::class,'approve'])->name('aprove');
 
-Route::get('/reservation/{reservation}/reject', [ReservationController::class,'reject'])->name('rject');
 
 
 

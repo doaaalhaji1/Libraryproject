@@ -3,6 +3,7 @@
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\EmployeeMiddleware;
 use App\Http\Middleware\LanguageMiddleware;
+use App\Http\Middleware\RoleRedirect;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -22,6 +23,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'ApiAdmin'=> \App\Http\Middleware\ApiAdminMiddleware::class,
             'ApiEmployee'=> \App\Http\Middleware\ApiEmployeeMiddleware::class,
+            'role.redirect' =>RoleRedirect::class,
+            'chekrole'=>EmployeeMiddleware::class
+
         ]);
 
     })

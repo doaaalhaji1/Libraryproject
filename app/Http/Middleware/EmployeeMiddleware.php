@@ -14,11 +14,14 @@ class EmployeeMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        if (Auth::check() && Auth::user()->role === 'employee') {
+        $user = Auth::user();
+
+        if ($user && in_array($user->role, $roles)) {
             return $next($request);
         }
 
-       return abort(403, __('You do not have access to this section.'));    }
+        return abort(403, __('You do not have access to this section.')); 
+     }
 }

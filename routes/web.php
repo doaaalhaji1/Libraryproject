@@ -32,10 +32,11 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-Route::middleware(['auth',])->group (function () {
+Route::middleware(['auth','chekrole:admin,employee'])->group (function () {
     Route::get('/books/create', [BookController::class,'create']);
     Route::post('/books', [BookController::class,'store'])->name('books.store');
     Route::get('/books/create', [BookController::class,'create'])->name('books.create');
+    Route::get('/books/{book}', [BookController::class,'show'])->name('books.sho');
 
 
     Route::get('/books', [BookController::class,'index'])->name('books');
@@ -58,15 +59,15 @@ Route::middleware(['auth',])->group (function () {
     Route::delete('/categories/{category}', [CategoryController::class,'destroy'])->name('categories.destroy');
  //-------------------------------------------------------------------------
 
- Route::get('/authors/create', [AuthorController::class,'create'])->name('authors.create');
- Route::post('/authors', [AuthorController::class,'store'])->name('authors.store');
+    Route::get('/authors/create', [AuthorController::class,'create'])->name('authors.create');
+    Route::post('/authors', [AuthorController::class,'store'])->name('authors.store');
 
- Route::get('/authors', [AuthorController::class,'index'])->name('authors');
+    Route::get('/authors', [AuthorController::class,'index'])->name('authors');
 
- Route::get('/authors/{author}/edit', [AuthorController::class,'edit'])->name('authors.edit');
- Route::put('/authors/{author}', [AuthorController::class,'update'])->name('authors.update');
+    Route::get('/authors/{author}/edit', [AuthorController::class,'edit'])->name('authors.edit');
+   Route::put('/authors/{author}', [AuthorController::class,'update'])->name('authors.update');
 
- Route::delete('/authors/{author}', [AuthorController::class,'destroy'])->name('authors.destroy');
+   Route::delete('/authors/{author}', [AuthorController::class,'destroy'])->name('authors.destroy');
 
 // ------------------------------------------------------------------------------------------------------
 //  Route::get('/reservation/create', [ReservationController::class,'create'])->name('reservation.create');
@@ -81,23 +82,26 @@ Route::middleware(['auth',])->group (function () {
 //  Route::delete('/reservation/{reservation}', [ReservationController::class,'destroy'])->name('reservation.destroy');
 // --------------------------------------------------------------------------------------------
 
-Route::resource('users', UserController::class);
-Route::put('users/{user}/role', [UserController::class, 'updateRole'])->name('users.updateRole');
-
+ 
 });
+Route::middleware(['auth','chekrole:admin'])->group (function () {
 
-
+Route::resource('users', UserController::class);
+ Route::put('users/{user}/role', [UserController::class, 'updateRole'])->name('users.updateRole');
+}
+);
 
 // ------------------------------------------------------------------------------------------------------
 
-Route::get('/books/{book}', [BookController::class,'show'])->name('books.sho');
 
 
 Route::get('/dashboard', function () {
     return view('layouts.Admindashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'role.redirect'])->name('dashboard');
 
-Route::get('/Library', [BookController::class,'availableBooks'])->name('page_books');
+
+Route::middleware(['auth'])->group (function () {
+Route::get('/Library', [BookController::class,'availableBooks'])->name('page_books');});
 
 // --------------------------------------------------------------------------------------------
 Route::get('/reservation', [ReservationController::class,'index'])->name('reservation');

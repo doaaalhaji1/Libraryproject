@@ -31,8 +31,32 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+// ------------------------------auth----------------------------------------
+
+Route::get('/dashboard', function () {
+    return view('layouts.Admindashboard');
+})->middleware(['auth', 'role.redirect'])->name('dashboard');
+
+
+Route::middleware(['auth'])->group (function () {
+Route::get('/Library', [BookController::class,'availableBooks'])->name('page_books');});
+
+
+// -----------------------------role(admin)----------------------------------------
+
+
+Route::middleware(['auth','chekrole:admin'])->group (function () {
+
+    Route::resource('users', UserController::class);
+    Route::put('users/{user}/role', [UserController::class, 'updateRole'])->name('users.updateRole');
+   });
+
+
+
+// ------------------------------------role (admin and employee)--------------------------------------------
 
 Route::middleware(['auth','chekrole:admin,employee'])->group (function () {
+
     Route::get('/books/create', [BookController::class,'create']);
     Route::post('/books', [BookController::class,'store'])->name('books.store');
     Route::get('/books/create', [BookController::class,'create'])->name('books.create');
@@ -70,52 +94,32 @@ Route::middleware(['auth','chekrole:admin,employee'])->group (function () {
    Route::delete('/authors/{author}', [AuthorController::class,'destroy'])->name('authors.destroy');
 
 // ------------------------------------------------------------------------------------------------------
-//  Route::get('/reservation/create', [ReservationController::class,'create'])->name('reservation.create');
-//  Route::post('/reservation', [ReservationController::class,'store'])->name('reservation.store');
 
+    Route::get('/reservation', [ReservationController::class,'index'])->name('reservation');
 
+    Route::get('/reservation/{reservation}/approve', [ReservationController::class,'approve'])->name('aprove');
+
+    Route::get('/reservation/{reservation}/reject', [ReservationController::class,'reject'])->name('rject');
 
 
 //  Route::get('/reservation/{reservation}/edit', [ReservationController::class,'edit'])->name('reservation.edit');
 //  Route::put('/reservation/{reservation}', [ReservationController::class,'update'])->name('reservation.update');
 
 //  Route::delete('/reservation/{reservation}', [ReservationController::class,'destroy'])->name('reservation.destroy');
-// --------------------------------------------------------------------------------------------
 
- 
 });
-Route::middleware(['auth','chekrole:admin'])->group (function () {
-
-Route::resource('users', UserController::class);
- Route::put('users/{user}/role', [UserController::class, 'updateRole'])->name('users.updateRole');
-}
-);
-
-// ------------------------------------------------------------------------------------------------------
 
 
+// ----------------------------------------------user----------------------------------------
 
-Route::get('/dashboard', function () {
-    return view('layouts.Admindashboard');
-})->middleware(['auth', 'role.redirect'])->name('dashboard');
-
-
-Route::middleware(['auth'])->group (function () {
-Route::get('/Library', [BookController::class,'availableBooks'])->name('page_books');});
-
-// --------------------------------------------------------------------------------------------
 Route::middleware(['auth'])->group(function () {
-   Route::get('/reservation', [ReservationController::class,'index'])->name('reservation');
+
    Route::get('/reservation/create/{book}/book', [ReservationController::class,'create'])->name('book_reservation');
    Route::post('/reservation', [ReservationController::class,'store'])->name('reservations.store');
+
+   Route::get('/mybooks', [BookController::class,'mybooks'])->name('mybook_user');
+   Route::get('/books/{book}', [BookController::class,'show'])->name('books.sho');
 });
-
-Route::middleware(['auth', 'chekrole:admin,employee'])->group(function () {
-   Route::get('/reservation/{reservation}/approve', [ReservationController::class,'approve'])->name('aprove');
-
-   Route::get('/reservation/{reservation}/reject', [ReservationController::class,'reject'])->name('rject');
-});
-
 
 
 

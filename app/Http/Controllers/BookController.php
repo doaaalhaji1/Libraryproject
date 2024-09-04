@@ -15,6 +15,7 @@ class BookController extends Controller
     public function index()
     {   // عرض جميع الكتب للمدير او الموظف
         $books = Book::all();
+
         return view('books.index', compact('books'));
     }
 
@@ -22,7 +23,21 @@ class BookController extends Controller
     {
         // عرض الكتب المتاحة فقط للمستخدمين
         $books = Book::where('status', 'available')->get();
+
         return view('Homeuser', compact('books'));
+    }
+
+    public function mybooks()
+    {
+
+            $user = auth()->user();
+
+
+            $reservations = $user->reservations()->with('books')->get(); // استرجاع الحجوزات الخاصة بالمستخدم مع الكتب المرتبطة
+
+
+            return view('mybooks', compact('reservations'));
+
     }
 
     // public function reservedBooks()
@@ -90,8 +105,8 @@ class BookController extends Controller
      * Display the specified resource.
      */
     public function show(Book $book)
-    {   $categories = Category::all();
-        $author=Author::all();
+    {
+
         return view('books.show', compact('book'));
 
     }

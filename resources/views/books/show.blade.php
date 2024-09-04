@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Page</title>
+    <title>Book</title>
     <style>
         body {
             margin: 0;
@@ -40,7 +40,7 @@
 <body>
 
     <!-- صورة الغلاف -->
-    {{-- <img src="book-cover.jpg" alt="Book Cover" class="cover-img"> --}}
+
     <img src="{{ url('storage/' . $book->image) }}" class="cover-img" alt="...">
     <!-- محتوى الكتاب -->
     <div class="book-content">

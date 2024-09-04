@@ -102,44 +102,44 @@
              left: 0;
              width: 100%;
 
-             background-color: white; /* Set navbar background to white */
-             color: black; /* Text color for better visibility */
-             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+             background-color: white;
+             color: black;
+             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
          }
          .app-header .navbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 10px; /* تعديل الحشو هنا */
-            height: 40px; /* تعديل الارتفاع هنا، يمكنك ضبطه للقيمة المطلوبة */
+            padding: 0 10px;
+            height: 40px;
         }
          .app-header .navbar-nav {
              display: flex;
-             align-items: center; /* Vertically center items */
+             align-items: center;
          }
          .app-header .navbar-nav .nav-item {
              margin-right: 10px;
          }
          .app-header .navbar-nav .nav-link {
-             padding: 8px; /* Reduced padding for smaller navbar */
-             color: black; /* Text color */
+             padding: 8px;
+             color: black;
              display: flex;
-             align-items: center; /* Vertically center text and icons */
+             align-items: center;
          }
          .app-header .navbar-nav .nav-link:hover {
-             color: #adb5bd; /* Hover color */
+             color: #adb5bd;
          }
          .app-header .navbar-nav .user-menu .dropdown-menu {
              min-width: 150px;
          }
          .navbar-brand img {
-             width: 40px; /* Adjusted logo size */
+             width: 40px;
          }
          .navbar-toggler {
-             border: none; /* Remove border */
+             border: none;
          }
          .translation-link {
-             color: black; /* Set text color to black */
+             color: black;
          }
      </style>
  </head>
@@ -149,23 +149,26 @@
              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                  <span class="navbar-toggler-icon"></span>
              </button>
-             <a class="navbar-brand" href="#">
-                 <img src="/images/logo.png" alt="Logo">
-             </a>
+             <a class="navbar-brand ms-3">
+                <img src="/images/logo.png" alt="Logo">
+            </a>
              <div class="collapse navbar-collapse" id="navbarNav">
                  <ul class="navbar-nav">
-                     <li class="nav-item">
+                     <li class="nav-item ms-2">
                          <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
                              <i class="bi bi-list"></i>
                          </a>
                      </li>
-                     <li class="nav-item d-none d-md-block">
-                         <a href="#" class="nav-link">Home</a>
-                     </li>
-                     <li class="nav-item d-none d-md-block">
-                         <a href="#" class="nav-link">Contact</a>
-                     </li>
-                 </ul>
+                     <li class="nav-item d-none d-md-block ms-2">
+                        <a href="{{route('dashboard')}}" class="nav-link">Dashboard</a>
+                    </li>
+                    <li class="nav-item d-none d-md-block ms-3">
+                        <a href="{{route('page_books')}}" class="nav-link">ALL Books</a>
+                    </li>
+                    <li class="nav-item d-none d-md-block  ms-3">
+                        <a href="#" class="nav-link"> Reserved Books</a>
+                    </li>
+                </ul>
                  <ul class="navbar-nav ms-auto">
                      <li class="nav-item">
                         {{-- <a class="nav-link translation-link d-flex align-items-center" href="#"> --}}

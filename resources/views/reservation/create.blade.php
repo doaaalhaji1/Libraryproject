@@ -9,7 +9,7 @@
 
 @extends('layouts.createditeshow')
 
-@include('partials.navdash')
+@extends('partials.navuser')
 
 @section('content')
     <div class="d-flex justify-content-center align-items-center" style="margin-top:30px ">

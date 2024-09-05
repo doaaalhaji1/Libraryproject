@@ -28,7 +28,7 @@
                     <tr>
 
                      @foreach ($reservations as $reservation)
-                        @if ($reservation->status === 'pending')
+                        @if ($reservation->status === 'pending') 
                                 @if ($reservation->books->count() > 0)
                                     <tr>
                                         {{-- عرض اسم المستخدم --}}

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('book_content');
             $table->string('language');
             $table->string('image')->nullable();
-            $table->enum('status', ['available', 'reserved', 'pending'])->default('available');
+            $table->enum('status', ['available', 'reserved', 'pending','delivered'])->default('available');
             $table->foreignId('reservation_id')->nullable()->constrained('reservations')->onDelete('set null');
             $table->timestamps();
         });

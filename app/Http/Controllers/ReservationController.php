@@ -40,8 +40,6 @@ class ReservationController extends Controller
                 $book = Book::findOrFail($request->book_id);
 
 
-
-
                 $reservation = Reservation::create([
                     'user_id' => auth()->id(),
                     'reservation_start_date' => $request->start_date,
@@ -64,10 +62,9 @@ class ReservationController extends Controller
 
 
 
-
+     // الموافقة على الحجز
     public function approve(Reservation $reservation)
     {
-
 
         $reservation->update([
             'status' => 'approved',
@@ -100,21 +97,15 @@ class ReservationController extends Controller
 
 
         //اعادة الكتاب من قبل المستخدم
-    public function returnBook(Request $request, Reservation $reservation)
+    public function returnuser(Book $book)
     {
 
-
-        $reservation->update([
-            'status' => 'completed',
-            'received_by' => auth()->id(),
+        $book->update([
+            'status' => 'delivered',
         ]);
 
-
-        foreach ($reservation->books as $book) {
-            $book->update(['status' => 'available']);
-        }
+        return redirect()->route('mybook_user')->with('success');
 
 
-        return redirect()->route('reservations.index')->with('success', 'Book returned successfully.');
     }
 }

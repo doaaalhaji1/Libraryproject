@@ -99,6 +99,8 @@ Route::middleware(['auth','chekrole:admin,employee'])->group (function () {
 
     Route::get('/reservation', [ReservationController::class,'index'])->name('reservation');
 
+    Route::get('/retunbooks', [BookController::class,'index_retun_books'])->name('return_book');
+
     Route::get('/reservation/{reservation}/approve', [ReservationController::class,'approve'])->name('aprove');
 
     Route::get('/reservation/{reservation}/reject', [ReservationController::class,'reject'])->name('rject');
@@ -121,6 +123,8 @@ Route::middleware(['auth'])->group(function () {
 
    Route::get('/mybooks', [BookController::class,'mybooks'])->name('mybook_user');
    Route::get('/books/{book}', [BookController::class,'show'])->name('books.sho');
+
+   Route::get('book/{book}', [ReservationController::class,'returnuser'])->name('return_run');
 });
 
 

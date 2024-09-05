@@ -20,6 +20,16 @@ class BookController extends Controller
         return view('books.index', compact('books'));
     }
 
+
+    public function index_retun_books()
+    {   // عرض  الكتب المعادة للمدير او الموظف
+        $books = Book::where('status','delivered')->get();
+
+        return view('books.returnbooks', compact('books'));
+    }
+
+
+
     public function availableBooks()
     {
         // عرض الكتب المتاحة فقط للمستخدمين
@@ -32,7 +42,8 @@ class BookController extends Controller
     {
 
             $user = auth()->user();
-
+        //books المستخدم له حجوزات وحصلنا على الكتب التابعة للحجز  عن طريق الدالة
+        // الموجودة بمودل الحجوزات  اي الكتب التابعة لهذا الحجز وايضا حالة الحجز موافق عليه الموظف
 
             $reservations = $user->reservations()->with('books')->where('status','approved')->get(); // استرجاع الحجوزات الخاصة بالمستخدم مع الكتب المرتبطة
                                                            // حالة الحجز موافقة اي الموظف موافق على الحجز

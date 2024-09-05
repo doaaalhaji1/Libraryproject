@@ -12,8 +12,8 @@
                          </p>
                      </a>
                      <ul class="nav nav-treeview">
-                         {{-- <li class="nav-item"> <a href="{{route('users')}}" class="nav-link active"> <i class="nav-icon bi bi-circle"></i> --}}
-                                 <p>{{  __ ('messages.All_Users') }}</p>
+                         <li class="nav-item"> <a href="{{route('return_book')}}" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
+                                 <p>الكتب المسلمة</p>
                              </a> </li>
                          {{-- <li class="nav-item"> <a href="{{route('books')}}" class="nav-link"> <i class="nav-icon bi bi-circle"></i> --}}
                                  <p>{{  __ ('messages.All_Books') }}</p>

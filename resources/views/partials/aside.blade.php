@@ -1,36 +1,92 @@
 
 
- <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
-     <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="#" class="brand-link"> <!--begin::Brand Image--> <img src="../../dist/assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text--> <span class="brand-text fw-light">{{  __ ('messages.manegerbook') }}</span> <!--end::Brand Text--> </a> <!--end::Brand Link--> </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
-     <div class="sidebar-wrapper">
-         <nav class="mt-2"> <!--begin::Sidebar Menu-->
-             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
-                 <li class="nav-item"> <a href="#" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i>
-                         <p>
-                             {{  __ ('messages.view') }}
-                             <i class="nav-arrow bi bi-chevron-right"></i>
-                         </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                         <li class="nav-item"> <a href="{{route('return_book')}}" class="nav-link active"> <i class="nav-icon bi bi-circle"></i>
-                                 <p>الكتب المسلمة</p>
-                             </a> </li>
-                         {{-- <li class="nav-item"> <a href="{{route('books')}}" class="nav-link"> <i class="nav-icon bi bi-circle"></i> --}}
-                                 <p>{{  __ ('messages.All_Books') }}</p>
-                             </a> </li>
-                         {{-- <li class="nav-item"> <a href="{{route('categories')}}" class="nav-link"> <i class="nav-icon bi bi-circle"></i> --}}
-                                 <p>{{  __ ('messages.All_Categories') }}</p>
-                             </a> </li>
-                             <hr>
+ <style>
+    .sidebar {
+     /* background-color: #343a40; */
+     display: flex;
+     flex-direction: column;
+     text-align: center;
+     justify-content: center;
+ }
 
-                     </ul>
-                  </li>
-              <div class="sidebar">
+ .button a {
+     color: white;
+     display: block;
+     padding: 10px 20px;
+     margin: 5px 0;
+     font-size: 18px;
+     text-decoration: none;
+     border-radius: 10px;
+     text-align: left;
+ }
+ .sidebar a:hover {
+     background-color: #184cd0;
+     text-decoration: none;
+ }
+
+ .sidebar a i {
+     margin-right: 15px;
+ }
+/* ---------------------------------------- */
+
+.animated-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: transform 0.2s, background-color 0.3s;
+    animation: pulse 2s infinite;
+}
+
+.animated-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.animated-button:active {
+    transform: scale(0.95); /* تقليل الحجم عند الضغط */
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+ </style>
+
+ <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
+
+      <div class="sidebar mt-4" style="color:white;">
+                    <h2>Dash Board</h2>
+                    <h5 style="margin-bottom:40px">Library Mangment System</h5>
+
+                 <a href="{{ route('reservation') }}" class="animated-button">
+                    Reserved Books
+                </a>
+
+                <a href="{{ route('return_book') }}" class="animated-button">
+                    Returned Books
+                </a>
+
+                <div class="button">
+
+                </div>
                  {{-- <a href={{route("users.create")}}><i class="bi bi-plus-circle-fill"></i>{{  __ ('messages.Add_User') }}</a> --}}
-                 {{-- <a href={{route("books.create")}}><i class="bi bi-plus-circle-fill"></i> {{  __ ('messages.Add_Book') }}</a> --}}
                  {{-- <a href={{route("categories.create")}}><i class="bi bi-plus-circle-fill"></i> {{  __ ('messages.Add_Category') }}</a> --}}
-             </div>
+                </div>
+
 
 
  </aside>
+
+
+
 

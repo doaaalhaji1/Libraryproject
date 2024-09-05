@@ -45,8 +45,8 @@ class BookController extends Controller
         //books المستخدم له حجوزات وحصلنا على الكتب التابعة للحجز  عن طريق الدالة
         // الموجودة بمودل الحجوزات  اي الكتب التابعة لهذا الحجز وايضا حالة الحجز موافق عليه الموظف
 
-            $reservations = $user->reservations()->with('books')->where('status','approved')->get(); // استرجاع الحجوزات الخاصة بالمستخدم مع الكتب المرتبطة
-                                                           // حالة الحجز موافقة اي الموظف موافق على الحجز
+            $reservations = $user->reservations()->with('books')->where('status','approved')->get();
+
 
             return view('mybooks', compact('reservations'));
 

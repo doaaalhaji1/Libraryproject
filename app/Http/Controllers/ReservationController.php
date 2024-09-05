@@ -108,4 +108,17 @@ class ReservationController extends Controller
 
 
     }
+
+            //اعادة الكتاب من قبل الموظف او المدير
+            public function returnemployee(Book $book)
+            {
+
+                $book->update([
+                    'status' => 'available',
+                ]);
+
+                return redirect()->route('return_book')->with('success');
+
+
+            }
 }

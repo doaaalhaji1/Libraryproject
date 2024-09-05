@@ -39,10 +39,14 @@
                                         <td>{{ now()->format('Y-m-d') }}</td><!-- صيغة التاريخ: سنة-شهر-يوم -->
                                         <td>{{$book->status}}</td>
                                         <td>
-                                            {{-- <a href="{{ route('') }}" class="btn btn-primary btn">استلام</a> --}}
+                                            <form action="{{ route('return_employee', $book) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <button class="btn btn-primary btn" type="submit">استلام</button>
+                                            </form>
+
                                         </td>
                                     </tr>
-
 
                         @endforeach
 

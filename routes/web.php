@@ -99,17 +99,16 @@ Route::middleware(['auth','chekrole:admin,employee'])->group (function () {
 
     Route::get('/reservation', [ReservationController::class,'index'])->name('reservation');
 
+    Route::put('/reservation/{reservation}/approve', [ReservationController::class,'approve'])->name('aprove');
+
+    Route::put('/reservation/{reservation}/reject', [ReservationController::class,'reject'])->name('rject');
+
+    Route::put('/reservation/{reservation}/reject', [ReservationController::class,'reject'])->name('rject');
+
+
     Route::get('/retunbooks', [BookController::class,'index_retun_books'])->name('return_book');
 
-    Route::get('/reservation/{reservation}/approve', [ReservationController::class,'approve'])->name('aprove');
-
-    Route::get('/reservation/{reservation}/reject', [ReservationController::class,'reject'])->name('rject');
-
-
-//  Route::get('/reservation/{reservation}/edit', [ReservationController::class,'edit'])->name('reservation.edit');
-//  Route::put('/reservation/{reservation}', [ReservationController::class,'update'])->name('reservation.update');
-
-//  Route::delete('/reservation/{reservation}', [ReservationController::class,'destroy'])->name('reservation.destroy');
+    Route::put('/retunbooks/{book}', [ReservationController::class,'returnemployee'])->name('return_employee');
 
 });
 
@@ -131,9 +130,6 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-
-
-
 Route::get('/set-locale', function (Illuminate\Http\Request $request) {
     $locale = $request->query('locale');
 
@@ -146,99 +142,100 @@ Route::get('/set-locale', function (Illuminate\Http\Request $request) {
 })->name('setLocale');
 
 
-
-Route::get('/test-db', function () {
-    $books = Book::all();
-    $users = User::all();
-    $authors = Author::all();
-    $categories = Category::all();
-    $reservations = Reservation::all();
-
-
-    echo "<h3>Books</h3>";
-    foreach ($books as $book) {
-        echo "Title: " . $book->title . "<br>";
-        echo "Authors: <br>";
-        if ($book->authors->isNotEmpty()) {
-            foreach ($book->authors as $author) {
-                echo "- " . $author->name . "<br>";
-            }
-        } else {
-            echo "No authors found.<br>";
-        }
-
-        echo "Categories: <br>";
-        if ($book->categories->isNotEmpty()) {
-            foreach ($book->categories as $category) {
-                echo "- " . $category->name . "<br>";
-            }
-        } else {
-            echo "No categories found.<br>";
-        }
-
-        echo "Language: " . $book->language . "<br>";
-        echo "Status: " . $book->status . "<br>";
-        echo "-----------------------------------------------<br>";
-    }
-
-    echo "<h3>Users</h3>";
-    foreach ($users as $user) {
-        echo "Name: " . $user->name . "<br>";
-        echo "Email: " . $user->email . "<br>";
-        echo "Role: " . $user->role . "<br>";
-        echo "----------------------------------------------<br>";
-    }
-
-    echo "<h3>Authors</h3>";
-    foreach ($authors as $author) {
-        echo "Name: " . $author->name . "<br>";
-        echo "----------------------------------------------<br>";
-    }
-
-    echo "<h3>Categories</h3>";
-    foreach ($categories as $category) {
-        echo "Name: " . $category->name . "<br>";
-        echo "--------------------------------------------<br>";
-    }
-
-    echo "<h3>Reservations</h3>";
-    foreach ($reservations as $reservation) {
-        echo "Books: <br>";
-        if ($reservation->books->isNotEmpty()) {
-            foreach ($reservation->books as $book) {
-                echo "- " . $book->title . "<br>";
-            }
-        } else {
-            echo "No books found.<br>";
-        }
-
-        echo "Employee name: <br>";
-        if ($reservation->employee) {
-            echo "- " . $reservation->employee->name . "<br>";
-        } else {
-            echo "No employee found.<br>";
-        }
-
-        echo "Recipient name: <br>";
-        if ($reservation->recipient) {
-            echo "- " . $reservation->recipient->name . "<br>";
-        } else {
-            echo "No recipient found.<br>";
-        }
-
-        echo "Member: " . ($reservation->user ? $reservation->user->name : 'None') . "<br>";
-        echo "Reservation Start Date: " . $reservation->reservation_start_date . "<br>";
-        echo "Reservation End Date: " . $reservation->reservation_end_date . "<br>";
-        echo "Status: " . $reservation->status . "<br>";
-        echo "--------------------------------------------<br>";
-    }
-});
-
-
-
-
-
-
-
-
 require __DIR__.'/auth.php';
+
+// Route::get('/test-db', function () {
+//     $books = Book::all();
+//     $users = User::all();
+//     $authors = Author::all();
+//     $categories = Category::all();
+//     $reservations = Reservation::all();
+
+
+//     echo "<h3>Books</h3>";
+//     foreach ($books as $book) {
+//         echo "Title: " . $book->title . "<br>";
+//         echo "Authors: <br>";
+//         if ($book->authors->isNotEmpty()) {
+//             foreach ($book->authors as $author) {
+//                 echo "- " . $author->name . "<br>";
+//             }
+//         } else {
+//             echo "No authors found.<br>";
+//         }
+
+//         echo "Categories: <br>";
+//         if ($book->categories->isNotEmpty()) {
+//             foreach ($book->categories as $category) {
+//                 echo "- " . $category->name . "<br>";
+//             }
+//         } else {
+//             echo "No categories found.<br>";
+//         }
+
+//         echo "Language: " . $book->language . "<br>";
+//         echo "Status: " . $book->status . "<br>";
+//         echo "-----------------------------------------------<br>";
+//     }
+
+//     echo "<h3>Users</h3>";
+//     foreach ($users as $user) {
+//         echo "Name: " . $user->name . "<br>";
+//         echo "Email: " . $user->email . "<br>";
+//         echo "Role: " . $user->role . "<br>";
+//         echo "----------------------------------------------<br>";
+//     }
+
+//     echo "<h3>Authors</h3>";
+//     foreach ($authors as $author) {
+//         echo "Name: " . $author->name . "<br>";
+//         echo "----------------------------------------------<br>";
+//     }
+
+//     echo "<h3>Categories</h3>";
+//     foreach ($categories as $category) {
+//         echo "Name: " . $category->name . "<br>";
+//         echo "--------------------------------------------<br>";
+//     }
+
+//     echo "<h3>Reservations</h3>";
+//     foreach ($reservations as $reservation) {
+//         echo "Books: <br>";
+//         if ($reservation->books->isNotEmpty()) {
+//             foreach ($reservation->books as $book) {
+//                 echo "- " . $book->title . "<br>";
+//             }
+//         } else {
+//             echo "No books found.<br>";
+//         }
+
+//         echo "Employee name: <br>";
+//         if ($reservation->employee) {
+//             echo "- " . $reservation->employee->name . "<br>";
+//         } else {
+//             echo "No employee found.<br>";
+//         }
+
+//         echo "Recipient name: <br>";
+//         if ($reservation->recipient) {
+//             echo "- " . $reservation->recipient->name . "<br>";
+//         } else {
+//             echo "No recipient found.<br>";
+//         }
+
+//         echo "Member: " . ($reservation->user ? $reservation->user->name : 'None') . "<br>";
+//         echo "Reservation Start Date: " . $reservation->reservation_start_date . "<br>";
+//         echo "Reservation End Date: " . $reservation->reservation_end_date . "<br>";
+//         echo "Status: " . $reservation->status . "<br>";
+//         echo "--------------------------------------------<br>";
+//     }
+// });
+
+
+
+
+
+
+
+
+

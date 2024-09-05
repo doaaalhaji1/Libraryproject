@@ -28,7 +28,7 @@
                     <tr>
 
                      @foreach ($reservations as $reservation)
-                        @if ($reservation->status === 'pending') 
+                        @if ($reservation->status === 'pending')
                                 @if ($reservation->books->count() > 0)
                                     <tr>
                                         {{-- عرض اسم المستخدم --}}
@@ -48,10 +48,21 @@
                                         <td>{{$reservation->reservation_end_date}}</td>
                                         <td>{{$reservation->status}}</td>
                                         <td>
-                                            <a href="{{ route('aprove', $reservation) }}" class="btn btn-primary btn">yes</a>
-                                            {{-- ارسلنا لأي حجز  سيتم قبوله  لأن الدالة قبول الحجز تستقبل الحجز  لتغير حالته --}}
+                                             {{-- ارسلنا لأي حجز  سيتم قبوله  لأن الدالة قبول الحجز تستقبل الحجز  لتغير حالته --}}
+                                             <div style="display: flex; gap: 10px;">
+                                                <form action="{{ route('aprove', $reservation) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button class="btn btn-primary" type="submit">yes</button>
+                                                </form>
 
-                                            <a href="{{ route('rject', $reservation) }}" class="btn btn-danger btn">No</a>
+                                                <form action="{{ route('rject', $reservation) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button class="btn btn-danger" type="submit">no</button>
+                                                </form>
+                                            </div>
+
                                         </td>
                                     </tr>
                                 @endif

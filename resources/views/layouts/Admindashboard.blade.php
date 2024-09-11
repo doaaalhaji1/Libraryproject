@@ -37,6 +37,16 @@
             <div class="app-content mt-3"> <!--begin::Container-->
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row"> <!--begin::Col-->
+                        <div class="col-lg-3 col-6"> <!--begin::Small Box Widget 4-->
+                            <a href="{{ route('users') }}" class="text-decoration-none"> <!-- Add link here -->
+                                <div class="small-box text-bg-primary">
+                                    <div class="inner">
+                                        <h3>ALL Users</h3>
+                                        <p>Unique Visitors</p>
+                                    </div>
+                                </div> <!--end::Small Box Widget 4-->
+                            </a>
+                        </div>
                         <div class="col-lg-3 col-6">
                             <a href="{{ route('books') }}" class="text-decoration-none"> <!-- Add link here -->
                                 <div class="small-box text-bg-success">
@@ -65,16 +75,6 @@
                                         <p>2</p>
                                     </div>
                                 </div> <!--end::Small Box Widget 3-->
-                            </a>
-                        </div>
-                        <div class="col-lg-3 col-6"> <!--begin::Small Box Widget 4-->
-                            <a href="{{ route('reservation') }}" class="text-decoration-none"> <!-- Add link here -->
-                                <div class="small-box text-bg-primary">
-                                    <div class="inner">
-                                        <h3>ALL Reservation</h3>
-                                        <p>Unique Visitors</p>
-                                    </div>
-                                </div> <!--end::Small Box Widget 4-->
                             </a>
                         </div>
                     </div> <!--end::Row-->

@@ -2,7 +2,6 @@
 
 @section('content')
 
-
             @if(session('success'))
 
                 <div class="alert alert-success">
@@ -12,7 +11,7 @@
                 </div>
 
             @endif
-                <p></p>
+                {{-- <p></p> --}}
         <table class="table table-striped">
             <thead>
                 <tr>

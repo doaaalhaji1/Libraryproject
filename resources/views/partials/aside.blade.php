@@ -13,8 +13,9 @@
      font-size: 18px;
      border-radius: 25px;
     text-decoration: none;
-    padding: 9px 60px;
-    margin-top:30px;
+    padding: 9px  58px  9px 60px;
+
+    margin-top:40px;
 
     display: inline-block;
 
@@ -78,12 +79,12 @@
                     Returned Books
                 </a>
 
-                <div class="button mt-1">
+                <div class="button">
                     <a href="{{ route('users.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add User</a>
                     <a href="{{ route('books.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add Book</a>
-                    <a href="{{ route('categories.create')}}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add Category</a>
-                    <a href="{{ route('users.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add User</a>
-                    <a href="{{ route('users.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add User</a>
+                    <a href="{{ route('categories.create')}}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add Categ</a>
+                    <a href="{{ route('authors.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add Authr</a>
+                    {{-- <a href="{{ route('users.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add User</a> --}}
                 </div>
 
 

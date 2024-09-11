@@ -48,6 +48,7 @@ Route::get('/Library', [BookController::class,'availableBooks'])->name('page_boo
 Route::middleware(['auth','chekrole:admin'])->group (function () {
 
     Route::resource('users', UserController::class);
+    Route::get('/users', [UserController::class,'index'])->name('users');
     Route::put('users/{user}/role', [UserController::class, 'updateRole'])->name('users.updateRole');
    });
 

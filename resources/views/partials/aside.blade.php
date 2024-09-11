@@ -8,20 +8,20 @@
      justify-content: center;
  }
 
-
  .button .centered-link {
      color: white;
      font-size: 18px;
      border-radius: 25px;
     text-decoration: none;
-    padding: 9px 55px;
-    margin-top:5px;
-    display: block;
+    padding: 9px 60px;
+    margin-top:30px;
+
+    display: inline-block;
 
  }
 
  .button .centered-link:hover {
-     background-color: #184cd0;
+     background-color: #007bff;
 
 
  }
@@ -31,6 +31,8 @@
 
 
  }
+
+
 /* ---------------------------------------- */
 
 .animated-button {
@@ -76,12 +78,12 @@
                     Returned Books
                 </a>
 
-                <div class="button mt-4">
-                    <a href="{{ route('users.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Create User</a>
-                    <a href="{{ route('users.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Create User</a>
-                    <a href="{{ route('users.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Create User</a>
-                    <a href="{{ route('users.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Create User</a>
-                    <a href="{{ route('users.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Create User</a>
+                <div class="button mt-1">
+                    <a href="{{ route('users.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add User</a>
+                    <a href="{{ route('books.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add Book</a>
+                    <a href="{{ route('categories.create')}}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add Category</a>
+                    <a href="{{ route('users.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add User</a>
+                    <a href="{{ route('users.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add User</a>
                 </div>
 
 

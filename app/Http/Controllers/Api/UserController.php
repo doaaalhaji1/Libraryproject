@@ -39,6 +39,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $dataUser = $request->validate([
+
             'name' => 'min:3|max:50',
             'email' => 'email|unique:users,email',
             'password' => 'min:3|max:50',
@@ -46,15 +47,19 @@ class UserController extends Controller
         ]);
 
         $user->update([
+
             'name' => $dataUser['name'],
             'email' => $dataUser['email'],
             'password' => Hash::make($dataUser['password']),
             'image' => $dataUser['image']
+
         ]);
 
         return response()->json([
+
             'message' => 'User updated successfully',
             'data' => $user
+
         ]);
 
     }
@@ -64,6 +69,8 @@ class UserController extends Controller
         $user->delete();
         return response()->json([
             'message' => 'User deleted successfully'
+
+
         ]);
     }
 

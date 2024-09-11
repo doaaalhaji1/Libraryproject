@@ -40,14 +40,18 @@ class BookController extends Controller
             return response()->json(['error' => 'category not exist'], 404);
         }
         $newBook = Book::create([
+
             'title' => $DataBook['title'],
             'description' => $DataBook['description'],
             'language' => $DataBook['language']
+            
         ]);
+
         if ($newBook) {
             $newBook->authors()->attach($author->id);
             $newBook->categories()->attach($category->id);
         }
+
         return response()->json([
             'book' => $newBook->load('categories', 'authors')
         ]);

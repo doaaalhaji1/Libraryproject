@@ -22,6 +22,7 @@ class BookFactory extends Factory
             'description' => $this->faker->paragraph(2),
             'book_content' => fake()->paragraph(3),
             'status' => 'available',
+            'image' => $this->faker->imageUrl(640, 480, 'books', true, 'Faker'),
         ];
     }
 }

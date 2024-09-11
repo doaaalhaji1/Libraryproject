@@ -35,7 +35,9 @@ class BookController extends Controller
         // عرض الكتب المتاحة فقط للمستخدمين
         $books = Book::where('status', 'available')->get();
 
-        return view('Homeuser', compact('books'));
+        $categories = Category::all();    
+
+        return view('Homeuser', compact('books','categories'));
     }
 
     public function mybooks()
@@ -196,4 +198,33 @@ class BookController extends Controller
 
         return redirect()->route('books')->with('success', __('public.book_deleted'));
     }
+
+
+
+public function search(Request $request)
+{
+    $query = $request->input('search');
+    $category = $request->input('category');
+    
+    $booksQuery = Book::where('status', 'available')
+        ->where(function($q) use ($query) {
+            $q->where('title', 'LIKE', "%{$query}%")
+              ->orWhere('description', 'LIKE', "%{$query}%")
+              ->orWhere('book_content', 'LIKE', "%{$query}%")
+              ->orWhereHas('authors', function($q) use ($query) {
+                  $q->where('name', 'LIKE', "%{$query}%");
+              });
+        });
+
+    if ($category) {
+        $booksQuery->whereHas('categories', function($q) use ($category) {
+            $q->where('categories.id', $category);
+        });
+    }
+
+    $books = $booksQuery->get();
+    $categories = Category::all();
+
+    return view('Homeuser', compact('books', 'categories'));
+}
 }

@@ -19,53 +19,45 @@ class ReservationSeeder extends Seeder
         $members = User::where('role', 'member')->get();
 
         for ($i = 0; $i < 5; $i++) {
-            $books = Book::inRandomOrder()->take(rand(1, 4))->get();
-            if ($books->isNotEmpty()) {
-                $reservation = Reservation::factory()->create([
-                    'status' => 'pending',
-                    'user_id' => $members->random()->id,
-                    'employee_id' => null,
-                ]);
+            $books = Book::factory()->count(rand(1, 4))->create();
+            $reservation = Reservation::factory()->create([
+                'status' => 'pending',
+                'user_id' => $members->random()->id,
+                'employee_id' => null,
+            ]);
 
-                foreach ($books as $book) {
-                    $book->reservation_id = $reservation->id;
-                    $book->save();
-                }
+            foreach ($books as $book) {
+                $book->reservation_id = $reservation->id;
+                $book->save();
             }
         }
 
         for ($i = 0; $i < 5; $i++) {
-            $books = Book::inRandomOrder()->take(rand(1, 4))->get();
+            $books = Book::factory()->count(rand(1, 4))->create();
+            $reservation = Reservation::factory()->create([
+                'status' => 'approved',
+                'user_id' => $members->random()->id,
+                'employee_id' => $employees->random()->id,
+            ]);
 
-            if ($books->isNotEmpty()) {
-                $reservation = Reservation::factory()->create([
-                    'status' => 'approved',
-                    'user_id' => $members->random()->id,
-                    'employee_id' => $employees->random()->id,
-                ]);
-
-                foreach ($books as $book) {
-                    $book->reservation_id = $reservation->id;
-                    $book->save();
-                }
+            foreach ($books as $book) {
+                $book->reservation_id = $reservation->id;
+                $book->save();
             }
         }
 
         for ($i = 0; $i < 5; $i++) {
-            $books = Book::inRandomOrder()->take(rand(1, 4))->get();
+            $books = Book::factory()->count(rand(1, 4))->create();
+            $reservation = Reservation::factory()->create([
+                'status' => 'approved',
+                'user_id' => $members->random()->id,
+                'employee_id' => $employees->random()->id,
+                'recipient_user_id' => $employees->random()->id,
+            ]);
 
-            if ($books->isNotEmpty()) {
-                $reservation = Reservation::factory()->create([
-                    'status' => 'approved',
-                    'user_id' => $members->random()->id,
-                    'employee_id' => $employees->random()->id,
-                    'recipient_user_id' => $employees->random()->id,
-                ]);
-
-                foreach ($books as $book) {
-                    $book->reservation_id = $reservation->id;
-                    $book->save();
-                }
+            foreach ($books as $book) {
+                $book->reservation_id = $reservation->id;
+                $book->save();
             }
         }
     }

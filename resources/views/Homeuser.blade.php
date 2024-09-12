@@ -28,10 +28,9 @@
     <div class="container">
         <!-- نموذج البحث النصي والفئة -->
         <form id="searchForm" action="{{ route('books.search') }}" method="GET">
-            <div class="input-group mb-1">
+            <div class="input-group mb-3">
                 <input type="text" name="search" class="form-control" placeholder="Search for books or authors..." value="{{ request('search') }}">
-
-                <select name="category" class="form-select ms-3" onchange="submitForm()">
+                <select name="category" class="form-select" onchange="submitForm()">
                     <option value="">Select Category</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
@@ -39,7 +38,6 @@
                         </option>
                     @endforeach
                 </select>
-
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </form>
@@ -51,14 +49,14 @@
         <div class="card shadow" style="width: 14.5rem;">
             <img src="{{ $book->image ? url('storage/' . $book->image) : 'path/to/default/image.jpg' }}" class="card-img-top" alt="Book Image" loading="lazy">
             <div class="card-body d-flex flex-column justify-content-between">
-                <p class="card-text mb-2"><strong>Title</strong><br> {{ $book->title }}</p>
-                <p class="card-text mb-1"><strong>Authors</strong><br>
+                <p class="card-text mb-2"><strong>{{__('user.Title')}}</strong><br> {{ $book->title }}</p>
+                <p class="card-text mb-1"><strong>{{__('user.Authors')}}</strong><br>
                     @foreach($book->authors as $author)
                         <p class="mb-0">{{ $author->name }}</p>
                     @endforeach
                 </p>
                 <div class="mt-auto">
-                    <a href="{{ route('book_reservation', $book) }}" class="btn btn-primary mt-2 w-100 read-button rounded-5">Reservation</a>
+                    <a href="{{ route('book_reservation', $book) }}" class="btn btn-primary mt-2 w-100 read-button rounded-5">{{__('user.Reservation')}}</a>
                 </div>
             </div>
         </div>

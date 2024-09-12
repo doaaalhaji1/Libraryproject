@@ -41,6 +41,8 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth'])->group (function () {
 Route::get('/Library', [BookController::class,'availableBooks'])->name('page_books');});
+Route::get('/books/search', [BookController::class, 'search'])->name('books.search');
+
 
 
 // -----------------------------role(admin)----------------------------------------

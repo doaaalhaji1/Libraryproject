@@ -1,4 +1,3 @@
-
 @extends('layouts.createditeshow')
 
 @include('partials.navdash')
@@ -10,7 +9,7 @@
                 <img src="/images/adduser.jpg" alt="..." width="60px" class="d-block mx-auto mb-3">
                 <h2 class="text-center">{{ __('public.Create_New_User') }}</h2>
 
-                <form method="POST" action="{{ route('users.store') }}">
+                <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
                     @csrf
 
                     @if($errors->any())
@@ -50,6 +49,11 @@
                             <option value="employee">{{ __('public.Employee') }}</option>
                             <option value="member" selected>{{ __('public.Member') }}</option>
                         </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">{{ __('public.Upload_Image') }}</label>
+                        <input type="file" id="image" name="image" class="form-control">
                     </div>
 
                     <div class="text-center mt-3">

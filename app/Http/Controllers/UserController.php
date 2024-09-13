@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Str;
+
 
 
 class UserController extends Controller
@@ -32,27 +34,41 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'role' => 'required|in:admin,employee,member',
-            'password' => ['required', 'confirmed', Password::min(8)
+{
+    // التحقق من صحة البيانات بما في ذلك الصورة
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'role' => 'required|in:admin,employee,member',
+        'password' => ['required', 'confirmed', Password::min(8)
             ->mixedCase()
             ->numbers()
             ->symbols()
-            ->uncompromised()],]);
-    
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'role' => $request->role,
-            'password' => Hash::make($request->password),
-        ]);
-    
-        return redirect()->route('users.index')
-                         ->with('success', __('public.user_created'));
+            ->uncompromised()],
+        'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // التحقق من صحة الصورة
+    ]);
+
+    // التحقق إذا تم رفع صورة ومعالجة رفعها
+    $imageName = null;
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension(); // اسم عشوائي للصورة
+        $image->move(public_path('user_images'), $imageName); // حفظ الصورة في مسار 'user_images'
     }
+
+    // إنشاء المستخدم وحفظ الصورة في قاعدة البيانات
+    User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'role' => $request->role,
+        'password' => Hash::make($request->password),
+        'image' => $imageName, // حفظ اسم الصورة في قاعدة البيانات إذا تم رفع صورة
+    ]);
+
+    return redirect()->route('users')
+                     ->with('success', __('public.user_created'));
+}
+
 
     /**
      * Display the specified resource.
@@ -75,7 +91,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $user) 
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -86,28 +102,49 @@ class UserController extends Controller
                 ->numbers()
                 ->symbols()
                 ->uncompromised()],
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // التحقق من صحة الصورة
         ]);
+    
+        // التحقق من وجود صورة جديدة
+        if ($request->hasFile('image')) {
+            // التحقق من وجود صورة قديمة وحذفها
+            if ($user->image && file_exists(public_path('images/users/' . $user->image))) {
+                unlink(public_path('images/users/' . $user->image)); // حذف الصورة القديمة
+            }
+    
+            // رفع الصورة الجديدة
+            $image = $request->file('image');
+            $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension(); // اسم عشوائي للصورة
+            $image->move(public_path('user_images'), $imageName); // حفظ الصورة في مسار 'user_images'
+            $user->image = $imageName; // تحديث حقل الصورة في قاعدة البيانات
+        }
     
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
             'role' => $request->role,
             'password' => $request->password ? Hash::make($request->password) : $user->password,
+            'image' => $user->image ?? $user->image, // تأكد من عدم تعديل الصورة إذا لم يتم رفع صورة جديدة
         ]);
     
-        return redirect()->route('users.index')
+        return redirect()->route('users')
                          ->with('success', __('public.user_updated'));
     }
+    
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(User $user)
     {
+        if ($user->image && file_exists(public_path('user_images/' . $user->image))) {
+            unlink(public_path('images/users/' . $user->image));
+        }
+    
         $user->delete();
-
-    return redirect()->route('users.index')
-                     ->with('success', __('public.user_deleted'));
+    
+        return redirect()->route('users')
+                         ->with('success', __('public.user_deleted'));
     }
     public function updateRole(Request $request, User $user)
 {

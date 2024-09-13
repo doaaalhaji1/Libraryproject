@@ -4,7 +4,13 @@
     <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="card w-75">
             <div class="card-body">
-                <img src="/images/userdetails.jpg" alt="User Image" width="80px" class="d-block mx-auto mb-4">
+                <div class="text-center mb-4">
+                    @if($user->image)
+                        <img src="{{ asset('user_images/' . $user->image) }}" alt="User Image" width="80px" class="d-block mx-auto mb-4">
+                    @else
+                        <img src="/images/userdetails.jpg" alt="Default User Image" width="80px" class="d-block mx-auto mb-4">
+                    @endif
+                </div>
                 <h2 class="text-center mb-4">{{ __('public.User_Details') }}</h2>
                 
                 <div class="row mb-3">
@@ -25,7 +31,7 @@
                 </div>
                 
                 <div class="text-center mt-4">
-                    <a href="{{ route('users.index') }}" class="btn btn-secondary">{{ __('public.Back_to_usres') }}</a>
+                    <a href="{{ route('users') }}" class="btn btn-secondary">{{ __('public.Back_to_users') }}</a>
                 </div>
             </div>
         </div>

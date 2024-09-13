@@ -35,7 +35,7 @@ class BookController extends Controller
         // عرض الكتب المتاحة فقط للمستخدمين
         $books = Book::where('status', 'available')->get();
 
-        $categories = Category::all();    
+        $categories = Category::all();
 
         return view('Homeuser', compact('books','categories'));
     }
@@ -54,7 +54,7 @@ class BookController extends Controller
 
     }
 
-    public function reservedBooks()
+    public function Reserved_Books_Data()
     {
         // عرض كل الكتب المحجوزة فقط من اجل توثيق الاستعادة
 
@@ -205,7 +205,7 @@ public function search(Request $request)
 {
     $query = $request->input('search');
     $category = $request->input('category');
-    
+
     $booksQuery = Book::where('status', 'available')
         ->where(function($q) use ($query) {
             $q->where('title', 'LIKE', "%{$query}%")

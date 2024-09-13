@@ -19,6 +19,8 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous"><!-- jsvectormap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css" integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .app-main
         {
@@ -42,7 +44,7 @@
                                 <div class="small-box text-bg-primary">
                                     <div class="inner">
                                         <h3>ALL Users</h3>
-                                        <p>Unique Visitors</p>
+                                        <p><i class="fas fa-users" style="font-size: 30px;"></i></p>
                                     </div>
                                 </div> <!--end::Small Box Widget 4-->
                             </a>
@@ -52,7 +54,11 @@
                                 <div class="small-box text-bg-success">
                                     <div class="inner">
                                         <h3>ALL Books</h3>
-                                        <p></p>
+                                        <p>
+                                            <i class="fas fa-book" style="font-size: 30px;"></i>
+
+                                            <i class="fas fa-book" style="font-size: 30px;"></i>
+                                        </p>
                                     </div>
                                 </div> <!--end::Small Box Widget 1-->
                             </a>
@@ -62,7 +68,7 @@
                                 <div class="small-box text-bg-danger">
                                     <div class="inner">
                                         <h3>ALL categories</h3>
-                                        <p>Danger</p>
+                                        <p><i class="fas fa-grip-vertical" style="font-size: 30px;"></i></p>
                                     </div>
                                 </div> <!--end::Small Box Widget 2-->
                             </a>
@@ -72,7 +78,7 @@
                                 <div class="small-box text-bg-info">
                                     <div class="inner">
                                         <h3>ALL Authors</h3>
-                                        <p>2</p>
+                                        <p><i class="fas fa-users" style="font-size: 30px;"></i></p>
                                     </div>
                                 </div> <!--end::Small Box Widget 3-->
                             </a>
@@ -80,7 +86,7 @@
                     </div> <!--end::Row-->
                 </div> <!--end::Container-->
             </div><!--end::Col-->
-            <div class="container">
+            <div class="ms-3">
                 @yield("content")
             </div>
                      </main>

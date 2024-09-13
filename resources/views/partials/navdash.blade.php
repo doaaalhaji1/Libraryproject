@@ -166,7 +166,7 @@
                         <a href="{{route('page_books')}}" class="nav-link">ALL Books</a>
                     </li>
                     <li class="nav-item d-none d-md-block  ms-3">
-                        <a href="{{route('reserved_books')}}" class="nav-link"> Reserved Books</a>
+                        <a href="{{route('revrese_books_data')}}" class="nav-link"> Reserved Books Data</a>
                     </li>
                 </ul>
                  <ul class="navbar-nav ms-auto">

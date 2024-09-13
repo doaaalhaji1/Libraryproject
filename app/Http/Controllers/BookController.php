@@ -22,7 +22,8 @@ class BookController extends Controller
 
 
     public function index_retun_books()
-    {   // عرض  الكتب المعادة للمدير او الموظف
+    {   // عرض  الكتب المعادة  المسلمة للمدير او الموظف
+
         $books = Book::where('status','delivered')->get();
 
         return view('books.returnbooks', compact('books'));
@@ -56,16 +57,16 @@ class BookController extends Controller
 
     public function Reserved_Books_Data()
     {
-        // عرض كل الكتب المحجوزة فقط من اجل توثيق الاستعادة
+        // عرض كل الكتب التي حجزت وتم استلامها ليتم معرفة من هم الموظفين الذين وافقوا واستلموا الكتاب
 
         //الطريقة الاولى
-        $books = Book::where('status','reserved')->get();
+        // $books = Book::where('status','reserved')->get();
 
             //الطريقة الثانية
-        //   $reservations = Reservation::where('status','approved')->get();
+          $reservations = Reservation::where('status','approved')->get();
 
 
-        return view('reservedbooks', compact('books'));
+        return view('reservedbooksdata', compact('reservations'));
     }
 
     /**

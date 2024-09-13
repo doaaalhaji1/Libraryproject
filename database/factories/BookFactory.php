@@ -20,7 +20,7 @@ class BookFactory extends Factory
             'title' => $this->faker->sentence,
             'language' => $this->faker->randomElement(['English', 'Arabic', 'French']),
             'description' => $this->faker->paragraph(2),
-            'book_content' => fake()->paragraph(3),
+            'book_content' => fake()->paragraph(2),
             'status' => 'available',
             'image' => $this->faker->imageUrl(640, 480, 'books', true, 'Faker'),
         ];

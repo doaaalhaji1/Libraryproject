@@ -74,7 +74,7 @@ Route::middleware(['auth','chekrole:admin,employee'])->group (function () {
 
     Route::delete('/books/{book}', [BookController::class,'destroy'])->name('books.destroy');//{id الكتاب}
       //  عرض الكتب المحجوزة
-    Route::get('/reservedbooks', [BookController::class,'Reserved_Books_Data'])->name('reserved_books');
+    Route::get('/reservedbooks', [BookController::class,'Reserved_Books_Data'])->name('revrese_books_data');
 
 // ------------------------------------------------------------
 

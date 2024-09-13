@@ -117,8 +117,19 @@ class ReservationController extends Controller
                     'status' => 'available',
                 ]);
 
+                // الحصول على الحجز المرتبط بالكتاب
+                $reservation = $book->reservation;
+
+                // إذا كان هناك حجز، نقوم بتحديثه
+
+                $reservation->update([
+                    'recipient_user_id' => auth()->id(), // تحديث معرف المستخدم المستلم
+                ]);
+
+
                 return redirect()->route('return_book')->with('success');
 
 
             }
-}
+        }
+

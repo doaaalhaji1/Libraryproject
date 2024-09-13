@@ -31,6 +31,7 @@ class ReservationController extends Controller
         {
 
                 $request->validate([
+
                     'book_id' => 'required|exists:books,id',
                     'start_date' => 'required|date|after_or_equal:today',
                     'end_date' => 'required|date|after_or_equal:start_date',
@@ -59,6 +60,48 @@ class ReservationController extends Controller
                 return redirect()->route('page_books')->with('success', __('Book has been reserved successfully.'));
      }
 
+
+     //عرض فورم حجز كل الكتب المتاحة
+     public function create_books_reservation()
+     {
+        $books = Book::where('status', 'available')->get();
+
+         return view('reservation.createbooks', compact('books'));
+     }
+
+     //حفظ بيانات الحجز
+     public function store_books_reservation(Request $request)
+    {
+
+        $request->validate([
+            'books' => 'required|array',
+            'start_date' => 'required|date|after_or_equal:today',
+            'end_date' => 'required|date|after_or_equal:start_date',
+        ]);
+
+
+        $reservation = Reservation::create([
+            'user_id' => auth()->id(),
+            'reservation_start_date' => $request->start_date,
+            'reservation_end_date' => $request->end_date,
+            'status' => 'pending',
+        ]);
+
+        // استرجاع الكتب المحددة من قاعدة البيانات
+        $books = Book::whereIn('id', $request->books)->get();
+
+        // ربط الكتب بالحجز وتحديث حالة كل كتاب
+        foreach ($books as $book) {
+            $book->update([
+                 // ربط الكتاب بالحجز
+                'reservation_id' => $reservation->id,
+                'status' => 'pending'
+            ]);
+        }
+
+
+        return redirect()->route('page_books')->with('success', 'Reservation created successfully.');
+    }
 
 
 

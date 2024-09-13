@@ -7,8 +7,8 @@
     <div class="d-flex justify-content-center align-items-center" style="margin-top:100px ">
         <div class="card w-50">
             <div class="card-body">
-                <img src="/images/adduser.jpg" alt="..." width="60px" class="d-block mx-auto mb-3">
-                <h2 class="text-center">{{ __('public.Create_New_User') }}</h2>
+                <img src="/images/addcategory.jpg" alt="..." width="70px" class="d-block mx-auto mb-3">
+                <h2 class="text-center">{{ __('اضافة فئة') }}</h2>
 
                 <form class="centered-form Style2" action="{{ route('categories.store') }}" method="POST">
                     @csrf

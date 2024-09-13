@@ -75,6 +75,7 @@ Route::middleware(['auth','chekrole:admin,employee'])->group (function () {
     Route::delete('/books/{book}', [BookController::class,'destroy'])->name('books.destroy');//{id الكتاب}
       //  عرض الكتب المحجوزة
     Route::get('/reservedbooks', [BookController::class,'Reserved_Books_Data'])->name('revrese_books_data');
+
     Route::get('/books/search/emp', [BookController::class, 'searchemploy'])->name('books.searchemploy');
 
 // ------------------------------------------------------------
@@ -124,6 +125,9 @@ Route::middleware(['auth'])->group(function () {
 
    Route::get('/reservation/create/{book}/book', [ReservationController::class,'create'])->name('book_reservation');
    Route::post('/reservation', [ReservationController::class,'store'])->name('reservations.store');
+    // عرض فورم جميع الكتب المتاحة  للحجز
+   Route::get('/reservation/books', [ReservationController::class,'create_books_reservation'])->name('books_reservation');
+   Route::post('/reservation-books', [ReservationController::class,'store_books_reservation'])->name('storbooks_reservation');
 
    Route::get('/mybooks', [BookController::class,'mybooks'])->name('mybook_user');
    Route::get('/books/{book}', [BookController::class,'show'])->name('books.sho');

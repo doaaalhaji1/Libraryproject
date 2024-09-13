@@ -35,7 +35,7 @@ class BookController extends Controller
     public function availableBooks()
     {
         // عرض الكتب المتاحة فقط للمستخدمين
-        $books = Book::where('status', 'available')->get();
+        $books = Book::with('authors')->where('status', 'available')->get();
 
         $categories = Category::all();
 
@@ -244,10 +244,10 @@ public function searchemploy(Request $request)
                   });
             });
 
-        $books = $booksQuery->get();  
+        $books = $booksQuery->get();
         return view('books.index', compact('books'));
 
-    } 
+    }
     return back()->with('message', 'Please enter a search term.');
 
 

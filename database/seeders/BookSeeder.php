@@ -15,7 +15,7 @@ class BookSeeder extends Seeder
      */
     public function run(): void
     {
-        Book::factory(40)->create()->each(function ($book) {
+        Book::factory(20)->create()->each(function ($book) {
 
             $authors = Author::inRandomOrder()->take(rand(1, 3))->pluck('id');
             $book->authors()->attach($authors);

@@ -7,8 +7,8 @@
     <div class="d-flex justify-content-center align-items-center" style="margin-top:30px ">
         <div class="card w-75">
             <div class="card-body">
-                <img src="/images/adduser.jpg" alt="..." width="60px" class="d-block mx-auto mb-3">
-                <h2 class="text-center">{{ __('public.Create_New_User') }}</h2>
+                <img src="/images/addbook.jpg" alt="..." width="70px" class="d-block mx-auto mb-3">
+                <h2 class="text-center">{{ __('اضافة كتاب') }}</h2>
 
                 <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf

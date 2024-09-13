@@ -81,8 +81,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                        {{-- <a class="nav-link translation-link d-flex align-items-center" href="#"> --}}
-                            @include('partials.langouge')
-
+                        @include('partials.langouge')
                     </li>
                     <li class="nav-item ms-4">
                         <a class="nav-link" href="#" data-lte-toggle="fullscreen">
@@ -91,21 +90,21 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown user-menu">
-                           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                           @if(Auth::check() && Auth::user()->image && file_exists(public_path('storage/' . Auth::user()->image)))
-                             <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="User Image" width="35px" height="35px" class="rounded-circle shadow">
-                         @else
-                             <img src="{{ asset('images/userdetails.jpg') }}" alt="Default User Image" width="35px" height="35px" class="rounded-circle shadow">
-                         @endif  
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            @if(Auth::check() && Auth::user()->image && file_exists(public_path('storage/' . Auth::user()->image)))
+                                <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="User Image" width="35px" height="35px" class="rounded-circle shadow" loading="lazy">
+                            @else
+                                <img src="{{ asset('images/userdetails.jpg') }}" alt="Default User Image" width="35px" height="35px" class="rounded-circle shadow" loading="lazy">
+                            @endif
                             <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                             <li class="user-header text-bg-primary">
-                            @if(Auth::check() && Auth::user()->image && file_exists(public_path('storage/' . Auth::user()->image)))
-                             <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="User Image" width="35px" height="35px" class="rounded-circle shadow">
-                         @else
-                             <img src="{{ asset('images/userdetails.jpg') }}" alt="Default User Image" width="35px" height="35px" class="rounded-circle shadow">
-                         @endif
+                                @if(Auth::check() && Auth::user()->image && file_exists(public_path('storage/' . Auth::user()->image)))
+                                    <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="User Image" width="35px" height="35px" class="rounded-circle shadow" loading="lazy">
+                                @else
+                                    <img src="{{ asset('images/userdetails.jpg') }}" alt="Default User Image" width="35px" height="35px" class="rounded-circle shadow" loading="lazy">
+                                @endif
                                 <p>{{ Auth::user()->name }}</p>
                             </li>
                             <li class="user-footer d-flex justify-content-between align-items-center">
@@ -126,12 +125,14 @@
         </div>
     </nav>
 
-    <!-- Your content goes here -->
 
-    <!-- Include your scripts here -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
     <script src="../../dist/js/adminlte.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js"></script>
 </body>
 </html>
+
+
+
+

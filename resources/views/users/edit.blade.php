@@ -6,8 +6,8 @@
     <div class="d-flex justify-content-center align-items-center" style="margin-top:25px ">
         <div class="card w-50">
             <div class="card-body">
-                <img src="/images/adduser.jpg" alt="..." width="60px" class="d-block mx-auto mb-3">
-                <h2 class="text-center">{{ __('public.Create_New_User') }}</h2>
+                <img src="/images/edituser.png" alt="..." width="70px" class="d-block mx-auto mb-3">
+                <h2 class="text-center">{{ __('تعديل مستخدم') }}</h2>
 
                 <form method="POST" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">
                     @csrf

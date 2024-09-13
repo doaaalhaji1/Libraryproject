@@ -7,6 +7,7 @@ use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Reservation;
+use Illuminate\Support\Facades\Redirect;
 
 class BookController extends Controller
 {
@@ -228,4 +229,25 @@ public function search(Request $request)
 
     return view('Homeuser', compact('books', 'categories'));
 }
+public function searchemploy(Request $request)
+{
+    $query = $request->input('search');
+
+    if ($query) {
+        $booksQuery = Book::where('status', 'available')
+            ->where(function($q) use ($query) {
+                $q->where('title', 'LIKE', "%{$query}%")
+                  ->orWhere('description', 'LIKE', "%{$query}%")
+                  ->orWhere('book_content', 'LIKE', "%{$query}%")
+                  ->orWhereHas('authors', function($q) use ($query) {
+                      $q->where('name', 'LIKE', "%{$query}%");
+                  });
+            });
+
+        $books = $booksQuery->get();
+    } 
+
+    return view('books.index', compact('books'));
+}
+
 }

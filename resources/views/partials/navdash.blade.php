@@ -30,6 +30,9 @@
         <div class="flex items-center">
             <img src="/images/logo.png" alt="" width="50" class="ms-3" >
         </div>
+      
+
+
 
         <ul class="navbar-nav ms-auto pt-1"> <!--begin::Navbar Search-->
 
@@ -183,22 +186,22 @@
                      </li>
                      <li class="nav-item dropdown user-menu">
                          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                         @if(Auth::check() && Auth::user()->image && file_exists(public_path('storage/user_images/' . Auth::user()->image)))
-            <img src=" asset('storage/' . $user->image) " alt="User Image" width="35px" height="35px" class="rounded-circle shadow">
-        @else
-            <img src="{{ asset('images/userdetails.jpg') }}" alt="Default User Image" width="35px" height="35px" class="rounded-circle shadow">
-        @endif
+                         @if(Auth::check() && Auth::user()->image && file_exists(public_path('storage/' . Auth::user()->image)))
+                             <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="User Image" width="35px" height="35px" class="rounded-circle shadow">
+                         @else
+                             <img src="{{ asset('images/userdetails.jpg') }}" alt="Default User Image" width="35px" height="35px" class="rounded-circle shadow">
+                         @endif
 
 
                                                   <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                          </a>
                          <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                              <li class="user-header text-bg-primary">
-                             @if(Auth::check() && Auth::user()->image && file_exists(public_path('storage/user_images/' . Auth::user()->image)))
-                                   <img src="{{  asset('storage/' . $user->image)  }}" alt="User Image" width="35px" height="35px" class="rounded-circle shadow">
-                               @else
-                                   <img src="{{ asset('images/userdetails.jpg') }}" alt="Default User Image" width="35px" height="35px" class="rounded-circle shadow">
-                               @endif    
+                             @if(Auth::check() && Auth::user()->image && file_exists(public_path('storage/' . Auth::user()->image)))
+                                 <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="User Image" width="35px" height="35px" class="rounded-circle shadow">
+                             @else
+                                 <img src="{{ asset('images/userdetails.jpg') }}" alt="Default User Image" width="35px" height="35px" class="rounded-circle shadow">
+                             @endif
                             <p>{{ Auth::user()->name }}</p>
                              </li>
                              <li class="user-footer d-flex justify-content-between align-items-center">

@@ -92,20 +92,20 @@
                     </li>
                     <li class="nav-item dropdown user-menu">
                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                             @if(auth()->user()->image)
-                              <img width="35" height="35" src="{{ asset('user_images/' . auth()->user()->image) }}" class="rounded-circle shadow" alt="User Image">
-                                @else
-                            <img width="35" height="35" src="{{ asset('/images/userdetails.jpg') }}" class="rounded-circle shadow" alt="Default User Image">
-                             @endif   
+                           @if(Auth::check() && Auth::user()->image && file_exists(public_path('storage/' . Auth::user()->image)))
+                             <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="User Image" width="35px" height="35px" class="rounded-circle shadow">
+                         @else
+                             <img src="{{ asset('images/userdetails.jpg') }}" alt="Default User Image" width="35px" height="35px" class="rounded-circle shadow">
+                         @endif  
                             <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                             <li class="user-header text-bg-primary">
-                            @if(auth()->user()->image)
-                              <img width="35" height="35" src="{{ asset('user_images/' . auth()->user()->image) }}" class="rounded-circle shadow" alt="User Image">
-                                @else
-                            <img width="35" height="35" src="{{ asset('/images/userdetails.jpg') }}" class="rounded-circle shadow" alt="Default User Image">
-                             @endif  
+                            @if(Auth::check() && Auth::user()->image && file_exists(public_path('storage/' . Auth::user()->image)))
+                             <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="User Image" width="35px" height="35px" class="rounded-circle shadow">
+                         @else
+                             <img src="{{ asset('images/userdetails.jpg') }}" alt="Default User Image" width="35px" height="35px" class="rounded-circle shadow">
+                         @endif
                                 <p>{{ Auth::user()->name }}</p>
                             </li>
                             <li class="user-footer d-flex justify-content-between align-items-center">

@@ -12,6 +12,13 @@
 
             @endif
                 {{-- <p></p> --}}
+                <form id="searchForm" action="{{ route('books.searchemploy') }}" method="GET">
+    <div class="input-group mb-3">
+        <input type="text" name="search" class="form-control" placeholder="Search for books or authors..." value="{{ request('search') }}">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+</form>
+
         <table class="table table-striped">
             <thead>
                 <tr>

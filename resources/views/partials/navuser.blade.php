@@ -91,13 +91,21 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown user-menu">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img src="../../dist/assets/img/user2-160x160.jpg" class="user-image rounded-circle shadow" alt="User Image">
+                           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                             @if(auth()->user()->image)
+                              <img width="35" height="35" src="{{ asset('user_images/' . auth()->user()->image) }}" class="rounded-circle shadow" alt="User Image">
+                                @else
+                            <img width="35" height="35" src="{{ asset('/images/userdetails.jpg') }}" class="rounded-circle shadow" alt="Default User Image">
+                             @endif   
                             <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                             <li class="user-header text-bg-primary">
-                                <img src="../../dist/assets/img/user2-160x160.jpg" class="rounded-circle shadow" alt="User Image">
+                            @if(auth()->user()->image)
+                              <img width="35" height="35" src="{{ asset('user_images/' . auth()->user()->image) }}" class="rounded-circle shadow" alt="User Image">
+                                @else
+                            <img width="35" height="35" src="{{ asset('/images/userdetails.jpg') }}" class="rounded-circle shadow" alt="Default User Image">
+                             @endif  
                                 <p>{{ Auth::user()->name }}</p>
                             </li>
                             <li class="user-footer d-flex justify-content-between align-items-center">

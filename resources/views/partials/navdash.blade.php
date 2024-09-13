@@ -183,13 +183,23 @@
                      </li>
                      <li class="nav-item dropdown user-menu">
                          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                             <img src="../../dist/assets/img/user2-160x160.jpg" class="user-image rounded-circle shadow" alt="User Image">
-                             <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
+                         @if(Auth::check() && Auth::user()->image && file_exists(public_path('storage/user_images/' . Auth::user()->image)))
+            <img src=" asset('storage/' . $user->image) " alt="User Image" width="35px" height="35px" class="rounded-circle shadow">
+        @else
+            <img src="{{ asset('images/userdetails.jpg') }}" alt="Default User Image" width="35px" height="35px" class="rounded-circle shadow">
+        @endif
+
+
+                                                  <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                          </a>
                          <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                              <li class="user-header text-bg-primary">
-                                 <img src="../../dist/assets/img/user2-160x160.jpg" class="rounded-circle shadow" alt="User Image">
-                                 <p>{{ Auth::user()->name }}</p>
+                             @if(Auth::check() && Auth::user()->image && file_exists(public_path('storage/user_images/' . Auth::user()->image)))
+                                   <img src="{{  asset('storage/' . $user->image)  }}" alt="User Image" width="35px" height="35px" class="rounded-circle shadow">
+                               @else
+                                   <img src="{{ asset('images/userdetails.jpg') }}" alt="Default User Image" width="35px" height="35px" class="rounded-circle shadow">
+                               @endif    
+                            <p>{{ Auth::user()->name }}</p>
                              </li>
                              <li class="user-footer d-flex justify-content-between align-items-center">
                                  <a href="{{ route('profile.edit') }}" class="btn btn-default btn-flat ms-4 mr-1">Profile</a>
@@ -208,6 +218,7 @@
              </div>
          </div>
      </nav>
+     
 
      <!-- Your content goes here -->
 

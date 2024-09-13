@@ -5,11 +5,17 @@
         <div class="card w-75">
             <div class="card-body">
                 <div class="text-center mb-4">
-                    @if($user->image)
-                        <img src="{{ asset('user_images/' . $user->image) }}" alt="User Image" width="80px" class="d-block mx-auto mb-4">
-                    @else
-                        <img src="/images/userdetails.jpg" alt="Default User Image" width="80px" class="d-block mx-auto mb-4">
-                    @endif
+                <div class="text-center mb-4">
+                <div class="text-center mb-4">
+    @if($user->image && file_exists(public_path('storage/' . $user->image)))
+        <img src="{{ asset('storage/' . $user->image) }}" alt="User Image" width="80px" class="d-block mx-auto mb-4">
+    @else
+        <img src="{{ asset('images/userdetails.jpg') }}" alt="Default User Image" width="80px" class="d-block mx-auto mb-4">
+    @endif
+</div>
+  
+</div>
+
                 </div>
                 <h2 class="text-center mb-4">{{ __('public.User_Details') }}</h2>
                 

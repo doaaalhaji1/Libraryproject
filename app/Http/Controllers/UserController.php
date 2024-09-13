@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Str;
 
@@ -53,7 +54,7 @@ class UserController extends Controller
     if ($request->hasFile('image')) {
         $image = $request->file('image');
         $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension(); // اسم عشوائي للصورة
-        $image->move(public_path('user_images'), $imageName); // حفظ الصورة في مسار 'user_images'
+        $imageName = $image->store('user_images', 'public'); // تخزين الصورة في storage/app/public/user_images
     }
 
     // إنشاء المستخدم وحفظ الصورة في قاعدة البيانات
@@ -109,13 +110,13 @@ class UserController extends Controller
         if ($request->hasFile('image')) {
             // التحقق من وجود صورة قديمة وحذفها
             if ($user->image && file_exists(public_path('images/users/' . $user->image))) {
-                unlink(public_path('images/users/' . $user->image)); // حذف الصورة القديمة
+                Storage::disk('public')->delete($user->image); // حذف الصورة القديمة من storage
             }
     
             // رفع الصورة الجديدة
             $image = $request->file('image');
             $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension(); // اسم عشوائي للصورة
-            $image->move(public_path('user_images'), $imageName); // حفظ الصورة في مسار 'user_images'
+            $imageName = $image->store('user_images', 'public'); // تخزين الصورة الجديدة
             $user->image = $imageName; // تحديث حقل الصورة في قاعدة البيانات
         }
     
@@ -137,11 +138,13 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if ($user->image && file_exists(public_path('user_images/' . $user->image))) {
-            unlink(public_path('images/users/' . $user->image));
-        }
-    
-        $user->delete();
+          // تحقق من وجود الصورة وحذفها
+    if ($user->image && Storage::disk('public')->exists('user_images/' . $user->image)) {
+        Storage::disk('public')->delete('user_images/' . $user->image);
+    }
+
+    // حذف المستخدم من قاعدة البيانات
+    $user->delete();
     
         return redirect()->route('users')
                          ->with('success', __('public.user_deleted'));

@@ -26,7 +26,7 @@
                 @foreach ($authors as $author)
                     <tr>
                         <td>{{ $author->name }}</td>
-                        <td>{{ $author->discription }}</td>
+                        <td>{{ $author->description }}</td>
                         <td>{{ $author->nationality }}</td>
                         <td>{{ $author->birthdate ? $author->birthdate->format('Y-m-d') : '' }}</td>
 

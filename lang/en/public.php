@@ -12,6 +12,8 @@ return [
 
   'remember_me' => 'Remember me',
   'forgot_password' => 'Forgot your password?',
+  'email_password_reset_link' => 'Email Password Reset Link',
+
   'login' => 'Login',
   'secure_area_message' => 'This is a secure area of the application. Please confirm your password before proceeding.',
   'confirm' => 'Confirm',
@@ -60,4 +62,15 @@ return [
 'reservation_deleted' => 'Reservation deleted successfully',
 'reservation_approved' => 'Reservation approved successfully',
 'reservation_rejected' => 'Reservation rejected successfully',
+
+
+// home
+'home'=>'Home',
+'Library'=>'Our Library',
+'Welcome-home'=>'Welcome to our library',
+'description_home' => 'Where you are provided with all the books you want',
+'unique_experience' => 'Our library offers you a unique online reading experience, with a wide range of books available for direct reading, with an easy-to-use interface and personalized services to enhance your experience.<br><br> To start reading books, you must <span style="color:rgb(194, 103, 70)">Log in</span> first',
+
+
+
 ];

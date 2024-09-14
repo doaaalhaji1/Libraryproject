@@ -1,11 +1,18 @@
+
 <x-guest-layout>
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+ <div>
 
+        @include('partials.langouge')
+
+        </div>
     <form method="POST" action="{{ route('login') }}">
         @csrf
-
+       
+        <br>
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('public.email')" />
@@ -34,16 +41,26 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('public.forgot_password') }}
-                </a>
-            @endif
+        @if (Route::has('password.request'))
+    <a class="forgot-password-link underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+        {{ __('public.forgot_password') }}
+    </a>
+@endif
+
+<a class="register-link underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
+    {{ __('public.register') }}
+</a>
+<style>
+    .forgot-password-link {
+        margin-right: 20px; 
+        margin-left: 20px; 
+    }
+</style>
 
             <x-primary-button class="ms-3">
                 {{ __('public.login') }}
             </x-primary-button>
+            
         </div>
     </form>
-    @include('partials.langouge')
 </x-guest-layout>

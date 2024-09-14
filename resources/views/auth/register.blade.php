@@ -1,6 +1,10 @@
 <x-guest-layout>
 
+<div>
 
+@include('partials.langouge')
+
+</div>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -50,6 +54,6 @@
                 {{ __('public.register') }}
             </x-primary-button>
         </div>
+    
     </form>
-    @include('partials.langouge')
 </x-guest-layout>

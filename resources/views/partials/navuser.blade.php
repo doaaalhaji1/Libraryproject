@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../dist/css/adminlte.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
+    @if (app()->getLocale() == 'ar')
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+    @endif
     <style>
         body {
             padding: 0;
@@ -58,10 +61,24 @@
         .translation-link {
             color: black;
         }
+         /* RTL adjustments */
+         [dir="rtl"] .app-header .navbar {
+            flex-direction: row-reverse;
+        }
+        [dir="rtl"] .app-header .navbar-nav .nav-item {
+            margin-left: 10px;
+            margin-right: 0;
+        }
+        [dir="rtl"] .app-header .navbar-nav .nav-link {
+            padding-left: 8px;
+            padding-right: 0;
+        }
+        
+        
     </style>
 </head>
 <body>
-    <nav class="app-header navbar navbar-expand navbar-light bg-white">
+    <nav class="app-header navbar navbar-expand navbar-light bg-white ">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -72,13 +89,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item d-none d-md-block ms-5">
-                        <a href="{{route('page_books')}}" class="nav-link">ALL Books</a>
+                        <a href="{{route('page_books')}}" class="nav-link">{{__('user.ALL_Books')}}</a>
                     </li>
                     <li class="nav-item d-none d-md-block  ms-4">
-                        <a href="{{route('mybook_user')}}" class="nav-link">My Books</a>
+                        <a href="{{route('mybook_user')}}" class="nav-link">{{__('user.My_Books')}}</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto me-0">
                     <li class="nav-item">
                        {{-- <a class="nav-link translation-link d-flex align-items-center" href="#"> --}}
                             @include('partials.langouge')
@@ -109,13 +126,13 @@
                                 <p>{{ Auth::user()->name }}</p>
                             </li>
                             <li class="user-footer d-flex justify-content-between align-items-center">
-                                <a href="{{ route('profile.edit') }}" class="btn btn-default btn-flat ms-4 mr-1">Profile</a>
+                                <a href="{{ route('profile.edit') }}" class="btn btn-default btn-flat ms-4 mr-1">{{__('public.Profile')}}</a>
                                 <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                                     @csrf
                                     <x-dropdown-link class="btn btn-default btn-flat" :href="route('logout')"
                                         onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                                        {{ __('Log Out') }}
+                                        {{ __('public.Log_Out') }}
                                     </x-dropdown-link>
                                 </form>
                             </li>

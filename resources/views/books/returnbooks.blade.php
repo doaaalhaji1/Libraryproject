@@ -29,10 +29,12 @@
             <td>{{ $book->reservation->reservation_end_date }}</td>
 
             {{-- مقارنة تاريخ التسليم مع تاريخ انتهاء الحجز --}}
+
             @php
                 $deliveryDate = now()->format('Y-m-d'); // تاريخ التسليم (اليوم)
                 $endDate = $book->reservation->reservation_end_date; // تاريخ انتهاء الحجز
             @endphp
+
             <td style="background-color: {{ $deliveryDate > $endDate ? 'red' : 'green' }};">
                 {{ $deliveryDate }}
             </td>

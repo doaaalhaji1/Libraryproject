@@ -108,28 +108,22 @@ class ReservationController extends Controller
 
 
     }
-
             //اعادة الكتاب من قبل الموظف او المدير
-            public function returnemployee(Book $book)
-            {
+        public function returnemployee(Book $book)
+        {
 
-                $book->update([
-                    'status' => 'available',
-                ]);
+            $book->update([
+                'status' => 'available',
+            ]);
+            // الكتاب تابع  لحجز جلب هذا  الحجز
+           $reservation= $book->reservation;
+            // تحديث الحجز لتخزين معرف الموظف الذي استلم الكتاب
+            $reservation->update([
+                'recipient_user_id' => auth()->id(),
+            ]);
 
-                // الحصول على الحجز المرتبط بالكتاب
-                $reservation = $book->reservation;
+            return redirect()->route('return_book')->with('success', 'تم استلام الكتاب بنجاح.');
 
-                // إذا كان هناك حجز، نقوم بتحديثه
-
-                $reservation->update([
-                    'recipient_user_id' => auth()->id(), // تحديث معرف المستخدم المستلم
-                ]);
-
-
-                return redirect()->route('return_book')->with('success');
-
-
-            }
+        }
         }
 

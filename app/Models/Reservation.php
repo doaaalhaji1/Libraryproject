@@ -16,7 +16,8 @@ class Reservation extends Model
         'reservation_start_date',
         'reservation_end_date',
         'status',
-        'employee_id'
+        'employee_id',
+        'recipient_user_id'
     ];
 
     public function user()

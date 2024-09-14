@@ -81,14 +81,14 @@
 
                 <div class="button">
                 @if(auth()->check() && auth()->user()->role != 'employee')
-                   <a href="{{ route('users.create') }}" class="centered-link"> 
+                   <a href="{{ route('users.create') }}" class="centered-link">
                   <i class="bi bi-plus-circle-fill"></i> Add User
                  </a>
-                   @endif            
+                   @endif
                     <a href="{{ route('books.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add Book</a>
                     <a href="{{ route('categories.create')}}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add Categ</a>
                     <a href="{{ route('authors.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add Authr</a>
-                    
+
                 </div>
 
 

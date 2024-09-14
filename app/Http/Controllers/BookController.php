@@ -244,10 +244,13 @@ public function searchemploy(Request $request)
                   });
             });
 
-        $books = $booksQuery->get();
-    } 
+        $books = $booksQuery->get();  
+        return view('books.index', compact('books'));
 
-    return view('books.index', compact('books'));
+    } 
+    return back()->with('message', 'Please enter a search term.');
+
+
 }
 
 }

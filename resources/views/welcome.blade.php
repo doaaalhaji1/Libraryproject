@@ -40,7 +40,7 @@
         .navbar-nav .nav-item {
 
 
-            margin-left: 20px; 
+            margin-left: 20px;
           }
 
 
@@ -53,15 +53,15 @@
 
 /* الهوامش للنصوص في الاتجاه العربي */
       [dir="rtl"] .description {
-        margin-left: 0; 
-       margin-right: 30px; 
+        margin-left: 0;
+       margin-right: 30px;
        }
        [dir="rtl"] .ms-auto {
     margin-right: auto !important;
     margin-left: 0 !important;
 }
-        
-        
+
+
     </style>
 <body>
 
@@ -73,7 +73,7 @@
 				 <div class="row">
 					<div class="col-xs-6 col-sm-5 col-sm-offset-1">
 						<div class="header-wrapper" style="color:black">
-                       
+
 							<h1 class="header-title">{{__('public.Welcome-home')}}</h1>
                             <p class="header-sub" style="color:black ">
                                 {{__('public.description_home')}}
@@ -105,6 +105,8 @@
 				</div> <!-- .row -->
 			</div> <!-- /.container-fluid -->
 
+            {{-- تعديل تجريب  --}}
+            {{-- تعديل تجريب  --}}
 	</section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 

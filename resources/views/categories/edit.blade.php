@@ -2,7 +2,19 @@
 @extends('layouts.createditeshow')
 
 @include('partials.navdash')
+<style>
+    [dir="rtl"] label.form-label {
+        text-align: right;
+        display: block;
+    }
 
+    [dir="ltr"] label.form-label {
+        text-align: left;
+        display: block;
+    }
+
+    
+</style>
 @section('content')
     <div class="d-flex justify-content-center align-items-center" style="margin-top:100px ">
         <div class="card w-50">
@@ -24,15 +36,15 @@
 
                 @endif
                 <div class="mb-3">
-                    <label for="name" class="form-label">{{  __ ('messages.category_name') }}</label>
+                    <label for="name" class="form-label">{{ __('dash.category_name') }}</label>
                     <input type="name" class="form-control" id="name" name="name" value="{{$category->name}}">
                 </div>
                 <div class="mb-3">
-                    <label for="slug" class="form-label">{{  __ ('messages.category_description') }}</label>
+                    <label for="slug" class="form-label">{{  __ ('dash.description') }}</label>
                     <input type="name" class="form-control" id="slug" name="slug" value="{{$category->slug}}">
                 </div>
                 <div class="text-center mt-3">
-                    <button type="submit" class="btn btn-primary w-50">{{ __('public.Register') }}</button>
+                    <button type="submit" class="btn btn-primary w-50">{{ __('dash.edit') }}</button>
                 </div>
            </form>
             </div>

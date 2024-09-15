@@ -50,6 +50,11 @@ return [
 'reservation_end_date' => 'Date of Reservation End',
     'delivery_date' => 'Delivery Date',
     'receive' => 'Receive',
+    'category_name' => 'category name ',
+    'add_category' => 'Add category ',
+    'edit_category' => 'Edit Category',     
+
+
 
 
 ];

@@ -17,10 +17,10 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>{{  __ ('messages.category_name') }}</th>
-                    <th>{{  __ ('messages.slug') }}</th>
-                    <th>{{  __ ('messages.action') }}</th>
-                </tr>
+                    <th>{{ __('dash.category_name') }}</th>
+                    <th>{{ __('dash.description') }}</th>
+                    <th>{{ __('dash.action') }}</th>
+                    </tr>
             </thead>
             <tbody>
                 @foreach ($categories as $category)
@@ -29,12 +29,12 @@
                         <td>{{ $category->slug }}</td>
 
                         <td>
-                        <a href="{{ route('categories.edit', $category) }}" class="btn btn-primary">{{  __ ('messages.edit') }}</a>
+                        <a href="{{ route('categories.edit', $category) }}" class="btn btn-primary">{{ __('dash.edit') }}</a>
 
                        <form action="{{ route('categories.destroy', $category) }}" class="d-inline" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">{{  __ ('messages.delete') }}</button>
+                            <button type="submit" class="btn btn-danger">{{ __('dash.delete') }}</button>
                         </td>
                         </form>
 

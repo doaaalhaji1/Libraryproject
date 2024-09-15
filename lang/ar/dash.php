@@ -46,6 +46,11 @@ return [
  'reservation_end_date' => 'تاريخ انتهاء الحجز',
     'delivery_date' => 'تاريخ التسليم  ',
     'receive' => 'استلم',
+    'category_name' => 'اسم الفئة',
+    'add_category' => 'إضافة فئة',
+    'edit_category' => ' تعديل فئة',     
+
+
 
 
 

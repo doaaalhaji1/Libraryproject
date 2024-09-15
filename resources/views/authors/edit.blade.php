@@ -4,6 +4,20 @@
     <title>Document</title>
     <!-- إضافة CSS ل Flatpickr -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+    [dir="rtl"] label.form-label {
+        text-align: right;
+        display: block;
+    }
+
+    [dir="ltr"] label.form-label {
+        text-align: left;
+        display: block;
+    }
+
+    
+</style>
 </head>
 
 @extends('layouts.createditeshow')
@@ -15,7 +29,7 @@
         <div class="card w-50">
             <div class="card-body">
                 <img src="/images/edituser.png" alt="..." width="70px" class="d-block mx-auto mb-3">
-                <h2 class="text-center">{{ __('تعديل بيانات المؤلف') }}</h2>
+                <h2 class="text-center">{{ __('dash.edit_author_data') }}</h2>
                 <form class="centered-form Style2" action="{{ route('authors.update' , $author) }}" method="POST">
                     @csrf
                     @method('PUT')
@@ -30,17 +44,17 @@
 
                 @endif
                     <div class="mb-3">
-                        <label for="name" class="form-label">{{  __ ('messages.name') }}</label>
-                        <input type="name" class="form-control" id="name" name="name" value="{{$author->name}}">
+                    <label for="name" class="form-label">{{ __('dash.name') }}</label>
+                    <input type="name" class="form-control" id="name" name="name" value="{{$author->name}}">
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">{{  __ ('messages.discription') }}</label>
-                        <input type="text" class="form-control" id="description" name="description" value="{{ $author->description }}">
+                    <label for="description" class="form-label">{{ __('dash.description') }}</label>
+                    <input type="text" class="form-control" id="description" name="description" value="{{ $author->description }}">
                     </div>
 
                     <div class="mb-3">
-                            <label for="nationality" class="form-label">{{ __('nationality') }}</label>
-                            <select name="nationality" id="nationality" class="form-select">
+                    <label for="nationality" class="form-label">{{ __('dash.nationality') }}</label>
+                    <select name="nationality" id="nationality" class="form-select">
                                 <option value="English" {{ $author->nationality == 'English' ? 'selected' : '' }}>{{ __('English') }}</option>
                                 <option value="Arabic" {{ $author->nationality == 'Arabic' ? 'selected' : '' }}>{{ __('Arabic') }}</option>
                                 <option value="French" {{ $author->nationality == 'French' ? 'selected' : '' }}>{{ __('French') }}</option>
@@ -48,12 +62,12 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="birthdate" class="form-label">{{ __('Birthdate') }}</label>
-                        <input type="text" name="birthdate" id="birthdate" class="form-control" value="" />
+                    <label for="birthdate" class="form-label">{{ __('dash.birthdate') }}</label>
+                    <input type="text" name="birthdate" id="birthdate" class="form-control" value="" />
                     </div>
 
                     <div class="text-center mt-3">
-                        <button type="submit" class="btn btn-primary w-50">{{ __('public.Register') }}</button>
+                    <button type="submit" class="btn btn-primary w-50">{{ __('dash.register') }}</button>
                     </div>
             </form>
 

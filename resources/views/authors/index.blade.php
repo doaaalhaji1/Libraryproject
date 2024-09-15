@@ -17,9 +17,11 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>{{  __ ('messages.name') }}</th>
-                    <th>{{  __ ('messages.discription') }}</th>
-                    <th>{{  __ ('messages.action') }}</th>
+                <th>{{ __('dash.name') }}</th>
+                <th>{{ __('dash.description') }}</th>
+                <th>{{ __('dash.nationality') }}</th>
+                <th>{{ __('dash.birthdate') }}</th>
+                <th>{{ __('dash.action') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,12 +33,12 @@
                         <td>{{ $author->birthdate ? $author->birthdate->format('Y-m-d') : '' }}</td>
 
                         <td>
-                        <a href="{{ route('authors.edit', $author) }}" class="btn btn-warning btn-sm">{{  __ ('messages.edit') }}</a>
+                        <a href="{{ route('authors.edit', $author) }}" class="btn btn-warning btn-sm">{{ __('dash.edit') }}</a>
 
                        <form action="{{ route('authors.destroy', $author) }}" class="d-inline" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">{{  __ ('messages.delete') }}</button>
+                            <button type="submit" class="btn btn-danger btn-sm">{{ __('dash.delete') }}</button>
                         </td>
                         </form>
 

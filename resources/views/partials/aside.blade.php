@@ -68,26 +68,26 @@
  <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
 
       <div class="sidebar mt-4" style="color:white;">
-                    <h2>Dash Board</h2>
-                    <h5 style="margin-bottom:40px">Library Mangment System</h5>
+                    <h2>{{__('dash.Dashboard')}}</h2>
+                    <h5 style="margin-bottom:40px">{{__('dash.Library_Mangment_System')}}</h5>
 
                  <a href="{{ route('reservation') }}" class="animated-button">
-                    Reserved Books
+                 {{__('dash.Reserved_Books')}}
                 </a>
 
                 <a href="{{ route('return_book') }}" class="animated-button">
-                    Returned Books
+                    {{__('dash.Returned_Books')}}
                 </a>
 
                 <div class="button">
                 @if(auth()->check() && auth()->user()->role != 'employee')
                    <a href="{{ route('users.create') }}" class="centered-link">
-                  <i class="bi bi-plus-circle-fill"></i> Add User
+                  <i class="bi bi-plus-circle-fill"></i> {{__('dash.Add_User')}}
                  </a>
                    @endif
-                    <a href="{{ route('books.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add Book</a>
-                    <a href="{{ route('categories.create')}}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add Categ</a>
-                    <a href="{{ route('authors.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> Add Authr</a>
+                    <a href="{{ route('books.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> {{__('dash.Add_Book')}}</a>
+                    <a href="{{ route('categories.create')}}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> {{__('dash.Add_Categ')}}</a>
+                    <a href="{{ route('authors.create') }}" class="centered-link"> <i class="bi bi-plus-circle-fill"></i> {{__('dash.Add_Authr')}}</a>
 
                 </div>
 

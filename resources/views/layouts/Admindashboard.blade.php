@@ -46,7 +46,7 @@
                             <a href="{{ route('users') }}" class="text-decoration-none"> <!-- Add link here -->
                                 <div class="small-box text-bg-primary">
                                     <div class="inner">
-                                        <h3>ALL Users</h3>
+                                        <h3>{{__('dash.ALL_Users')}}</h3>
                                         <p><i class="fas fa-users" style="font-size: 30px;"></i></p>
                                     </div>
                                 </div> <!--end::Small Box Widget 4-->
@@ -58,7 +58,7 @@
                             <a href="{{ route('books') }}" class="text-decoration-none"> <!-- Add link here -->
                                 <div class="small-box text-bg-success">
                                     <div class="inner">
-                                        <h3>ALL Books</h3>
+                                        <h3>{{__('dash.ALL_Books')}}</h3>
                                         <p>
                                             <i class="fas fa-book" style="font-size: 30px;"></i>
 
@@ -72,7 +72,7 @@
                             <a href="{{ route('categories') }}" class="text-decoration-none"> <!-- Add link here -->
                                 <div class="small-box text-bg-danger">
                                     <div class="inner">
-                                        <h3>ALL categories</h3>
+                                        <h3>{{__('dash.ALL_categories')}}</h3>
                                         <p><i class="fas fa-grip-vertical" style="font-size: 30px;"></i></p>
                                     </div>
                                 </div> <!--end::Small Box Widget 2-->
@@ -82,7 +82,7 @@
                             <a href="{{ route('authors') }}" class="text-decoration-none"> <!-- Add link here -->
                                 <div class="small-box text-bg-info">
                                     <div class="inner">
-                                        <h3>ALL Authors</h3>
+                                        <h3>{{__('dash.ALL_Authors')}}</h3>
                                         <p><i class="fas fa-users" style="font-size: 30px;"></i></p>
                                     </div>
                                 </div> <!--end::Small Box Widget 3-->
@@ -95,13 +95,7 @@
                 @yield("content")
             </div>
                      </main>
-                     <script>
-    document.getElementById('toggle-sidebar').addEventListener('click', function() {
-        const sidebar = document.querySelector('.app-sidebar');
-        sidebar.classList.toggle('hidden');
-        sidebar.classList.toggle('visible');
-    });
-</script>
+   
                     </body>
 
         <footer class="app-footer"> <!--begin::To the end-->

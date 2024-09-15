@@ -53,8 +53,8 @@
 
 /* الهوامش للنصوص في الاتجاه العربي */
       [dir="rtl"] .description {
-        margin-left: 0; /* لا توجد هوامش من اليسار في الاتجاه RTL */
-       margin-right: 30px; /* الهوامش اليمنى في الاتجاه RTL */
+        margin-left: 0; 
+       margin-right: 30px; 
        }
        [dir="rtl"] .ms-auto {
     margin-right: auto !important;

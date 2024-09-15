@@ -157,16 +157,16 @@
             </a>
              <div class="collapse navbar-collapse" id="navbarNav">
                  <ul class="navbar-nav">
-                     <li class="nav-item ms-2">
+                     <!-- <li class="nav-item ms-2">
                          <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
                              <i class="bi bi-list"></i>
                          </a>
-                     </li>
+                     </li> -->
                      <li class="nav-item d-none d-md-block ms-2">
-                        <a href="{{route('dashboard')}}" class="nav-link">Dashboard</a>
+                        <a href="{{route('dashboard')}}" class="nav-link">{{__('dash.Dashboard')}}</a>
                     </li>
                     <li class="nav-item d-none d-md-block ms-3">
-                        <a href="{{route('page_books')}}" class="nav-link">ALL Books</a>
+                        <a href="{{route('page_books')}}" class="nav-link">{{__('dash.ALL_Books')}}</a>
                     </li>
                     <li class="nav-item d-none d-md-block  ms-3">
                         <a href="{{route('revrese_books_data')}}" class="nav-link"> Reserved Books Data</a>

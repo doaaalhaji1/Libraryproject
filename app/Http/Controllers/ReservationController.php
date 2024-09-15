@@ -57,8 +57,8 @@ class ReservationController extends Controller
 
 
 
-                return redirect()->route('page_books')->with('success', __('Book has been reserved successfully.'));
-     }
+                return redirect()->route('page_books')->with('success', __('public.book_reserved_successfully'));
+            }
 
 
      //عرض فورم حجز كل الكتب المتاحة
@@ -100,7 +100,7 @@ class ReservationController extends Controller
         }
 
 
-        return redirect()->route('page_books')->with('success', 'Reservation created successfully.');
+        return redirect()->route('page_books')->with('success', __('public.reservation_created_successfully'));
     }
 
 
@@ -135,7 +135,7 @@ class ReservationController extends Controller
             }
 
 
-            return redirect()->route('reservation')->with('danger', 'Reservation approved successfully.');
+            return redirect()->route('reservation')->with('danger', __('public.reservation_approved_successfully'));
         }
 
 
@@ -165,7 +165,7 @@ class ReservationController extends Controller
                 'recipient_user_id' => auth()->id(),
             ]);
 
-            return redirect()->route('return_book')->with('success', 'تم استلام الكتاب بنجاح.');
+            return redirect()->route('return_book')->with('success', __('public.book_received_successfully'));
 
         }
         }

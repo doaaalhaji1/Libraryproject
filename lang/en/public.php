@@ -81,6 +81,16 @@ return [
 'ok'=>'ok',
 'profile_image'=>'add profile image',
 'cd'=>' category description',
+'author_created' => 'Author has been created successfully',
+'author_updated' => 'Author has been updated successfully',
+'author_deleted' => 'Author has been deleted successfully',
+'book_reserved_successfully' => 'Book has been reserved successfully',
+'reservation_created_successfully' => 'Reservation created successfully',
+'reservation_approved_successfully' => 'Reservation approved successfully',
+'book_received_successfully' => 'Book received successfully.',
+
+
+
 
 
 

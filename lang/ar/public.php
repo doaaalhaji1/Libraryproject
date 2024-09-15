@@ -74,5 +74,15 @@ return [
 'ok'=>'حسناً',
 'profile_image'=>'إضافة صورة الملف الشخصي',
 'cd'=>'وصف المجموعة',
+'author_created' => 'تم إنشاء المؤلف بنجاح',
+'author_updated' => 'تم تحديث المؤلف بنجاح',
+'author_deleted' => 'تم حذف المؤلف بنجاح',
+'book_reserved_successfully' => 'تم حجز الكتاب بنجاح',
+'reservation_created_successfully' => 'تم إنشاء الحجز بنجاح',
+'reservation_approved_successfully' => 'تمت الموافقة على الحجز بنجاح',
+'book_received_successfully' => 'تم استلام الكتاب بنجاح.',
+
+
+
 ];
 

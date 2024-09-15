@@ -15,8 +15,8 @@
             <tr>
                 <th>{{ __('public.name') }}</th>
                 <th>{{ __('public.email') }}</th>
-                <th>{{ __('public.role') }}</th>
-                <th>{{ __('public.Action') }}</th>
+                <th>{{ __('public.Role') }}</th>
+                <th>{{ __('dash.action') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -39,12 +39,12 @@
     </form>
 </td>
                     <td>
-                        <a href="{{ route('users.show', $user['id']) }}" class="btn btn-primary">{{ __('public.show') }}</a>
-                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">{{ __('public.edit') }}</a>
+                        <a href="{{ route('users.show', $user['id']) }}" class="btn btn-primary">{{ __('dash.show') }}</a>
+                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">{{ __('dash.edit') }}</a>
                         <form action="{{ route('users.destroy', $user['id']) }}" class="d-inline" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">{{ __('public.delete') }}</button>
+                            <button type="submit" class="btn btn-danger">{{ __('dash.delete') }}</button>
                         </form>
                     </td>
                 </tr>

@@ -1,7 +1,19 @@
 @extends('layouts.createditeshow')
 
 @include('partials.navdash')
+<style>
+    [dir="rtl"] label.form-label {
+        text-align: right;
+        display: block;
+    }
 
+    [dir="ltr"] label.form-label {
+        text-align: left;
+        display: block;
+    }
+
+    
+</style>
 @section('content')
     <div class="d-flex justify-content-center align-items-center" style="margin-top:25px ">
         <div class="card w-50">
@@ -54,12 +66,12 @@
                     </div>
                     <!--  حقل رفع الصورة -->
                     <div class="mb-3">
-                        <label for="image" class="form-label">{{ __('public.User_Image') }}</label>
+                        <label for="image" class="form-label">{{ __('dash.select_image') }}</label>
                         <input type="file" id="image" name="image" class="form-control">
                     </div>
 
                     <div class="text-center mt-3">
-                        <button type="submit" class="btn btn-primary w-50">{{ __('public.Update') }}</button>
+                        <button type="submit" class="btn btn-primary w-50">{{ __('dash.edit') }}</button>
                     </div>
                 </form>
             </div>

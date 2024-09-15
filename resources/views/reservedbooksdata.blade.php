@@ -19,6 +19,8 @@
                              {{-- employee دالة موجودة في مودل الحجز  كل حجز  له موظف موافق عليه --}}
                             <p class="card-text mb-2"><strong>Book booked by:</strong><br> {{ $reservation->employee->name}}</p>
                             {{-- اسم الموظف الذي استلم على الحجز --}}
+
+                            
                              {{-- اسم الموظف الذي استلم على الحجز --}}
                             <p class="card-text mb-2">
                                 <strong>Book received by:</strong><br>

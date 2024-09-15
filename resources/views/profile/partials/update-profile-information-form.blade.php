@@ -13,7 +13,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 
@@ -45,6 +45,16 @@
                     @endif
                 </div>
             @endif
+        </div>
+
+        <!-- إضافة حقل لتغيير الصورة الشخصية -->
+        <div>
+            <x-input-label for="image" :value="__('public.profile_image')" />
+            <input type="file" id="image" name="image" class="mt-1 block w-full">
+            @if ($user->image)
+                <img src="{{ asset('storage/' . $user->image) }}" alt="Profile Image" class="mt-2" style="max-height: 150px;">
+            @endif
+            <x-input-error class="mt-2" :messages="$errors->get('image')" />
         </div>
 
         <div class="flex items-center gap-4">

@@ -52,7 +52,14 @@ return [
     'receive' => 'Receive',
     'category_name' => 'category name ',
     'add_category' => 'Add category ',
-    'edit_category' => 'Edit Category',     
+    'edit_category' => 'Edit Category',  
+    'strt_date'=>'Strat Date',   
+    'book_titles'=>'books titles',
+    'accept'=>'Accept',
+    'reject'=>'reject',
+    'Book_booked_by'=>'Book booked by:',
+    'Book_received_by'=>'Book received by:',
+
 
 
 

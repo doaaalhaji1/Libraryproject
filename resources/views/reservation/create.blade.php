@@ -5,6 +5,19 @@
     <title>Document</title>
     <!-- إضافة CSS ل Flatpickr -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+    [dir="rtl"] label.form-label {
+        text-align: right;
+        display: block;
+    }
+
+    [dir="ltr"] label.form-label {
+        text-align: left;
+        display: block;
+    }
+
+    
+</style>
 </head>
 
 @extends('layouts.createditeshow')
@@ -16,7 +29,7 @@
         <div class="card w-50">
             <div class="card-body">
                 <img src="/images/reservationbook.png" alt="..." width="80px" class="d-block mx-auto mb-3">
-                <h2 class="text-center">{{ __('public.Create_New_User') }}</h2>
+                <h2 class="text-center">{{ __('user.Create_New_reservation') }}</h2>
 
                 <form class="centered-form Style2" action="{{ route('reservations.store') }}" method="POST">
                     @csrf
@@ -34,23 +47,23 @@
                         <input type="hidden" name="book_id" value="{{ $book->id }}">
 
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title Book</label>
+                            <label for="title" class="form-label">{{ __('dash.book_title')}}</label>
                             <input type="text" class="form-control" name="title" value="{{ $book->title }}" readonly>
                         </div>
 
                     <div class="mb-3">
-                        <label for="birthdate" class="form-label">start reservation</label>
+                        <label for="birthdate" class="form-label">{{  __ ('dash.strt_date') }}</label>
                         <input type="text" name="start_date" id="birthdate" class="form-control" value="" />
                     </div>
 
                     <div class="mb-3">
-                        <label for="birthdate" class="form-label">end reservations</label>
+                        <label for="birthdate" class="form-label">{{  __('dash.reservation_end_date') }}</label>
                         <input type="text" name="end_date" id="birthdate" class="form-control" value="" />
                     </div>
 
 
                     <div class="text-center mt-3">
-                        <button type="submit" class="btn btn-primary w-50">{{ __('public.Register') }}</button>
+                        <button type="submit" class="btn btn-primary w-50">{{ __('user.creat') }}</button>
                     </div>
             </form>
 

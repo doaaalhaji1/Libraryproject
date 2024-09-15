@@ -12,6 +12,16 @@ return [
  'READ' => 'Read',
   'RETURN' => 'Return',
  'CONFIRM_RETURN' => 'Are you sure you want to return this book?',
+ 'welcome_message' => 'Welcome to our library',
+ 'library_description' => 'We provide all the books you are looking for',
+ 'reserve_books_message' => 'To reserve more than one book, click on the following button ...',
+ 'books_reservation' => 'Books Reservation',
+ 'Create_New_reservation'=>'Create New reservation',
+ 'creat'=>'creat',
+ 'RETURN'=>'RETURN',
+ 'CONFIRM_RETURN'=>' Are you sure you want to repeat?   ',
+ 'NO_BOOKS_AVAILABLE' => 'No books are currently available for reservation.',
+
 
 
 

@@ -17,11 +17,12 @@
 @extends('partials.navuser')
 
 <div class="page">
-    <div class="positionbutton">
-        <h2><span style="color:orange;">Welcome to our library,</span> we provide all the books you are looking for</h2>
+    <br>
+    <div class="positionbutton container">
+        <h2><span style="color:orange;">{{ __('user.welcome_message') }}</span>{{ __('user.library_description') }}</h2>
         <div class="d-flex align-items-center ms-3"> <!-- إضافة ديف للحاوية -->
-            <h5 class="mb-0">To reserve more than one book, click on the following button ...</h5>
-            <a href="{{ route('books_reservation') }}" class="btn btn-primary ms-2 rounded-5">Books Reservation </a>
+            <h5 class="mb-0">{{ __('user.reserve_books_message') }}</h5>
+            <a href="{{ route('books_reservation') }}" class="btn btn-primary ms-2 rounded-5">{{ __('user.books_reservation') }} </a>
         </div>
     </div>
     <br>
@@ -29,20 +30,26 @@
         <!-- نموذج البحث النصي والفئة -->
         <form id="searchForm" action="{{ route('books.search') }}" method="GET">
             <div class="input-group mb-3">
-                <input type="text" name="search" class="form-control" placeholder="Search for books or authors..." value="{{ request('search') }}">
+                <input type="text" name="search" class="form-control" placeholder="{{__('user.Searchf')}}" value="{{ request('search') }}">
                 <select name="category" class="form-select" onchange="submitForm()">
-                    <option value="">Select Category</option>
+                    <option value="">{{__('user.Select_Category')}}</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
                             {{ $category->name }}
                         </option>
                     @endforeach
                 </select>
-                <button class="btn btn-primary" type="submit">Search</button>
+                <button class="btn btn-primary" type="submit">{{__('user.Search')}}</button>
             </div>
         </form>
     </div>
     </div>
+    @if(isset($categoryDescription) && $categoryDescription)
+    <div class="alert alert-info">
+        <p>{{__('public.cd')}}</p>
+        <p>{{ $categoryDescription }}</p>
+    </div>
+@endif
 
     <div class="d-flex justify-content-center flex-wrap gap-4 p-4 text-center rounded-5">
         @foreach($books as $book)

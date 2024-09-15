@@ -14,13 +14,13 @@
                     <img src="{{ $book->image ? url('storage/' . $book->image) : 'path/to/default/image.jpg' }}" class="card-img-top" alt="Book Image">
                         <div class="card-body d-flex flex-column justify-content-between">
 
-                            <p class="card-text mb-2"><strong>Title</strong><br> {{ $book->title }}</p>
+                            <p class="card-text mb-2"><strong>{{__('dash.book_title')}}</strong><br> {{ $book->title }}</p>
                             {{-- اسم الموظف الذي وافق على الحجز --}}
                              {{-- employee دالة موجودة في مودل الحجز  كل حجز  له موظف موافق عليه --}}
-                            <p class="card-text mb-2"><strong>Book booked by:</strong><br> {{ $reservation->employee->name}}</p>
+                            <p class="card-text mb-2"><strong>{{__('dash.Book_booked_by')}}</strong><br> {{ $reservation->employee->name}}</p>
                             {{-- اسم الموظف الذي استلم على الحجز --}}
                             <p class="card-text mb-2">
-                                <strong>Book received by:</strong><br>
+                                <strong>{{__('dash.Book_received_by')}}</strong><br>
                                     @if($reservation->recipient)
 
                                         {{ $reservation->recipient->name }}

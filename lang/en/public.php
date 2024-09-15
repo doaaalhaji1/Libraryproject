@@ -79,6 +79,8 @@ return [
 'User_Details'=>'  User Details  ',
 'Back_to_users'=>' Back to users ',
 'ok'=>'ok',
+'profile_image'=>'add profile image',
+'cd'=>' category description',
 
 
 

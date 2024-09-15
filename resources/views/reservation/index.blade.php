@@ -16,12 +16,12 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>{{  __ ('name') }}</th>
-                    <th>{{  __ ('messages.titles') }}</th>
-                    <th>{{  __ ('messages.strt date') }}</th>
-                    <th>{{  __ ('messages.end date') }}</th>
-                    <th>{{  __ ('messages.stutuse') }}</th>
-                    <th>{{  __ ('messages.action') }}</th>
+                    <th>{{  __('dash.name') }}</th>
+                    <th>{{  __('dash.book_titles') }}</th>
+                    <th>{{  __ ('dash.strt_date') }}</th>
+                    <th>{{  __('dash.reservation_end_date') }}</th>
+                    <th>{{ __('dash.status')}}</th>
+                    <th>{{ __('dash.action') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,13 +53,13 @@
                                                 <form action="{{ route('aprove', $reservation) }}" method="POST">
                                                     @csrf
                                                     @method('PUT')
-                                                    <button class="btn btn-primary" type="submit">yes</button>
+                                                    <button class="btn btn-primary" type="submit">{{ __('dash.accept') }}</button>
                                                 </form>
 
                                                 <form action="{{ route('rject', $reservation) }}" method="POST">
                                                     @csrf
                                                     @method('PUT')
-                                                    <button class="btn btn-danger" type="submit">no</button>
+                                                    <button class="btn btn-danger" type="submit">{{ __('dash.reject') }}</button>
                                                 </form>
                                             </div>
 

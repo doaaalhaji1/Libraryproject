@@ -203,32 +203,42 @@ class BookController extends Controller
 
 
 
-public function search(Request $request)
-{
-    $query = $request->input('search');
-    $category = $request->input('category');
-
-    $booksQuery = Book::where('status', 'available')
-        ->where(function($q) use ($query) {
-            $q->where('title', 'LIKE', "%{$query}%")
-              ->orWhere('description', 'LIKE', "%{$query}%")
-              ->orWhere('book_content', 'LIKE', "%{$query}%")
-              ->orWhereHas('authors', function($q) use ($query) {
-                  $q->where('name', 'LIKE', "%{$query}%");
-              });
-        });
-
-    if ($category) {
-        $booksQuery->whereHas('categories', function($q) use ($category) {
-            $q->where('categories.id', $category);
-        });
+    public function search(Request $request)
+    {
+        $query = $request->input('search');
+        $categoryId = $request->input('category');   
+        
+        $booksQuery = Book::where('status', 'available')
+            ->where(function($q) use ($query) {
+                $q->where('title', 'LIKE', "%{$query}%")
+                  ->orWhere('description', 'LIKE', "%{$query}%")
+                  ->orWhere('book_content', 'LIKE', "%{$query}%")
+                  ->orWhereHas('authors', function($q) use ($query) {
+                      $q->where('name', 'LIKE', "%{$query}%");
+                  });
+            });
+    
+        $categoryDescription = null; // متغير لتخزين وصف الفئة المحددة
+        if ($categoryId) {
+            $booksQuery->whereHas('categories', function($q) use ($categoryId) {
+                $q->where('categories.id', $categoryId);
+            });
+    
+            // استرجاع الفئة ووصفها إذا كانت موجودة
+            $category = Category::find($categoryId);
+            if ($category) {
+                $categoryDescription = $category->slug; // استخراج وصف الفئة
+            }
+        }
+    
+        // استرجاع نتائج الكتب
+        $books = $booksQuery->get();
+        $categories = Category::all(); // جميع الفئات للاختيار منها في واجهة المستخدم
+    
+        // تمرير الكتب والفئات ووصف الفئة (إذا وجد) إلى العرض
+        return view('Homeuser', compact('books', 'categories', 'categoryDescription'));
     }
-
-    $books = $booksQuery->get();
-    $categories = Category::all();
-
-    return view('Homeuser', compact('books', 'categories'));
-}
+    
 public function searchemploy(Request $request)
 {
     $query = $request->input('search');

@@ -9,7 +9,7 @@ return [
 'Returned_Books'=>' الكتب المُعادة ',
 'Add_User'=>' إضافة مستخدم ',
 'Add_Book'=>' إضافة كتاب ',
-'Add_Categ'=>' إضافة صنف ',
+'Add_Categ'=>' إضافة مجموعة ',
 'Add_Authr'=>' إضافة مؤلف ',
 'ALL_categories'=>' المجموعات  ',
 'ALL_Authors'=>' المؤلفين  ',
@@ -43,12 +43,23 @@ return [
  'search' => 'بحث',
  'status' => 'الحالة',
  'show' => 'عرض',
- 'reservation_end_date' => 'تاريخ انتهاء الحجز',
+ 'reservation_end_date' => 'تاريخ انتهاء الاستعارة',
     'delivery_date' => 'تاريخ التسليم  ',
     'receive' => 'استلم',
     'category_name' => 'اسم الفئة',
     'add_category' => 'إضافة فئة',
-    'edit_category' => ' تعديل فئة',     
+    'edit_category' => ' تعديل فئة',    
+    'strt_date'=>'بداية تاريخ الاستعارة', 
+    'book_titles'=>' عناوين الكتب',
+    'accept'=>'قبول',
+    'reject'=>'رفض',
+    'Book_booked_by'=>'تم حجز الكتاب بواسطة:',
+    'Book_received_by'=>'تم استلام الكتاب بواسطة:',
+
+
+
+
+
 
 
 

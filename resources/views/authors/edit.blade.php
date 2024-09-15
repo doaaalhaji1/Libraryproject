@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="text-center mt-3">
-                    <button type="submit" class="btn btn-primary w-50">{{ __('dash.register') }}</button>
+                    <button type="submit" class="btn btn-primary w-50">{{ __('dash.edit') }}</button>
                     </div>
             </form>
 

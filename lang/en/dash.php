@@ -31,6 +31,25 @@ return [
 'edit' => 'Edit',
  'delete' => 'Delete',
  'edit_author_data' => 'Edit Author Data',   
+// books
+'add_book'=>'Add book',
+'book_title' => 'Book Title',
+'book_description' => 'Book Description',
+'language' => 'Language',
+'select_image' => 'Select Image',
+'categories' => 'Categories',
+'authors' => 'Authors',
+'book_content' => 'Book Content',
+'register' => 'Register',
+'edit_book_data' => 'Edit Book Data',
+'create_book' => 'Create Book',
+'search_placeholder' => 'Search for books or authors...',
+'search' => 'Search',
+'status' => 'Status',
+'show' => 'Show',
+'reservation_end_date' => 'Date of Reservation End',
+    'delivery_date' => 'Delivery Date',
+    'receive' => 'Receive',
 
 
 ];

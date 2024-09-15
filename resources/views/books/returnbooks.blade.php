@@ -12,12 +12,12 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>{{ __('name') }}</th>
-            <th>{{ __('messages.titles') }}</th>
-            <th>{{ __('تاريخ انتهاء الحجز') }}</th>
-            <th>{{ __('تاريخ التسليم') }}</th>
-            <th>{{ __('messages.stutuse') }}</th>
-            <th>{{ __('messages.action') }}</th>
+            <th>{{ __('dash.name') }}</th>
+            <th>{{ __('dash.book_title') }}</th>
+            <th>{{ __('dash.reservation_end_date') }}</th>
+            <th>{{ __('dash.delivery_date') }}</th>
+            <th>{{ __('dash.status') }}</th>
+            <th>{{ __('dash.action') }}</th>
         </tr>
     </thead>
     <tbody>
@@ -44,7 +44,7 @@
                 <form action="{{ route('return_employee', $book) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <button class="btn btn-primary btn" type="submit">استلام</button>
+                    <button class="btn btn-primary btn" type="submit">{{ __('dash.receive') }}</button>
                 </form>
             </td>
         </tr>

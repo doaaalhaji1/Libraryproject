@@ -28,6 +28,24 @@ return [
     'edit' => 'تعديل',
     'delete' => 'حذف',
     'edit_author_data' => 'تعديل بيانات المؤلف',   
+ // الكتاب
+ 'add_book'=>' إضافة كتاب ',
+
+ 'book_title' => 'عنوان الكتاب',
+ 'book_description' => 'وصف الكتاب',
+ 'language' => 'اللغة',
+ 'select_image' => 'اختر صورة',
+ 'categories' => 'الفئات',
+ 'authors' => 'المؤلفين',
+ 'book_content' => 'محتوى الكتاب',
+ 'edit_book_data' => 'تعديل بيانات الكتاب',
+ 'search_placeholder' => 'ابحث عن الكتب أو المؤلفين...',
+ 'search' => 'بحث',
+ 'status' => 'الحالة',
+ 'show' => 'عرض',
+ 'reservation_end_date' => 'تاريخ انتهاء الحجز',
+    'delivery_date' => 'تاريخ التسليم  ',
+    'receive' => 'استلم',
 
 
 

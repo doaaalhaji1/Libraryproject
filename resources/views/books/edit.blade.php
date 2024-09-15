@@ -2,13 +2,25 @@
 @extends('layouts.createditeshow')
 
 @include('partials.navdash')
+<style>
+    [dir="rtl"] label.form-label {
+        text-align: right;
+        display: block;
+    }
 
+    [dir="ltr"] label.form-label {
+        text-align: left;
+        display: block;
+    }
+
+    
+</style>
 @section('content')
     <div class="d-flex justify-content-center align-items-center" style="margin-top:30px ">
         <div class="card w-75">
             <div class="card-body">
                 <img src="/images/bookupdate.jpg" alt="..." width="70px" class="d-block mx-auto mb-3">
-                <h2 class="text-center">{{ __('تعديل بيانات الكتاب') }}</h2>
+                <h2 class="text-center">{{ __('dash.edit_book_data') }}</h2>
 
                 <form action="{{ route('books.update', $book) }}" method="POST" enctype="multi  part/form-data">
                     @csrf
@@ -25,30 +37,30 @@
 
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="name" class="form-label">{{ __ ('messages.book_title') }}</label>
+                            <label for="name" class="form-label">{{ __('dash.book_title') }}</label>
                             <input type="text" class="form-control" id="name" name="title" value="{{ $book->title }}">
                         </div>
 
                         <div class="col-md-6">
-                            <label for="bookdescription" class="form-label">{{ __ ('messages.book_description') }}</label>
+                            <label for="bookdescription" class="form-label">{{ __('dash.book_description') }}</label>
                             <input type="text" class="form-control" id="bookdescription" name="bookdescription" value="{{ $book->description }}">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-9">
-                            <label for="language" class="form-label">{{ __('Language') }}</label>
+                            <label for="language" class="form-label">{{ __('dash.language') }}</label>
                             <select name="language" id="language" class="form-select">
-                                <option value="English" {{ $book->language == 'English' ? 'selected' : '' }}>{{ __('English') }}</option>
-                                <option value="Arabic" {{ $book->language == 'Arabic' ? 'selected' : '' }}>{{ __('Arabic') }}</option>
-                                <option value="French" {{ $book->language == 'French' ? 'selected' : '' }}>{{ __('French') }}</option>
+                                <option value="English" {{ $book->language == 'English' ? 'selected' : '' }}>{{ __('dash.english') }}</option>
+                                <option value="Arabic" {{ $book->language == 'Arabic' ? 'selected' : '' }}>{{ __('dash.arabic') }}</option>
+                                <option value="French" {{ $book->language == 'French' ? 'selected' : '' }}>{{ __('dash.french') }}</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="category" class="form-label">Categories</label>
+                            <label for="category" class="form-label">{{ __('dash.categories') }}</label>
                             <select name="categories[]" id="category" class="form-select" multiple size="4">
                                 @foreach ($categories as $category)
                                 <option value="{{ $category->id }}"
@@ -60,7 +72,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label for="Auther" class="form-label">Authors</label>
+                            <label for="Auther" class="form-label">{{ __('dash.authors') }}</label>
                             <select name="Authers[]" id="Auther" class="form-select" multiple size="4">
                                 @foreach ($authors as $author)
                                 <option value="{{ $author->id }}"
@@ -74,12 +86,12 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="bookcontent" class="form-label">{{ __ ('messages.book_content') }}</label>
+                        <label for="bookcontent" class="form-label">{{ __('dash.book_content') }}</label>
                         <input type="text" class="form-control" id="bookcontent" name="bookcontent" value="{{ $book->book_content }}">
                     </div>
 
                     <div class="text-center mt-3">
-                        <button type="submit" class="btn btn-primary w-45">{{ __ ('messages.create_book') }}</button>
+                        <button type="submit" class="btn btn-primary w-45">{{ __ ('dash.edit') }}</button>
                     </div>
                 </form>
             </div>

@@ -28,32 +28,37 @@ class ProfileController extends Controller
      * Update the user's profile information.
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-        $request->user()->fill($request->validated());
+{
+    $user = $request->user();
     
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+    $user->fill($request->validated());
+    
+    if ($user->isDirty('email')) {
+        $user->email_verified_at = null;
+    }
+    
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        
+        // حذف الصورة القديمة إذا كانت موجودة
+        if ($user->image) {
+            Storage::disk('public')->delete($user->image);  
         }
     
-        $imageName = null;
+        $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension();
+        $imagePath = 'user_images/' . $imageName;    
+    
+        $image->storeAs('user_images', $imageName, 'public');
+    
+        $user->image = $imagePath;
+    }
+    
+    $user->save();
 
-if ($request->hasFile('image')) {
-    $image = $request->file('image');
-    
-    // إنشاء اسم عشوائي للصورة باستخدام Str::random
-    $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension(); 
-    
-    // تخزين الصورة في مجلد storage/app/public/user_images
-    $imagePath = $image->storeAs('user_images', $imageName, 'public');
+    return Redirect::route('profile.edit')->with('status', 'profile-updated');
 }
 
     
-        // حفظ البيانات الجديدة
-        $request->user()->save();
-    
-        // إعادة التوجيه مع رسالة نجاح
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
-    }
     
     /**
      * Delete the user's account.

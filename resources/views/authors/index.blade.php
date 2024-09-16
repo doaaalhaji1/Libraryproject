@@ -13,7 +13,7 @@
                 </div>
 
             @endif
-                <p></p>
+
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -21,7 +21,7 @@
                 <th>{{ __('dash.description') }}</th>
                 <th>{{ __('dash.nationality') }}</th>
                 <th>{{ __('dash.birthdate') }}</th>
-                <th>{{ __('dash.action') }}</th>
+                <th class="text-center">{{ __('dash.action') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,15 +30,17 @@
                         <td>{{ $author->name }}</td>
                         <td>{{ $author->description }}</td>
                         <td>{{ $author->nationality }}</td>
-                        <td>{{ $author->birthdate ? $author->birthdate->format('Y-m-d') : '' }}</td>
+                        <td style="width: 100px; padding: 10px;">
+                            {{ $author->birthdate ? $author->birthdate->format('Y-m-d') : '' }}
+                        </td>
 
-                        <td>
-                        <a href="{{ route('authors.edit', $author) }}" class="btn btn-warning btn-sm">{{ __('dash.edit') }}</a>
+                        <td class="text-center d-flex justify-content-center align-items-center">
+                        <a href="{{ route('authors.edit', $author) }}" class="btn btn-warning ms-1">{{ __('dash.edit') }}</a>
 
-                       <form action="{{ route('authors.destroy', $author) }}" class="d-inline" method="POST">
+                       <form action="{{ route('authors.destroy', $author) }}" class="d-inline ms-1" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">{{ __('dash.delete') }}</button>
+                            <button type="submit" class="btn btn-danger">{{ __('dash.delete') }}</button>
                         </td>
                         </form>
 

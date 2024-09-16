@@ -14,7 +14,7 @@ return [
 'ALL_categories'=>' المجموعات  ',
 'ALL_Authors'=>' المؤلفين  ',
 
-//المؤلف 
+//المؤلف
 'add_author' => 'إضافة مؤلف',
     'name' => 'الاسم',
     'description' => 'الوصف',
@@ -27,7 +27,7 @@ return [
     'action' => 'الإجراء',
     'edit' => 'تعديل',
     'delete' => 'حذف',
-    'edit_author_data' => 'تعديل بيانات المؤلف',   
+    'edit_author_data' => 'تعديل بيانات المؤلف',
  // الكتاب
  'add_book'=>' إضافة كتاب ',
 
@@ -48,16 +48,18 @@ return [
     'receive' => 'استلم',
     'category_name' => 'اسم الفئة',
     'add_category' => 'إضافة فئة',
-    'edit_category' => ' تعديل فئة',    
-    'strt_date'=>'بداية تاريخ الاستعارة', 
+    'edit_category' => ' تعديل فئة',
+    'strt_date'=>'بداية تاريخ الاستعارة',
     'book_titles'=>' عناوين الكتب',
     'accept'=>'قبول',
     'reject'=>'رفض',
     'Book_booked_by'=>'تم حجز الكتاب بواسطة:',
     'Book_received_by'=>'تم استلام الكتاب بواسطة:',
-
-
-
+    'Edie_User_Data'=> 'تعديل بيانات المستخدم',
+    //الفوتر
+    'text_footer1'=> 'كل ماتحتاجه من الكتب ',
+    'text_footer2'=> ' مكتبة 2024 ، حقوق النشر ',
+    'text_footer3'=> 'جميع الحقوق محفوظة',
 
 
 

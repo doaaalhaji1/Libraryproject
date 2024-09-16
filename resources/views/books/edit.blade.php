@@ -1,7 +1,9 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
-@extends('layouts.createditeshow')
-
-@include('partials.navdash')
 <style>
     [dir="rtl"] label.form-label {
         text-align: right;
@@ -13,14 +15,20 @@
         display: block;
     }
 
-    
+
 </style>
+</head>
+
+@extends('layouts.createditeshow')
+
+@include('partials.navdash')
+
 @section('content')
     <div class="d-flex justify-content-center align-items-center" style="margin-top:30px ">
         <div class="card w-75">
             <div class="card-body">
                 <img src="/images/bookupdate.jpg" alt="..." width="70px" class="d-block mx-auto mb-3">
-                <h2 class="text-center">{{ __('dash.edit_book_data') }}</h2>
+                <h2 class="text-center mb-3">{{ __('dash.edit_book_data') }}</h2>
 
                 <form action="{{ route('books.update', $book) }}" method="POST" enctype="multi  part/form-data">
                     @csrf
@@ -91,7 +99,7 @@
                     </div>
 
                     <div class="text-center mt-3">
-                        <button type="submit" class="btn btn-primary w-45">{{ __ ('dash.edit') }}</button>
+                        <button type="submit" class="btn btn-primary w-50 mt-3">{{ __ ('dash.edit') }}</button>
                     </div>
                 </form>
             </div>

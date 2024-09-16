@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Reservation; // استيراد نموذج الحجز
-use App\Models\Book; // استيراد نموذج الكتاب
-use App\Models\User; // استيراد نموذج المستخدم
+use App\Models\Reservation;
+use App\Models\Book;
+use App\Models\User;
 
 class ReservationController extends Controller
 {

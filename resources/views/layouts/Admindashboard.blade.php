@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @if (app()->getLocale() == 'ar')
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-rtl/dist/css/bootstrap.rtl.min.css">
-            @endif
+   @endif
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous"><!-- jsvectormap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css" integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous">
 
@@ -26,7 +26,7 @@
     <style>
         .app-main
         {
-            margin-top:60px;
+            margin-top:70px;
            }
     </style>
 </head> <!--end::Head--> <!--begin::Body-->
@@ -53,7 +53,7 @@
                             </a>
                         </div>
                    @endif
-                       
+
                         <div class="col-lg-3 col-6">
                             <a href="{{ route('books') }}" class="text-decoration-none"> <!-- Add link here -->
                                 <div class="small-box text-bg-success">
@@ -91,20 +91,21 @@
                     </div> <!--end::Row-->
                 </div> <!--end::Container-->
             </div><!--end::Col-->
-            <div class="ms-3">
+            <div class="ms-3 me-3">
                 @yield("content")
             </div>
                      </main>
-   
+
                     </body>
 
-        <footer class="app-footer"> <!--begin::To the end-->
-            <div class="float-end d-none d-sm-inline">Anything you want</div> <!--end::To the end--> <!--begin::Copyright--> <strong>
-                Copyright &copy; 2014-2024&nbsp;
-                <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
-            </strong>
-            All rights reserved.
-            <!--end::Copyright-->
-        </footer> <!--end::Footer-->
+                    <footer class="app-footer"> <!--begin::To the end-->
+                        <div class="float-end d-none d-sm-inline">{{__('dash.text_footer1')}}</div> <!--end::To the end-->
+
+                        <strong>
+                         {{__('dash.text_footer2')}}
+                        </strong>
+                        {{__('dash.text_footer3')}}
+
+                    </footer> <!--end::Footer-->
     </div>
 

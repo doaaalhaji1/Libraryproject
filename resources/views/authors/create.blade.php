@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Create Author</title>
     <!-- إضافة CSS ل Flatpickr -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
@@ -75,7 +75,7 @@
 
 
                     <div class="text-center mt-3">
-                        <button type="submit" class="btn btn-primary w-50">{{ __('dash.register') }}</button>
+                        <button type="submit" class="btn btn-primary w-50">{{ __('dash.add_book') }}</button>
                     </div>
             </form>
 

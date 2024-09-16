@@ -1,6 +1,10 @@
-@extends('layouts.createditeshow')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
-@include('partials.navdash')
+
 <style>
     [dir="rtl"] label.form-label {
         text-align: right;
@@ -12,14 +16,19 @@
         display: block;
     }
 
-    
+
 </style>
+</head>
+@extends('layouts.createditeshow')
+
+@include('partials.navdash')
+
 @section('content')
     <div class="d-flex justify-content-center align-items-center" style="margin-top:25px ">
         <div class="card w-50">
             <div class="card-body">
                 <img src="/images/edituser.png" alt="..." width="70px" class="d-block mx-auto mb-3">
-                <h2 class="text-center">{{ __('تعديل مستخدم') }}</h2>
+                <h2 class="text-center">{{ __('dash.Edie_User_Data') }}</h2>
 
                 <form method="POST" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">
                     @csrf

@@ -1,6 +1,9 @@
-@extends('layouts.createditeshow')
-
-@include('partials.navdash')
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <style>
     [dir="rtl"] label.form-label {
         text-align: right;
@@ -12,8 +15,13 @@
         display: block;
     }
 
-    
+
 </style>
+</head>
+@extends('layouts.createditeshow')
+
+@include('partials.navdash')
+
 @section('content')
     <div class="d-flex justify-content-center align-items-center" style="margin-top:25px ">
         <div class="card w-50">

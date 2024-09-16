@@ -2,8 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- إضافة CSS ل Flatpickr -->
+    <title>Create Reservation</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
     [dir="rtl"] label.form-label {
@@ -16,7 +15,7 @@
         display: block;
     }
 
-    
+
 </style>
 </head>
 
@@ -70,7 +69,7 @@
 
 
                     <div class="text-center mt-3">
-                        <button type="submit" class="btn btn-primary w-50">{{ __('user.Create_New_reservation') }}</button>
+                        <button type="submit" class="btn btn-primary w-50">{{ __('user.creat') }}</button>
                     </div>
             </form>
 

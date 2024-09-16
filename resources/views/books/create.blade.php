@@ -1,7 +1,9 @@
-
-@extends('layouts.createditeshow')
-
-@include('partials.navdash')
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Book</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <style>
     [dir="rtl"] label.form-label {
         text-align: right;
@@ -13,14 +15,20 @@
         display: block;
     }
 
-    
+
 </style>
+</head>
+
+@extends('layouts.createditeshow')
+
+@include('partials.navdash')
+
 @section('content')
     <div class="d-flex justify-content-center align-items-center" style="margin-top:30px ">
         <div class="card w-75">
             <div class="card-body">
                 <img src="/images/addbook.jpg" alt="..." width="70px" class="d-block mx-auto mb-3">
-                <h2 class="text-center">{{ __('dash.add_book') }}</h2>
+                <h2 class="text-center mb-3">{{ __('dash.add_book') }}</h2>
 
                 <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -88,7 +96,8 @@
                     </div>
 
                     <div class="text-center mt-3">
-                    <button type="submit" class="btn btn-primary w-50">{{ __('dash.register') }}</button>                    </div>
+                    <button type="submit" class="btn btn-primary w-50">{{ __('dash.add_book') }}</button>
+                </div>
                 </form>
             </div>
         </div>

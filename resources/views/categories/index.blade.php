@@ -13,7 +13,7 @@
                 </div>
 
             @endif
-                {{-- <p></p> --}}
+
         <table class="table table-striped">
             <thead>
                 <tr>

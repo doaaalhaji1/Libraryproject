@@ -30,7 +30,7 @@ return [
 'action' => 'Action',
 'edit' => 'Edit',
  'delete' => 'Delete',
- 'edit_author_data' => 'Edit Author Data',   
+ 'edit_author_data' => 'Edit Author Data',
 // books
 'add_book'=>'Add book',
 'book_title' => 'Book Title',
@@ -43,6 +43,7 @@ return [
 'register' => 'Register',
 'edit_book_data' => 'Edit Book Data',
 'create_book' => 'Create Book',
+'add_book' => 'Add Book',
 'search_placeholder' => 'Search for books or authors...',
 'search' => 'Search',
 'status' => 'Status',
@@ -52,15 +53,18 @@ return [
     'receive' => 'Receive',
     'category_name' => 'category name ',
     'add_category' => 'Add category ',
-    'edit_category' => 'Edit Category',  
-    'strt_date'=>'Strat Date',   
+    'edit_category' => 'Edit Category',
+    'strt_date'=>'Strat Date',
     'book_titles'=>'books titles',
     'accept'=>'Accept',
     'reject'=>'reject',
     'Book_booked_by'=>'Book booked by:',
     'Book_received_by'=>'Book received by:',
-
-
+    'Edie_User_Data'=> 'Edie User Data',
+//footer
+'text_footer1' => 'Everything you need from books ',
+'text_footer2' => 'Library 2024 , Copyright',
+'text_footer3' => 'All rights reserved',
 
 
 

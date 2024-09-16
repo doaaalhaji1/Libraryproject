@@ -21,7 +21,7 @@
                     <th>{{  __ ('dash.strt_date') }}</th>
                     <th>{{  __('dash.reservation_end_date') }}</th>
                     <th>{{ __('dash.status')}}</th>
-                    <th>{{ __('dash.action') }}</th>
+                    <th class="text-center">{{ __('dash.action') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,11 +45,13 @@
                                         <td>{!! $bookTitles !!}</td>
 
                                         <td>{{$reservation->reservation_start_date}}</td>
-                                        <td>{{$reservation->reservation_end_date}}</td>
+                                        <td class="text-center">
+                                            {{$reservation->reservation_end_date}}
+                                        </td>
                                         <td>{{$reservation->status}}</td>
                                         <td>
                                              {{-- ارسلنا لأي حجز  سيتم قبوله  لأن الدالة قبول الحجز تستقبل الحجز  لتغير حالته --}}
-                                             <div style="display: flex; gap: 10px;">
+                                             <div style="display: flex; gap: 4px;">
                                                 <form action="{{ route('aprove', $reservation) }}" method="POST">
                                                     @csrf
                                                     @method('PUT')

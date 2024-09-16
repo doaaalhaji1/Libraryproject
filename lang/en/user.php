@@ -17,7 +17,7 @@ return [
  'reserve_books_message' => 'To reserve more than one book, click on the following button ...',
  'books_reservation' => 'Books Reservation',
  'Create_New_reservation'=>'Create New reservation',
- 'creat'=>'creat',
+ 'creat'=>'Create',
  'RETURN'=>'RETURN',
  'CONFIRM_RETURN'=>' Are you sure you want to repeat?   ',
  'NO_BOOKS_AVAILABLE' => 'No books are currently available for reservation.',

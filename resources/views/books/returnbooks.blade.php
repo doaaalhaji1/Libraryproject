@@ -15,7 +15,7 @@
             <th>{{ __('dash.name') }}</th>
             <th>{{ __('dash.book_title') }}</th>
             <th>{{ __('dash.reservation_end_date') }}</th>
-            <th>{{ __('dash.delivery_date') }}</th>
+            <th class="text-center">{{ __('dash.delivery_date') }}</th>
             <th>{{ __('dash.status') }}</th>
             <th>{{ __('dash.action') }}</th>
         </tr>
@@ -25,8 +25,8 @@
         <tr>
             {{-- عرض اسم المستخدم --}}
             <td>{{ $book->reservation->user->name }}</td>
-            <td>{{ $book->title }}</td>
-            <td>{{ $book->reservation->reservation_end_date }}</td>
+            <td class="col-4">{{ $book->title }}</td>
+            <td class="col-2 text-center">{{ $book->reservation->reservation_end_date }}</td>
 
             {{-- مقارنة تاريخ التسليم مع تاريخ انتهاء الحجز --}}
 
@@ -35,7 +35,7 @@
                 $endDate = $book->reservation->reservation_end_date; // تاريخ انتهاء الحجز
             @endphp
 
-            <td style="background-color: {{ $deliveryDate > $endDate ? 'red' : 'green' }};">
+            <td style="background-color: {{ $deliveryDate > $endDate ? 'red' : 'green' }};" class="text-center">
                 {{ $deliveryDate }}
             </td>
 
@@ -44,7 +44,7 @@
                 <form action="{{ route('return_employee', $book) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <button class="btn btn-primary btn" type="submit">{{ __('dash.receive') }}</button>
+                    <button class="btn btn-primary" type="submit">{{ __('dash.receive') }}</button>
                 </form>
             </td>
         </tr>

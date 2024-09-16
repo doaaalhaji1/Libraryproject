@@ -8,15 +8,15 @@
         </div>
     @endif
 
-    <p></p>
+
 
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>{{ __('public.name') }}</th>
                 <th>{{ __('public.email') }}</th>
-                <th>{{ __('public.Role') }}</th>
-                <th>{{ __('dash.action') }}</th>
+                <th class="text-center">{{ __('public.Role') }}</th>
+                <th class="text-center">{{ __('dash.action') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -38,16 +38,16 @@
         </div>
     </form>
 </td>
-                    <td>
+                    <td class="text-center">
                         <a href="{{ route('users.show', $user['id']) }}" class="btn btn-primary">{{ __('dash.show') }}</a>
-                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">{{ __('dash.edit') }}</a>
+                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning ">{{ __('dash.edit') }}</a>
                         <form action="{{ route('users.destroy', $user['id']) }}" class="d-inline" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">{{ __('dash.delete') }}</button>
-                        </form>
                     </td>
                 </tr>
+            </form>
             @endforeach
         </tbody>
     </table>

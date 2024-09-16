@@ -3,30 +3,30 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px; /* إضافة مساحة داخلية حول العنصر */
-      background-color: transparent; /* إزالة لون الخلفية */
+      padding: 10px;
+      background-color: transparent;
     }
 
     .form-container label {
       margin-right: 16px;
       white-space: nowrap;
-      font-weight: 500; /* زيادة وضوح النص */
+      font-weight: 500;
     }
 
     .form-select {
-      border-radius: 5px; /* تقويس الزوايا */
-      border: 1px solid #ced4da; /* إضافة حدود خفيفة حول القائمة */
-      background-color: #ffffff; /* خلفية بيضاء للقائمة */
+      border-radius: 5px;
+      border: 1px solid #ced4da;
+      background-color: #ffffff;
     }
 
     .form-select:focus {
-      border-color: #80bdff; /* تغيير لون الحد عند التركيز */
-      box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* إضافة ظل عند التركيز */
+      border-color: #80bdff;
+      box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
     }
 
     .form-label {
-      font-size: 1rem; /* حجم الخط */
-      color: #495057; /* لون النص */
+      font-size: 1rem;
+      color: #495057;
     }
 </style>
 

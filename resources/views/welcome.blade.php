@@ -86,9 +86,9 @@
                         @if (Route::has('login'))
 
                             @auth
-                                <a href="{{ route('login') }}" class="btn btn-default btn-lg red" role="button">Log in</a>
+                                <a href="{{ route('login') }}" class="btn btn-default btn-lg red" role="button">{{__('public.login')}}</a>
                                 @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="btn btn-default btn-lg bttn" role="button">Register</a>
+                                    <a href="{{ route('register') }}" class="btn btn-default btn-lg bttn" role="button">{{__('public.register')}}</a>
                                 @endif
 
                                 @else
@@ -105,7 +105,7 @@
 				</div> <!-- .row -->
 			</div> <!-- /.container-fluid -->
 
-           
+
 	</section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 

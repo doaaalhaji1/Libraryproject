@@ -17,7 +17,7 @@
         display: block;
     }
 
-    
+
 </style>
 </head>
 
@@ -29,7 +29,7 @@
     <div class="d-flex justify-content-center align-items-center" style="margin-top:30px  " >
         <div class="card w-50">
             <div class="card-body">
-                <img src="/images/adduser.png" alt="..." width="70px" class="d-block mx-auto mb-3">
+                <img src="/images/adduser.jpg" alt="..." width="70px" class="d-block mx-auto mb-3">
                 <h2 class="text-center">{{ __('dash.add_author') }}
                 </h2>
 

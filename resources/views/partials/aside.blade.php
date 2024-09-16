@@ -13,7 +13,7 @@
      font-size: 18px;
      border-radius: 25px;
     text-decoration: none;
-    padding: 9px  58px  9px 60px;
+    padding: 9px  50px  9px 50px;
 
     margin-top:40px;
 
@@ -68,8 +68,8 @@
  <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
 
       <div class="sidebar mt-4" style="color:white;">
-                    <!-- <h2>{{__('dash.Dashboard')}}</h2>
-                    <h5 style="margin-bottom:40px">{{__('dash.Library_Mangment_System')}}</h5> -->
+                    <h2>{{__('dash.Dashboard')}}</h2>
+                    <h5 style="margin-bottom:40px">{{__('dash.Library_Mangment_System')}}</h5>
 
                  <a href="{{ route('reservation') }}" class="animated-button">
                  {{__('dash.Reserved_Books')}}

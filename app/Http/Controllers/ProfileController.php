@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProfileController extends Controller
 {
@@ -32,18 +35,18 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
     
-        if ($request->hasFile('image')) {
-            if ($request->user()->image) {
-                Storage::delete('public/user_images/' . $request->user()->image);
-            }
+        $imageName = null;
+
+if ($request->hasFile('image')) {
+    $image = $request->file('image');
     
-            // حفظ الصورة الجديدة في المسار المحدد
-            $filename = time() . '.' . $request->file('image')->getClientOriginalExtension();
-            $path = $request->file('image')->move('C:/Users/Doaa/Herd/Libraryproject/storage/app/public/user_images', $filename);
+    // إنشاء اسم عشوائي للصورة باستخدام Str::random
+    $imageName = Str::random(20) . '.' . $image->getClientOriginalExtension(); 
     
-            // تحديث مسار الصورة في قاعدة البيانات
-            $request->user()->image = 'user_images/' . $filename;
-        }
+    // تخزين الصورة في مجلد storage/app/public/user_images
+    $imagePath = $image->storeAs('user_images', $imageName, 'public');
+}
+
     
         // حفظ البيانات الجديدة
         $request->user()->save();

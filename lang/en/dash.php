@@ -2,7 +2,7 @@
 return [
 'Dashboard'=>'Dash board',
 'ALL_Books'=>'ALL Books',
-'ALL_Users'=>'ALL Books',
+'ALL_Users'=>'ALL Users',
 'ALL_categories'=>'ALL categories',
 'ALL_Authors'=>'ALL Authors',
 

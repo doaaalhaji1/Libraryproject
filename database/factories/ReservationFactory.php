@@ -21,12 +21,6 @@ class ReservationFactory extends Factory
         return [
             'reservation_start_date' => $this->faker->date(),
             'reservation_end_date' => $this->faker->date(),
-            'status' => 'pending',
-            'user_id' => User::where('role', 'member')->inRandomOrder()->first()->id,
-            'employee_id' => User::where('role', 'employee')->inRandomOrder()->first()->id,
-            'recipient_user_id' => User::where('role', 'employee')->inRandomOrder()->first()->id,
-
-
         ];
     }
 }

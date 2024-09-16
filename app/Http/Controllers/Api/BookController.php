@@ -25,6 +25,7 @@ class BookController extends Controller
             'title' => 'required|min:3|max:100|unique:books',
             'description' => 'required|min:15|max:100',
             'language' => 'required|min:3|max:15',
+            'book_content' => 'min:5|max:100',
             'category' => 'required|min:5|max:30',
             'author' => 'required|min:5|max:30',
         ]);
@@ -43,8 +44,9 @@ class BookController extends Controller
 
             'title' => $DataBook['title'],
             'description' => $DataBook['description'],
-            'language' => $DataBook['language']
-            
+            'language' => $DataBook['language'],
+            'book_content' => $DataBook['book_content'],
+
         ]);
 
         if ($newBook) {

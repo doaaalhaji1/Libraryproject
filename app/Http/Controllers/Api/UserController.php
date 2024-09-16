@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
@@ -20,7 +21,11 @@ class UserController extends Controller
         $dataUser = $request->validate([
             'name' => 'required|min:3|max:50',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:3|max:50',
+            'password' => ['required',   Rules\Password::min(8)
+                ->mixedCase()
+                ->numbers()
+                ->symbols()
+                ->uncompromised(), ],
             'image' => 'required'
         ]);
 
@@ -41,9 +46,15 @@ class UserController extends Controller
         $dataUser = $request->validate([
 
             'name' => 'min:3|max:50',
-            'email' => 'email|unique:users,email',
-            'password' => 'min:3|max:50',
-            'image' => 'min:3|max:50'
+            'email' => 'email',
+            'password' => ['required',  Rules\Password::min(8)
+                ->mixedCase()
+                ->numbers()
+                ->symbols()
+                ->uncompromised(), ],
+            'image' => 'min:3|max:50',
+            'role'=> 'in:admin,member,employee'
+
         ]);
 
         $user->update([
@@ -51,7 +62,8 @@ class UserController extends Controller
             'name' => $dataUser['name'],
             'email' => $dataUser['email'],
             'password' => Hash::make($dataUser['password']),
-            'image' => $dataUser['image']
+            'image' => $dataUser['image'],
+            'role' => $dataUser['role']
 
         ]);
 

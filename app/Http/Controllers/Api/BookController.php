@@ -71,6 +71,15 @@ class BookController extends Controller
             'category' => 'min:5|max:30',
         ]);
 
+        $author = Author::where('name', $validated['author'])->first();
+        $category = Category::where('name', $validated['category'])->first();
+
+        if (!$author) {
+            return response()->json(['error' => '  author not exist'], 404);
+        }
+        if (!$category) {
+            return response()->json(['error' => 'category not exist'], 404);
+        }
         $book->update($validated);
 
         if ($request->has('author')) {

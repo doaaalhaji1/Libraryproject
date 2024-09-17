@@ -45,12 +45,22 @@
     </div>
     </div>
     @if(isset($categoryDescription) && $categoryDescription)
+    <div class="container">
     <div class="alert alert-info">
         <p>{{__('public.cd')}}</p>
         <p>{{ $categoryDescription }}</p>
     </div>
+    </div>
 @endif
+ @if(session('success'))
+ <div class="container">
+                <div class="alert alert-success">
 
+                    {{ session('success') }}
+
+                </div></div>
+
+            @endif
     <div class="d-flex justify-content-center flex-wrap gap-4 p-4 text-center rounded-5">
         @foreach($books as $book)
         <div class="card shadow" style="width: 14.5rem;">

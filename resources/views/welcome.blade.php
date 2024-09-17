@@ -60,6 +60,16 @@
     margin-right: auto !important;
     margin-left: 0 !important;
 }
+[dir="rtl"] .header-title {
+    color: white;
+}
+
+[dir="rtl"] .header-sub {
+    color: white;
+}
+[dir="rtl"] .description {
+    color: white;
+}
 
 
     </style>
@@ -75,10 +85,10 @@
 						<div class="header-wrapper" style="color:black">
 
 							<h1 class="header-title">{{__('public.Welcome-home')}}</h1>
-                            <p class="header-sub" style="color:black ">
+                            <p class="header-sub" >
                                 {{__('public.description_home')}}
                             </p>
-							<p class="description" style="color:rgb(0, 0, 0); font-family: Arial, sans-serif;font-weight: bold; bold:20px; ">
+							<p class="description" style=" font-family: Arial, sans-serif;font-weight: bold; bold:20px; ">
                             {!! __('public.unique_experience') !!}
 
 							</p>

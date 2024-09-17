@@ -61,14 +61,17 @@
     margin-left: 0 !important;
 }
 [dir="rtl"] .header-title {
-    color: white;
+    color: white ;
 }
 
 [dir="rtl"] .header-sub {
-    color: white;
+    color: white ;
+}
+[dir="ltr"] .header-sub {
+    color: black ;
 }
 [dir="rtl"] .description {
-    color: white;
+    color: white ; 
 }
 
 
@@ -84,8 +87,8 @@
 					<div class="col-xs-6 col-sm-5 col-sm-offset-1">
 						<div class="header-wrapper" style="color:black">
 
-							<h1 class="header-title">{{__('public.Welcome-home')}}</h1>
-                            <p class="header-sub" >
+							<h1 class="header-title" >{{__('public.Welcome-home')}}</h1>
+                            <p class="header-sub"  >
                                 {{__('public.description_home')}}
                             </p>
 							<p class="description" style=" font-family: Arial, sans-serif;font-weight: bold; bold:20px; ">

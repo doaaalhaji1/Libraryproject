@@ -70,8 +70,7 @@ return [
 'Library'=>'Our Library',
 'Welcome-home'=>'Welcome to our library',
 'description_home' => 'Where you are provided with all the books you want',
-'unique_experience' => 'Our library offers you a unique online reading experience, with a wide range of books available for direct reading, with an easy-to-use interface and personalized services to enhance your experience.<br><br> To start reading books, you must <span style="color:rgb(194, 103, 70)">Log in</span> first',
-
+'unique_experience' => 'Our library offers you a unique online experience, with a wide range of books available. Enjoy an easy-to-use interface and personalized services to enhance your experience.<br><br> To start using the library, you must <span style="color:rgb(194, 103, 70)">Log in</span> first.',
 'Admin'=>'Admin',
 'Employee'=>'Employee',
 'Member'=>'Member',

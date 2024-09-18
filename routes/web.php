@@ -46,7 +46,6 @@ Route::get('/Library', [BookController::class,'availableBooks'])->name('page_boo
 Route::get('/books/search', [BookController::class, 'search'])->name('books.search');
 
 
-
 // -----------------------------role(admin)----------------------------------------
 
 

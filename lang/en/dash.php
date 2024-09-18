@@ -61,6 +61,8 @@ return [
     'Book_booked_by'=>'Book booked by:',
     'Book_received_by'=>'Book received by:',
     'Edie_User_Data'=> 'Edie User Data',
+    'Reservation_approved_successfully.' => 'Reservation approved successfully.',
+
 //footer
 'text_footer1' => 'Everything you need from books ',
 'text_footer2' => 'Library 2024 , Copyright',

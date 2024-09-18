@@ -1,4 +1,9 @@
-
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> My Books </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 @extends('partials.navuser')
 <style>
@@ -10,7 +15,7 @@
         object-fit: cover;
     }
 </style>
-
+</head>
 <div class="page">
 @if($reservations->isEmpty() || !$reservations->pluck('books')->flatten()->contains(fn($book) => $book->status === 'reserved'))
         <div class="text-center container">

@@ -69,11 +69,20 @@
             padding-right: 0;
         }
         [dir="rtl"] .ms-auto {
-    margin-right: auto !important;
-    margin-left: 0 !important;
+        margin-right: auto !important;
+        margin-left: 0 !important;
 }
-        
-        
+    .dropdown-menu {
+            position: absolute;
+            z-index: 1000;
+        }
+
+        /* فتح القائمة من اليسار عند استخدام اللغة العربية */
+        [dir="rtl"] .dropdown-menu {
+            right: auto;
+            left: 0;
+        }
+
      </style>
  </head>
  <body>
@@ -87,7 +96,7 @@
             </a>
              <div class="collapse navbar-collapse" id="navbarNav">
                  <ul class="navbar-nav">
-                   
+
                      <li class="nav-item d-none d-md-block ms-2">
                         <a href="{{route('dashboard')}}" class="nav-link">{{__('dash.Dashboard')}}</a>
                     </li>
@@ -149,7 +158,7 @@
              </div>
          </div>
      </nav>
-     
+
 
      <!-- Your content goes here -->
 

@@ -56,6 +56,7 @@ return [
     'Book_booked_by'=>'تم حجز الكتاب بواسطة:',
     'Book_received_by'=>'تم استلام الكتاب بواسطة:',
     'Edie_User_Data'=> 'تعديل بيانات المستخدم',
+    'Reservation_approved_successfully' =>'تمت الموافقة على الحجز  بنجاح',
     //الفوتر
     'text_footer1'=> 'كل ماتحتاجه من الكتب ',
     'text_footer2'=> ' مكتبة 2024 ، حقوق النشر ',

@@ -1,10 +1,34 @@
-@extends('partials.navdash')
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Data Books</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+
 <style>
     .page
     {
         margin-top: 60px;
     }
+
+    .page {
+        margin-top:75px;
+    }
+    .card-img-top {
+        height: 210px;
+        object-fit: cover;
+    }
+    .positionbutton
+    {
+        text-align:start;
+        margin-left:50px;
+    }
 </style>
+
+</head>
+
+@extends('partials.navdash')
 <div class="page">
     <div class="d-flex justify-content-center flex-wrap gap-4 p-4 text-center rounded-5">
              @foreach($reservations as $reservation)
@@ -25,12 +49,7 @@
 
                                         {{ $reservation->recipient->name }}
                                     </p>
-                                      @else
-                                    <p class="card-text mb-2">
-                                        <strong>لم يتم استلام الكتاب بعد.</strong>
-                                    </p>
                                     @endif
-
                             </div>
                         </div>
                         @endforeach
@@ -38,20 +57,3 @@
                     </div>
                 </div>
 
-                        {{-- ---------------------------------------------- --}}
-
-{{--
-                        <div class="card shadow" style="width: 14.5rem;">
-                            <img src="{{ $book->image ? url('storage/' . $book->image) : 'path/to/default/image.jpg' }}" class="card-img-top" alt="Book Image">
-                            <div class="card-body d-flex flex-column justify-content-between">
-                                <p class="card-text mb-2"><strong>Title</strong><br> {{ $book->title }}</p>
-                                <p class="card-text mb-1"><strong>Authors</strong><br>
-                                    @foreach($book->authors as $author)
-                                        <p class="mb-0">{{ $author->name }}</p>
-                                    @endforeach
-                                </p>
-                                <div class="mt-auto">
-                                    <a href="{{ route('book_reservation', $book) }}" class="btn btn-primary mt-2 w-100 read-button rounded-5">Reservation</a>
-                                </div>
-                            </div>
-                        </div> --}}

@@ -120,7 +120,7 @@ class ReservationController extends Controller
         }
 
 
-        return redirect()->route('reservation')->with('success', 'Reservation approved successfully.');
+        return redirect()->route('reservation')->with('success', __('dash.Reservation_approved_successfully'));
     }
 
 

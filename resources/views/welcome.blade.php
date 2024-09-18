@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 
@@ -21,10 +17,6 @@
 		<link rel="stylesheet" href="css/owl.carousel.css">
 		<link rel="stylesheet" href="css/owl.theme.css">
 	    <link rel="stylesheet" href="css/main.css">
-
-
-
-	</head>
     <style>
        #home {
             background-size: cover;
@@ -49,8 +41,6 @@
     padding-right: 30px; /* الهوامش اليمنى في الاتجاه RTL */
       }
 
-
-
 /* الهوامش للنصوص في الاتجاه العربي */
       [dir="rtl"] .description {
         margin-left: 0;
@@ -71,11 +61,12 @@
     color: black ;
 }
 [dir="rtl"] .description {
-    color: white ; 
+    color: white ;
 }
 
 
     </style>
+</head>
 <body>
 
      @include('partials.homenave')

@@ -17,12 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
-        //   User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
         User::create([
             'name' => 'Admin User',
             'email' => 'admin@com',
@@ -36,6 +31,12 @@ class DatabaseSeeder extends Seeder
             'role' => 'member',
         ]);
 
+          User::factory()->create([
+            'name' => 'employee user',
+            'email' => 'employee@com',
+            'password' => bcrypt('33333333'),
+            'role' => 'employee',
+        ]);
         $this->call([
             UserSeeder::class,
             CategorySeeder::class,

@@ -2,13 +2,14 @@
     .form-container {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content:evenly;
       padding: 10px;
       background-color: transparent;
     }
 
     .form-container label {
-      margin-right: 16px;
+      margin-right: 15px;
+      margin-left: 15px;
       white-space: nowrap;
       font-weight: 500;
     }

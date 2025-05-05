@@ -94,7 +94,8 @@ php artisan key:generate
 php artisan migrate --seed
 
 # Run the server
-php artisan serve```
+php artisan serve
+```
 ##🧪 API Testing
 You can use Postman or Insomnia to test the API.
 
